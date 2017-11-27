@@ -11,7 +11,7 @@ var cameraLimits = [[-0.7, 0.7, -1, -0.5],
 var descriptionIds = ["openFrameworks", "Design", "Hardware", "VirtualReality", "", ""];
 //lowerx, upperx, lowerz, upperz;
 var cameraPos = [600, 200, 500];
-
+var initCameraPos;
 var group;
 var description;
 var works = ['https://giphy.com/gifs/3ohjV3UwmJqANkoNR6/html5', 'https://giphy.com/gifs/3o6nV6gkigH6OcIAq4/html5', 'https://giphy.com/gifs/xUNda5x7YwPMdyuwLe/html5'];
@@ -39,7 +39,11 @@ var Element = function ( id, x, y, z, rx, ry ) {
     p.style.top = "25%";
     p.style.position = "absolute";
     p.style.zIndex = "99";
-    p.style.fontSize = "48px";
+    p.style.fontSize = "50px";
+    p.style.fontWeight = "500";
+    p.style.fontStyle = "italic";
+    p.style.webkitTextStroke = "1.5px black";
+    p.style.color = "white";
     
     var iframe = document.createElement( 'iframe' );
     iframe.style.width = '480px';
@@ -125,20 +129,27 @@ function zoom(event){
     event.preventDefault();
     if(event.key == "z" || event.key == "s" && spun){
         if(zoomed){
-            zoomed = false;
+            
             description.style.display = "none";
-            var zoomOutFunction = setInterval( function(){camera.position.set( cameraPos[0]/scale, cameraPos[1]/scale, cameraPos[2]/scale );
+            //camera.position.set( tempCameraPos.x, tempCameraPos.y, tempCameraPos.z);
+            var zoomOutFunction = setInterval( function(){
+            	//camera.position.set( tempCameraPos.x/scale, tempCameraPos.y/scale, tempCameraPos.z/scale );
+                camera.position.set(initCameraPos[0]/scale, initCameraPos[1]/scale, initCameraPos[2]/scale);
                 scale/=1.5;
                 if(scale <= 1){
+                	zoomed = false;
                     clearInterval(zoomOutFunction);
                     controls.autoRotate = true;
                     controls.autoRotateSpeed = 8;
-                    camera.position.set( cameraPos[0], cameraPos[1], cameraPos[2] );
+                    camera.position.set( initCameraPos[0], initCameraPos[1], initCameraPos[2] );
                 }
             }, 50);
         }else{
-            zoomed = true;
+            
             spun = false;
+            if(scale == 1){
+            	initCameraPos = [camera.position.x, camera.position.y, camera.position.z];
+            }
             var direction = camera.getWorldDirection();
             for(var i = 0; i<cameraLimits.length; i++){
                 if(direction.x <= cameraLimits[i][1] && direction.x >=cameraLimits[i][0] && direction.z >= cameraLimits[i][2] && direction.z <= cameraLimits[i][3]){
@@ -151,22 +162,22 @@ function zoom(event){
                 }
             }
             var zoomInFunction = setInterval( function(){
-                camera.position.set( cameraPos[0]/scale, cameraPos[1]/scale, cameraPos[2]/scale );
+                camera.position.set( initCameraPos[0]/scale, initCameraPos[1]/scale, initCameraPos[2]/scale);
                 scale*=1.5;
-                if(scale >= 8){
+                if(scale >= 11){
+                	zoomed = true;
                     clearInterval(zoomInFunction);
                     controls.autoRotate = false;
-                    description.style.display = "flex";
+                    description.style.display = "block";
                 }
-            }
-                                             , 50);
+            }, 50);
         }
     }
 }
 
 function spin(event){
     event.preventDefault();
-    if(event.key == "s" || event.key == "S"){
+    if(( event.key == "s" || event.key == "S" ) && !zoomed){
         controls.autoRotateSpeed = 500;
         var autoSpinFunc = setInterval( function(){
             controls.autoRotateSpeed/=1.5;

@@ -39,16 +39,48 @@
 				padding-right: 1.5em;
 			}
 			.description h1 {
-				-webkit-text-stroke: 0.2px black;
+				font-family: 'Roboto', sans-serif;
+				font-weight: 500;
+				font-style: italic;
+				font-size: 2.4em;
+				-webkit-text-stroke: 1.2px black;
 				color: white;
+				margin-top: 0.3em;
+				margin-bottom: 0.3em;
 			}
-			p {
-				-webkit-text-stroke: 1px black;
-				color: white;
+
+			.description p {
+				font-family: 'Inconsolata', monospace;
+				font-weight: 300;
+				font-size: 0.9em;
+			}
+
+			.scroll-content {
+				overflow-y: auto;
+				height: 75%;
+				line-height: 10pt;
+			}
+
+			.scroll-content h2 {
+				font-family: 'Inconsolata', monospace;
+				font-weight: 300;
+				font-size: 1.2em;
+			}
+
+			.scroll-content p {
+				font-family: 'Inconsolata', monospace;
+				font-weight: 300;
+				font-size: 0.8em;
+			}
+
+			.description hr {
+				border-top: 1px dashed black;
+				border-bottom: 1px dashed black;
+				margin-bottom: 1em;
 			}
 		</style>
 		<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Roboto:500i" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,500i" rel="stylesheet">
 	</head>
 	<body>
 		<script src="build/three.js"></script>
@@ -58,16 +90,32 @@
 		<div id="blocker"></div>
 		<div id="text">[z]: zoom, [s]: spin</div>
 		<div class="description" id="openFrameworks">
-			<h1>Sketches w/ openFrameworks</h1>
+			<h1>Visual Programming Sketches</h1>
+			<p>openFrameworks, Leap Motion, Kinect</p>
+			<hr>
+			<div class="scroll-content">
+				<iframe src="https://player.vimeo.com/video/244472883" width="480" height="270" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+				<h2>Hand Paint</h2>
+				<p>Built with Leap Motion and openFrameworks, Hand Paint is a tool for you to paint digitally with your hands.</p>				
+			</div>
 		</div>
 		<div class="description" id="Design">
 			<h1>Design</h1>
+			<p>HTML/CSS and Javascript, Adobe XD, Sketch</p>
+			<div class="scroll-content">
+			</div>
 		</div>
 		<div class="description" id="Hardware">
 			<h1>Hardware</h1>
+			<p>C/C++, Arduino, Linux Kernel Programming, Gumstix</p>
+			<div class="scroll-content">
+			</div>
 		</div>
 		<div class="description" id="VirtualReality">
 			<h1>Virtual Reality</h1>
+			<p>Unity, HTC Vive, Leap Motion</p>
+			<div class="scroll-content">
+			</div>
 		</div>
 
 		<script type="text/javascript" src="assets/js/script.js"></script>
