@@ -4,83 +4,9 @@
 		<title>E L L E N  L O</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<style>
-			html, body {
-				height: 100%;
-				overflow: hidden;
-				margin: 0 0;
-			}
-			#blocker {
-				position: absolute;
-				/* background-color: rgba(255, 0, 0, 0.5); */
-				top: 0px;
-				left: 0px;
-				width: 100%;
-				height: 100%;
-			}
-			#text {
-				font-family: 'Inconsolata', monospace;
-				position: absolute;
-				bottom: 10px;
-				left: 10px;
-			}
-			.description{
-				font-family: 'Roboto', sans-serif;
-				position: relative;
-				background-color: #fff;
-				border:2px solid;
-				width: 60%;
-				height: 90%;
-				top: 5%;
-				margin: 0 auto;
-				z-index: 99;
-				display: none;
-				padding-left: 1.5em;
-				padding-right: 1.5em;
-			}
-			.description h1 {
-				font-family: 'Roboto', sans-serif;
-				font-weight: 500;
-				font-style: italic;
-				font-size: 2.4em;
-				-webkit-text-stroke: 1.2px black;
-				color: white;
-				margin-top: 0.3em;
-				margin-bottom: 0.3em;
-			}
-
-			.description p {
-				font-family: 'Inconsolata', monospace;
-				font-weight: 300;
-				font-size: 0.9em;
-			}
-
-			.scroll-content {
-				overflow-y: auto;
-				height: 75%;
-				line-height: 10pt;
-			}
-
-			.scroll-content h2 {
-				font-family: 'Inconsolata', monospace;
-				font-weight: 300;
-				font-size: 1.2em;
-			}
-
-			.scroll-content p {
-				font-family: 'Inconsolata', monospace;
-				font-weight: 300;
-				font-size: 0.8em;
-			}
-
-			.description hr {
-				border-top: 1px dashed black;
-				border-bottom: 1px dashed black;
-				margin-bottom: 1em;
-			}
-		</style>
 		<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Roboto:300,500i" rel="stylesheet">
+		<link href="assets/css/style.css" rel="stylesheet">
 	</head>
 	<body>
 		<script src="build/three.js"></script>
@@ -94,9 +20,27 @@
 			<p>openFrameworks, Leap Motion, Kinect</p>
 			<hr>
 			<div class="scroll-content">
-				<iframe src="https://player.vimeo.com/video/244472883" width="480" height="270" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-				<h2>Hand Paint</h2>
-				<p>Built with Leap Motion and openFrameworks, Hand Paint is a tool for you to paint digitally with your hands.</p>				
+				<div class="work">
+					<div class="iframe-wrapper">
+						<iframe src="https://player.vimeo.com/video/244472883" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+					</div>
+					<h2>Hand Paint</h2>
+					<p>Built with Leap Motion and openFrameworks, Hand Paint is a tool for you to paint digitally with your hands.</p>	
+				</div>
+				<div class="work">
+					<div class="iframe-wrapper">
+						<iframe src="https://player.vimeo.com/video/244474460" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+					</div>
+					<h2>RGB Test</h2>
+					<p>RGB Test visualizes the change of individual RGB values.</p>	
+				</div>	
+				<div class="work">
+					<div class="iframe-wrapper">
+						<iframe src="https://player.vimeo.com/video/244474417" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+					</div>
+					<h2>Varying Grid</h2>
+					<p>Inspired by Piet Mondrian's play with grids in his paintings, Varying Grid is an experiment to digitize and animate grid play.</p>	
+				</div>			
 			</div>
 		</div>
 		<div class="description" id="Design">
