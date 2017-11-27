@@ -1,7 +1,7 @@
 var camera, scene, renderer;
 var controls;
 var scale = 1;
-var zoomed, spun;
+var zoomed, spun, paused;
 var current;
 var cameraLimits = [[-0.7, 0.7, -1, -0.5],
                     [-1, -0.5, -0.7, 0.7],
@@ -95,6 +95,7 @@ function init() {
     camera.position.set( cameraPos[0], cameraPos[1], cameraPos[2] );
     zoomed = false;
     spun = false;
+    paused = false;
     scene = new THREE.Scene();
     renderer = new THREE.CSS3DRenderer();
     renderer.setSize( window.innerWidth, window.innerHeight );
@@ -116,6 +117,7 @@ function init() {
     window.addEventListener( 'resize', onWindowResize, false );
     window.addEventListener( 'keydown', zoom, false);
     window.addEventListener( 'keydown', spin, false);
+    window.addEventListener( 'keydown', pause, false);
     //window.addEventListener( 'click', zoom, false);
     //window.addEventListener( 'click', (event)=>{controls.enabled = false;}, false);
     // Block iframe events when dragging camera
@@ -188,6 +190,19 @@ function spin(event){
                 zoom(event);
             }
         }, 500);
+    }
+}
+
+function pause(event){
+    event.preventDefault();
+    if(event.keyCode == 32 && !zoomed){
+        if(!paused){
+            controls.autoRotate = false;
+            paused = true;
+        }else{
+            controls.autoRotate = true;
+            paused = false;
+        }
     }
 }
 
