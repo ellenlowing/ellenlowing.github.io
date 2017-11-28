@@ -65,7 +65,7 @@ html, body {
 .scroll-content .caption {
     font-family: 'Inconsolata', monospace;
     font-weight: 300;
-    font-size: 0.8em;
+    font-size: 0.9em;
 }
 
 .scroll-content .date {
@@ -131,6 +131,11 @@ html, body {
         position: absolute;
         width: 100%;
         height: 253.125px;
+    }
+
+    .scroll-content img {
+        width: 450px;
+        max-width: 450px;
     }
 
 }

@@ -14,7 +14,7 @@ var cameraPos = [600, 200, 500];
 var initCameraPos;
 var group;
 var description;
-var works = ['https://giphy.com/gifs/3ohjV3UwmJqANkoNR6/html5', 'https://giphy.com/gifs/3o6nV6gkigH6OcIAq4/html5', 'https://giphy.com/gifs/xUNda5x7YwPMdyuwLe/html5'];
+//var works = ['https://giphy.com/gifs/3ohjV3UwmJqANkoNR6/html5', 'https://giphy.com/gifs/3o6nV6gkigH6OcIAq4/html5', 'https://giphy.com/gifs/xUNda5x7YwPMdyuwLe/html5'];
 var Element = function ( id, x, y, z, rx, ry ) {
     var div = document.createElement( 'div' );
     div.style.width = '480px';
@@ -61,7 +61,7 @@ var Element = function ( id, x, y, z, rx, ry ) {
             iframe.src = "https://giphy.com/gifs/3ohjUWIm1rKgnB6CFW/html5";
             break;
         case 2:
-            iframe.src = "https://giphy.com/gifs/3osBLbcWpHoNDiWBrO/html5";
+            iframe.src = "https://giphy.com/gifs/l4Ep8jZ8U7dcKMjJK/html5";
             break;
         case 3:
             iframe.src = "https://giphy.com/gifs/3o6nULqm3pLiiUUntu/html5";
