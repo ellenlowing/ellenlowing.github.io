@@ -59,12 +59,19 @@ html, body {
     font-family: 'Inconsolata', monospace;
     font-weight: 300;
     font-size: 1.0em;
+    font-weight: bold;
 }
 
-.scroll-content p {
+.scroll-content .caption {
     font-family: 'Inconsolata', monospace;
     font-weight: 300;
     font-size: 0.8em;
+}
+
+.scroll-content .date {
+    font-family: 'Inconsolata', monospace;
+    font-size: 0.8em;
+    color: #aaaaaa;
 }
 
 .scroll-content .iframe-wrapper {
@@ -77,6 +84,10 @@ html, body {
 .scroll-content iframe {
     position: absolute;
     height: 100%;
+    width: 100%;
+}
+
+.scroll-content img {
     width: 100%;
 }
 
