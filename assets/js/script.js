@@ -20,13 +20,17 @@ var Element = function ( id, x, y, z, rx, ry ) {
     div.style.width = '480px';
     div.style.height = '480px';
     //div.style.backgroundColor = '#fff';
-    // var img = document.createElement('img');
-    // img.style.width = '480px';
-    // img.style.height = '480px';
-    // img.style.border = '0px';
-    // img.style.opacity = "0.6";
-    // img.style.border = "0px";
-    //div.style.backgroundColor = 'rgba(0, 0, 0, 0.05)';
+    var img = document.createElement('img');
+    img.style.width = '480px';
+    img.style.height = '480px';
+    img.style.border = '0px';
+    img.style.opacity = "0.8";
+    img.style.border = "0px";
+    img.alt = "";
+    var src = "assets/images/faces/";
+    img.src = src + descriptionIds[id] + ".gif";
+    console.log(img.src);
+    // div.style.backgroundColor = 'rgba(0, 0, 0, 0.05)';
 
 
     var p = document.createElement('p');
@@ -45,33 +49,34 @@ var Element = function ( id, x, y, z, rx, ry ) {
     p.style.webkitTextStroke = "1.5px black";
     p.style.color = "white";
     
-    var iframe = document.createElement( 'iframe' );
-    iframe.style.width = '480px';
-    iframe.style.height = '480px';
-    iframe.style.border = '0px';
-    iframe.style.position = 'absolute';
-    iframe.zIndex = "50";
-    iframe.style.opacity = "0.8";
+    // var iframe = document.createElement( 'iframe' );
+    // iframe.style.width = '480px';
+    // iframe.style.height = '480px';
+    // iframe.style.border = '0px';
+    // iframe.style.position = 'absolute';
+    // iframe.zIndex = "50";
+    // iframe.style.opacity = "0.8";
     
-    switch(id) {
-        case 0:
-            iframe.src = "https://giphy.com/gifs/xUNda3nMOtOq7Y6re0/html5";
-            break;
-        case 1:
-            iframe.src = "https://giphy.com/gifs/3ohjUWIm1rKgnB6CFW/html5";
-            break;
-        case 2:
-            iframe.src = "https://giphy.com/gifs/l4Ep8jZ8U7dcKMjJK/html5";
-            break;
-        case 3:
-            iframe.src = "https://giphy.com/gifs/3o6nULqm3pLiiUUntu/html5";
-            break;
+    // switch(id) {
+    //     case 0:
+    //         iframe.src = "https://giphy.com/gifs/xUNda3nMOtOq7Y6re0/html5";
+    //         break;
+    //     case 1:
+    //         iframe.src = "https://giphy.com/gifs/3ohjUWIm1rKgnB6CFW/html5";
+    //         break;
+    //     case 2:
+    //         iframe.src = "https://giphy.com/gifs/l4Ep8jZ8U7dcKMjJK/html5";
+    //         break;
+    //     case 3:
+    //         img.src = "assets/images/faces/giphy.gif";
+    //         img.alt = "";
+    //         break;
             
-        default:
-            descriptionId = "else";
-    }
-    div.appendChild( iframe );
-    //div.appendChild(img);
+    //     default:
+    //         descriptionId = "else";
+    // }
+    //div.appendChild( iframe );
+    div.appendChild(img);
     div.appendChild(p);
     // a.appendChild(img);
     // a.addEventListener("click", function(event){alert(id);}, false);
@@ -92,6 +97,7 @@ animate();
 function init() {
     var container = document.getElementById( 'container' );
     camera = new THREE.PerspectiveCamera( 100, window.innerWidth / window.innerHeight, 1, 5000 );
+    // camera.position.set( cameraPos[0]*100, cameraPos[1]*100, cameraPos[2]*100 );
     camera.position.set( cameraPos[0], cameraPos[1], cameraPos[2] );
     zoomed = false;
     spun = false;
@@ -114,10 +120,21 @@ function init() {
     controls.autoRotateSpeed = 8;
     controls.autoRotate = true;
     controls.enabled = false;
+    var initZoomScale = 19;
+    // var initZoomFunction = setInterval( function(){
+    //     camera.position.set(cameraPos[0]*initZoomScale, cameraPos[1]*initZoomScale, cameraPos[2]*initZoomScale);
+    //     initZoomScale -= 1;
+    //     if(initZoomScale < 1){
+    //         clearInterval(initZoomFunction);
+    //         controls.autoRotate = true;
+    //     }
+    // }, 50);
+    // setTimeout(initZoomFunction, 1000);
     window.addEventListener( 'resize', onWindowResize, false );
     window.addEventListener( 'keydown', zoom, false);
     window.addEventListener( 'keydown', spin, false);
     window.addEventListener( 'keydown', pause, false);
+
     //window.addEventListener( 'click', zoom, false);
     //window.addEventListener( 'click', (event)=>{controls.enabled = false;}, false);
     // Block iframe events when dragging camera
@@ -181,7 +198,7 @@ function zoom(event){
 
 function spin(event){
     event.preventDefault();
-    if(( event.key == "s" || event.key == "S" ) && !zoomed){
+    if(( event.key == "s" || event.key == "S" ) && !zoomed && !paused){
         controls.autoRotateSpeed = 500;
         var autoSpinFunc = setInterval( function(){
             controls.autoRotateSpeed/=1.5;
