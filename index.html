@@ -6,8 +6,9 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Roboto:300i,400,500i" rel="stylesheet">
-		<link href="assets/css/style.css" rel="stylesheet">
-		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+		<link href="assets/css/style.css" rel="stylesheet"><!-- 
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" /> -->
+		<!-- <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet"> -->
 	</head>
 	<body>
 		<script src="build/three.js"></script>
@@ -16,7 +17,13 @@
 		<!-- <div id="name">Ellen Lo</div> -->
 		<div id="container"></div>
 		<div id="blocker"></div>
-		<div id="text-guide">[z]: zoom in, [s]: spin, [spacebar]: pause, [me]: learn about me</div>
+		<div id="aboutme">
+			<p class="about-content" id="about-text"></p>
+		</div>
+		<div id="about-popup">
+			
+		</div>
+		<div id="text-guide">[z]: zoom in, [s]: spin, [spacebar]: pause, [e]: learn about me</div>
 		<div class="description" id="openFrameworks">
 			<h1>Visual Programming Sketches</h1>
 			<p>openFrameworks, Leap Motion, Kinect</p>
@@ -79,8 +86,8 @@
 			<div class="scroll-content">
 				<div class="work">
 					<h2>woodpeckersPro</h2>
-					<img src="assets/images/arduino/2.png">
-					<img src="assets/images/arduino/0.jpg">
+					<img src="assets/images/arduino/2.png"> </br>
+					<img src="assets/images/arduino/0.jpg"> </br>
 					<img src="assets/images/arduino/1.jpg">
 					<p class="caption">woodpeckersPro provides you the ideal experience of house protection from woodpeckers. Built with Arduino, the device has ultrasonic sensors to detect presence of woodpeckers or any invading birds and speakers to play mp3 file of predator call to scare them away.</p>
 					<p><a href="https://github.com/ellenlowing/woodpeckersPro" target="_blank">Code</a></p>

@@ -1,8 +1,9 @@
 var camera, scene, renderer;
 var controls;
 var scale = 1;
-var zoomed, spun, paused;
+var zoomed, spun, paused, nameRendered;
 var current;
+var mflag;
 var cameraLimits = [[-0.7, 0.7, -1, -0.5],
                     [-1, -0.5, -0.7, 0.7],
                     [-0.8, 0.8, 0.5, 1],
@@ -14,6 +15,9 @@ var cameraPos = [600, 200, 500];
 var initCameraPos;
 var group;
 var description;
+var name = "ellen lo / ";
+// var email = "lowing@bu.edu";
+// var name = "ellen lo / lowing@bu.edu / resume";
 //var works = ['https://giphy.com/gifs/3ohjV3UwmJqANkoNR6/html5', 'https://giphy.com/gifs/3o6nV6gkigH6OcIAq4/html5', 'https://giphy.com/gifs/xUNda5x7YwPMdyuwLe/html5'];
 var Element = function ( id, x, y, z, rx, ry ) {
     var div = document.createElement( 'div' );
@@ -102,6 +106,8 @@ function init() {
     zoomed = false;
     spun = false;
     paused = false;
+    mflag = false;
+    nameRendered = false;
     scene = new THREE.Scene();
     renderer = new THREE.CSS3DRenderer();
     renderer.setSize( window.innerWidth, window.innerHeight );
@@ -134,6 +140,8 @@ function init() {
     window.addEventListener( 'keydown', zoom, false);
     window.addEventListener( 'keydown', spin, false);
     window.addEventListener( 'keydown', pause, false);
+    window.addEventListener( 'keydown', aboutme, false);
+    //window.addEventListener("keydown", about_m, false);
 
     //window.addEventListener( 'click', zoom, false);
     //window.addEventListener( 'click', (event)=>{controls.enabled = false;}, false);
@@ -222,6 +230,99 @@ function pause(event){
             controls.autoRotate = true;
             paused = false;
         }
+    }
+}
+
+function about_m(event){
+    event.preventDefault();
+    if(event.key == 'm' && !zoomed && !spun){
+        mflag = true;
+        console.log("m");
+        window.addEventListener("keydown", about_e, false);
+        setTimeout(function(){
+            mflag = false;
+            window.removeEventListener("keydown", about_e, false);
+            console.log("remove");
+        }, 1000);
+    }
+}
+
+// function about_e(event){
+//     //render about page
+//     if(event.keyCode == 'e'){
+//         console.log("me");
+//     }
+// }
+
+function aboutme(event){
+    event.preventDefault();
+    if((event.key == 'e' || event.key == 'E') && !zoomed && !spun && !nameRendered){
+        nameRendered = true;
+        var abouttext = document.getElementById("about-text");
+        var counter = 0;
+        var addNameFunc = setInterval(function(){
+            abouttext.innerHTML += name.charAt(counter);
+            counter++;
+
+            if(counter >= name.length) {
+                clearInterval(addNameFunc);
+               
+                var counter_email = 0;
+                var email = "email";
+                var aEmail = document.createElement('a');
+                var textNodeEmail = document.createTextNode('');
+                aEmail.appendChild(textNodeEmail);
+                aEmail.href = "mailto:lowing@bu.edu";
+                aEmail.target = "_top";
+                var addEmailFunc = setInterval(function(){
+                    aEmail.innerHTML += email[counter_email];
+                    abouttext.appendChild(aEmail);
+                    counter_email++;
+                    if(counter_email >= email.length){
+                        clearInterval(addEmailFunc);
+                        var span = document.createElement('span');
+                        var slash = document.createTextNode(" / ");
+                        abouttext.appendChild(slash);
+
+                        var counter_resume = 0;
+                        var resume = "cv";
+                        var a = document.createElement('a');
+                        var textNode = document.createTextNode('');
+                        a.appendChild(textNode);
+                        a.href = "assets/EllenLoResumeDec17.pdf";
+                        a.target = "_blank";
+                        var addResumeFunc = setInterval(function(){
+                            a.innerHTML += resume[counter_resume];
+                            abouttext.appendChild(a);
+                            counter_resume++;
+                            if(counter_resume >= resume.length){
+                                clearInterval(addResumeFunc);
+                                var span_2 = document.createElement('span');
+                                var slash_2 = document.createTextNode(" / ");
+                                abouttext.appendChild(slash_2);
+
+                                var counter_github = 0;
+                                var github = "github";
+                                var aGit = document.createElement('a');
+                                var textNodeGit = document.createTextNode('');
+                                aGit.appendChild(textNode);
+                                aGit.href = "https://github.com/ellenlowing";
+                                aGit.target = "_blank";
+                                var addGithubFunc = setInterval(function(){
+                                    aGit.innerHTML += github[counter_github];
+                                    abouttext.appendChild(aGit);
+                                    counter_github++;
+                                    if(counter_github >= github.length){
+                                        clearInterval(addGithubFunc);
+                                    }
+                                }, Math.random() * (250-150) + 150);
+                            }
+                        }, Math.random() * (250-150) + 150);
+                    }
+                }, Math.random() * (250-150) + 150);
+            }
+        }, Math.random() * (250-150) + 150);
+
     }
 }
 
