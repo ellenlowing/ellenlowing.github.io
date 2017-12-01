@@ -236,9 +236,9 @@ function aboutme(event){
         var popup = document.getElementById("about-popup");
         aName.addEventListener('mouseover', function(event) {
             popup.style.display = "flex";
-            popup.style.left = (Math.random() * (window.innerWidth - popup.offsetWidth - 120) - 120 ).toString() + "px";
+            popup.style.left = (Math.random() * (window.innerWidth - popup.offsetWidth - 200) - 120 ).toString() + "px";
             popup.style.top = (Math.random() * (window.innerHeight - popup.offsetHeight)).toString() + "px";
-            console.log(popup.style.left + " " + popup.style.top);
+            //console.log(popup.style.left + " " + popup.style.top);
 
         }, false);
         aName.addEventListener('mouseleave', function(event) {
@@ -306,13 +306,13 @@ function aboutme(event){
                                     if(counter_github >= github.length){
                                         clearInterval(addGithubFunc);
                                     }
-                                }, Math.random() * (250-150) + 150);
+                                }, Math.random() * (200-100) + 100);
                             }
-                        }, Math.random() * (250-150) + 150);
+                        }, Math.random() * (200-100) + 100);
                     }
-                }, Math.random() * (250-150) + 150);
+                }, Math.random() * (200-100) + 100);
             }
-        }, Math.random() * (250-150) + 150);
+        }, Math.random() * (200-100) + 100);
 
     }
 }
