@@ -22,10 +22,8 @@ html, body {
 
 #aboutme {
     font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    font-style: italic;
     position: absolute;
-    color: #8F2CFA;
+    color: #DB2DFF;
     /*top: 10px;
     right: 10px;*/
     top:0px;
@@ -34,27 +32,29 @@ html, body {
 
 #aboutme p{
     font-size: 1.8em;
+    font-weight: 500;
+    font-style: italic;
     background-color: #000;
     -webkit-margin-before: 0em;
     -webkit-margin-after: 0em;
-    letter-spacing: 10px;
+    letter-spacing: 1px;
 }
 
 .about-content a:link{
-    color: #8F2CFA;
+    color: #DB2DFF;
     text-decoration: none;
 }
 .about-content a:visited{
-    color: #8F2CFA;
+    color: #DB2DFF;
     text-decoration: none;
 }
 .about-content a:hover{
     color: #fff;
-    background-color: #8F2CFA;
+    background-color: #DB2DFF;
     text-decoration: none;
 }
 .about-content a:active{
-    color: #8F2CFA;
+    color: #DB2DFF;
     text-decoration: none;
 }
 
@@ -62,6 +62,12 @@ html, body {
     position: absolute;
     font-family: 'Inconsolata', monospace;
     display: none;
+    width: 280px;
+    height: 150px;
+    border: 1px solid;
+    color: #000;
+    background-color: #fff;
+    padding: 0.5em;
 }
 
 #text-guide {
@@ -160,8 +166,23 @@ html, body {
     }
 }
 
+@media only screen and (min-width: 500px) {
+    #aboutme p {
+        letter-spacing: 4px;
+    }
+}
+
+@media only screen and (min-width: 646px) {
+    #aboutme p {
+        letter-spacing: 10px;
+    }
+}
+
 @media only screen and (min-width: 600px){
     /* For desktop */
+
+    
+
     .description{
         width: 75%;
         top: 5%;
@@ -179,8 +200,8 @@ html, body {
     .scroll-content .iframe-wrapper {
         position: relative;
         display: inline-block;
-        width: 450px;
-        max-width: 450px;
+        width: 480px;
+        max-width: 480px;
         padding-bottom: 253.125px;
         margin-top: 8px;
     }
@@ -192,8 +213,8 @@ html, body {
     }
 
     .scroll-content img {
-        width: 450px;
-        max-width: 450px;
+        width: 480px;
+        max-width: 480px;
     }
 
 }

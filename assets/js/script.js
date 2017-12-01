@@ -15,10 +15,6 @@ var cameraPos = [600, 200, 500];
 var initCameraPos;
 var group;
 var description;
-var name = "ellen lo / ";
-// var email = "lowing@bu.edu";
-// var name = "ellen lo / lowing@bu.edu / resume";
-//var works = ['https://giphy.com/gifs/3ohjV3UwmJqANkoNR6/html5', 'https://giphy.com/gifs/3o6nV6gkigH6OcIAq4/html5', 'https://giphy.com/gifs/xUNda5x7YwPMdyuwLe/html5'];
 var Element = function ( id, x, y, z, rx, ry ) {
     var div = document.createElement( 'div' );
     div.style.width = '480px';
@@ -141,15 +137,6 @@ function init() {
     window.addEventListener( 'keydown', spin, false);
     window.addEventListener( 'keydown', pause, false);
     window.addEventListener( 'keydown', aboutme, false);
-    //window.addEventListener("keydown", about_m, false);
-
-    //window.addEventListener( 'click', zoom, false);
-    //window.addEventListener( 'click', (event)=>{controls.enabled = false;}, false);
-    // Block iframe events when dragging camera
-    // var blocker = document.getElementById( 'blocker' );
-    // blocker.style.display = 'none';
-    // document.addEventListener( 'mousedown', function () { blocker.style.display = ''; } );
-    // document.addEventListener( 'mouseup', function () { blocker.style.display = 'none'; } );
 }
 
 function zoom(event){
@@ -169,7 +156,7 @@ function zoom(event){
                     controls.autoRotate = true;
                     controls.autoRotateSpeed = 8;
                     camera.position.set( initCameraPos[0], initCameraPos[1], initCameraPos[2] );
-                    document.getElementById("text-guide").innerHTML = "[z]: zoom in, [s]: spin, [spacebar]: pause";
+                    document.getElementById("text-guide").innerHTML = "[z]: zoom in, [s]: spin, [spacebar]: pause, [e]: for ellen";
                 }
             }, 50);
         }else{
@@ -197,7 +184,7 @@ function zoom(event){
                     clearInterval(zoomInFunction);
                     controls.autoRotate = false;
                     description.style.display = "block";
-                    document.getElementById("text-guide").innerHTML = "[z]: zoom out";
+                    document.getElementById("text-guide").innerHTML = "[z]: zoom out, [e]: for ellen";
                 }
             }, 50);
         }
@@ -233,39 +220,43 @@ function pause(event){
     }
 }
 
-function about_m(event){
-    event.preventDefault();
-    if(event.key == 'm' && !zoomed && !spun){
-        mflag = true;
-        console.log("m");
-        window.addEventListener("keydown", about_e, false);
-        setTimeout(function(){
-            mflag = false;
-            window.removeEventListener("keydown", about_e, false);
-            console.log("remove");
-        }, 1000);
-    }
-}
-
-// function about_e(event){
-//     //render about page
-//     if(event.keyCode == 'e'){
-//         console.log("me");
-//     }
-// }
-
 function aboutme(event){
     event.preventDefault();
     if((event.key == 'e' || event.key == 'E') && !zoomed && !spun && !nameRendered){
         nameRendered = true;
         var abouttext = document.getElementById("about-text");
         var counter = 0;
+        var name = "ellen lo";
+        var aName = document.createElement('a');
+        var textNodeName = document.createTextNode('');
+        aName.appendChild(textNodeName);
+        aName.href = "index.html";
+        aName.target = "";
+
+        var popup = document.getElementById("about-popup");
+        aName.addEventListener('mouseover', function(event) {
+            popup.style.display = "flex";
+            popup.style.left = (Math.random() * (window.innerWidth - popup.offsetWidth - 120) - 120 ).toString() + "px";
+            popup.style.top = (Math.random() * (window.innerHeight - popup.offsetHeight)).toString() + "px";
+            console.log(popup.style.left + " " + popup.style.top);
+
+        }, false);
+        aName.addEventListener('mouseleave', function(event) {
+            popup.style.display = "none"; //console.log("mouseleave");
+        }, false);
+
         var addNameFunc = setInterval(function(){
-            abouttext.innerHTML += name.charAt(counter);
+
+            aName.innerHTML += name[counter];
+            abouttext.appendChild(aName);
             counter++;
 
             if(counter >= name.length) {
                 clearInterval(addNameFunc);
+                
+                var span_3 = document.createElement('span');
+                var slash_3 = document.createTextNode(" / ");
+                abouttext.appendChild(slash_3);
                
                 var counter_email = 0;
                 var email = "email";
