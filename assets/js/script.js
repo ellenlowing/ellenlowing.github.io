@@ -337,7 +337,7 @@ function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize( window.innerWidth, window.innerHeight );
-    if(window.innerWidth <= 375) {
+    if(window.innerWidth <= 500) {
         controls.autoRotate = false;
         controls.enabled = true;
     } else {
