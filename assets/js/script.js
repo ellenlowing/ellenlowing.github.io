@@ -132,6 +132,10 @@ function init() {
     //     }
     // }, 50);
     // setTimeout(initZoomFunction, 1000);
+    if((navigator.userAgent).indexOf('Mobile'))
+        controls.autoRotate = false;
+    else
+        alert("Not mobile");
     window.addEventListener( 'resize', onWindowResize, false );
     window.addEventListener( 'keydown', zoom, false);
     window.addEventListener( 'keydown', spin, false);
