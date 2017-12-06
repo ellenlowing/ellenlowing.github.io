@@ -115,8 +115,8 @@ function init() {
     group.add( new Element( 1, 240, 0, 0, 0, Math.PI / 2 ) );
     group.add( new Element( 2, 0, 0, - 240, 0,Math.PI ) );
     group.add( new Element( 3, - 240, 0, 0, 0, - Math.PI / 2 ) );
-    group.add( new Element( 4, 0, 240, 0, -Math.PI/2, 0 ) );
-    group.add( new Element( 5, 0, - 240, 0, Math.PI / 2, 0 ) );
+    // group.add( new Element( 4, 0, 240, 0, -Math.PI/2, 0 ) );
+    // group.add( new Element( 5, 0, - 240, 0, Math.PI / 2, 0 ) );
     scene.add( group );
     controls = new THREE.OrbitControls( camera );
     controls.autoRotateSpeed = 8;
@@ -132,15 +132,13 @@ function init() {
     //     }
     // }, 50);
     // setTimeout(initZoomFunction, 1000);
-    if((navigator.userAgent).indexOf('Mobile'))
-        controls.autoRotate = false;
-    else
-        alert("Not mobile");
+    
     window.addEventListener( 'resize', onWindowResize, false );
     window.addEventListener( 'keydown', zoom, false);
     window.addEventListener( 'keydown', spin, false);
     window.addEventListener( 'keydown', pause, false);
     window.addEventListener( 'keydown', aboutme, false);
+    //window.addEventListener( 'onclick', pauseClick, false);
 }
 
 function zoom(event){
@@ -222,6 +220,20 @@ function pause(event){
             paused = false;
         }
     }
+}
+
+function pauseClick(event){
+    event.preventDefault();
+    console.log("clicked");
+    // if(event.keyCode == 32 && !zoomed){
+        if(!paused){
+            controls.autoRotate = false;
+            paused = true;
+        }else{
+            controls.autoRotate = true;
+            paused = false;
+        }
+    // }
 }
 
 function aboutme(event){
@@ -325,6 +337,13 @@ function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize( window.innerWidth, window.innerHeight );
+    if(window.innerwidth <= 375px) {
+        controls.autoRotate = false;
+        controls.enabled = true;
+    } else {
+        controls.autoRotate = true;
+        controls.enabled = false;
+    }
 }
 
 function animate() {
