@@ -158,11 +158,11 @@ function zoom(event){
                     controls.autoRotate = true;
                     controls.autoRotateSpeed = 8;
                     camera.position.set( initCameraPos[0], initCameraPos[1], initCameraPos[2] );
-                    //document.getElementById("text-guide").innerHTML = "[z]: zoom in, [s]: spin, [spacebar]: pause, [e]: for ellen";
+                    document.getElementById("text-guide").innerHTML = "[z]: zoom in, [s]: spin, [spacebar]: pause, [e]: for ellen";
                     
-                    document.getElementById("spin").style.textDecoration = "none";
-                    document.getElementById("pause").style.textDecoration = "none";
-                    document.getElementById("forEllen").style.textDecoration = "none";
+                    // document.getElementById("spin").style.textDecoration = "none";
+                    // document.getElementById("pause").style.textDecoration = "none";
+                    // document.getElementById("forEllen").style.textDecoration = "none";
                 }
             }, 50);
         }else{
@@ -191,10 +191,10 @@ function zoom(event){
                     controls.autoRotate = false;
                     description.style.display = "block";
                     
-                    document.getElementById("spin").style.textDecoration = "line-through";
-                    document.getElementById("pause").style.textDecoration = "line-through";
-                    document.getElementById("forEllen").style.textDecoration = "line-through";
-                    //document.getElementById("text-guide").innerHTML = "[z]: zoom out, [e]: for ellen";
+                    // document.getElementById("spin").style.textDecoration = "line-through";
+                    // document.getElementById("pause").style.textDecoration = "line-through";
+                    // document.getElementById("forEllen").style.textDecoration = "line-through";
+                    document.getElementById("text-guide").innerHTML = "[z]: zoom out, [e]: for ellen";
                 }
             }, 50);
         }
