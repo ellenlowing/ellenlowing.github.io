@@ -194,7 +194,7 @@ function zoom(event){
                     // document.getElementById("spin").style.textDecoration = "line-through";
                     // document.getElementById("pause").style.textDecoration = "line-through";
                     // document.getElementById("forEllen").style.textDecoration = "line-through";
-                    document.getElementById("text-guide").innerHTML = "[z]: zoom out, [e]: for ellen";
+                    document.getElementById("text-guide").innerHTML = "[z]: zoom out";
                 }
             }, 50);
         }
