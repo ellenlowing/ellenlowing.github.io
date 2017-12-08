@@ -159,7 +159,7 @@ function zoom(event){
                     controls.autoRotateSpeed = 8;
                     camera.position.set( initCameraPos[0], initCameraPos[1], initCameraPos[2] );
                     //document.getElementById("text-guide").innerHTML = "[z]: zoom in, [s]: spin, [spacebar]: pause, [e]: for ellen";
-                    document.getElementById("zoomin").innerHTML = "[z]: zoom in,";
+                    //document.getElementById("zoomin").innerHTML = "[z]: zoom in,";
                     document.getElementById("spin").style.textDecoration = "none";
                     document.getElementById("pause").style.textDecoration = "none";
                     document.getElementById("forEllen").style.textDecoration = "none";
@@ -190,7 +190,7 @@ function zoom(event){
                     clearInterval(zoomInFunction);
                     controls.autoRotate = false;
                     description.style.display = "block";
-                    document.getElementById("zoomin").innerHTML = "[z]: zoom out,";
+                    //document.getElementById("zoomin").innerHTML = "[z]: zoom out,";
                     document.getElementById("spin").style.textDecoration = "line-through";
                     document.getElementById("pause").style.textDecoration = "line-through";
                     document.getElementById("forEllen").style.textDecoration = "line-through";
