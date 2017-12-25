@@ -203,7 +203,11 @@ function zoom(event){
 
 function spin(event){
     event.preventDefault();
-    if(( event.key == "s" || event.key == "S" ) && !zoomed && !paused){
+    if(( event.key == "s" || event.key == "S" ) && !zoomed){
+        if(paused) {
+            controls.autoRotate = true;
+            paused = false;
+        }
         controls.autoRotateSpeed = 500;
         var autoSpinFunc = setInterval( function(){
             controls.autoRotateSpeed/=1.5;
