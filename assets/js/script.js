@@ -308,7 +308,7 @@ function aboutme(event){
                         var a = document.createElement('a');
                         var textNode = document.createTextNode('');
                         a.appendChild(textNode);
-                        a.href = "assets/EllenLoResumeDec17.pdf";
+                        a.href = "assets/EllenLoResume.pdf";
                         a.target = "_blank";
                         var addResumeFunc = setInterval(function(){
                             a.innerHTML += resume[counter_resume];
