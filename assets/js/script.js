@@ -9,7 +9,7 @@ var cameraLimits = [[-0.7, 0.7, -1, -0.5],
                     [-0.8, 0.8, 0.5, 1],
                     [0.5, 1, -0.8, 0.8]
                     ];
-var descriptionIds = ["openFrameworks", "Design", "Hardware", "VirtualReality", "", ""];
+var descriptionIds = ["Experimental", "Design", "Hardware", "VirtualReality", "", ""];
 //lowerx, upperx, lowerz, upperz;
 var cameraPos = [600, 200, 500];
 var initCameraPos;
