@@ -1,6 +1,6 @@
 # portfolio
 
-![Preview](ellenlowing.github.io/assets/screenshot.png)
+![Preview](https://github.com/ellenlowing/ellenlowing.github.io/blob/master/assets/screenshot.png)
 
 This repo contains the source code of my portfolio site.
 
