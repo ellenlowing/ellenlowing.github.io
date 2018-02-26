@@ -29,7 +29,7 @@ var Element = function ( id, x, y, z, rx, ry ) {
     img.alt = "";
     var src = "assets/images/faces/";
     img.src = src + descriptionIds[id] + ".gif";
-    console.log(img.src);
+    //console.log(img.src);
     // div.style.backgroundColor = 'rgba(0, 0, 0, 0.05)';
 
 
@@ -138,6 +138,8 @@ function init() {
     window.addEventListener( 'keydown', spin, false);
     window.addEventListener( 'keydown', pause, false);
     window.addEventListener( 'keydown', aboutme, false);
+    window.addEventListener( 'keydown', last, false);
+    window.addEventListener( 'keydown', next, false);
     //window.addEventListener( 'onclick', pauseClick, false);
 }
 
@@ -176,7 +178,7 @@ function zoom(event){
                 if(direction.x <= cameraLimits[i][1] && direction.x >=cameraLimits[i][0] && direction.z >= cameraLimits[i][2] && direction.z <= cameraLimits[i][3]){
                     current = descriptionIds[i];
                     description = document.getElementById(current.toString());
-                    console.log(current);
+                    //console.log(current);
                     break;
                 }else{
                     continue;
@@ -194,7 +196,7 @@ function zoom(event){
                     // document.getElementById("spin").style.textDecoration = "line-through";
                     // document.getElementById("pause").style.textDecoration = "line-through";
                     // document.getElementById("forEllen").style.textDecoration = "line-through";
-                    document.getElementById("text-guide").innerHTML = "[z]: zoom out";
+                    document.getElementById("text-guide").innerHTML = "[z]: zoom out, [&larr;]: previous, [&rarr;]: next";
                 }
             }, 50);
         }
@@ -234,9 +236,39 @@ function pause(event){
     }
 }
 
+function last(event){
+    event.preventDefault();
+    if(event.keyCode == 37 && zoomed){
+        description.style.display = "none";
+        var currentIndex = descriptionIds.findIndex(currentId => currentId === current);
+        currentIndex -= 1;
+        if(currentIndex < 0){
+            currentIndex = 3;
+        }
+        current = descriptionIds[currentIndex];
+        description = document.getElementById(current.toString());
+        description.style.display = "block";
+    }
+}
+
+function next(event){
+    event.preventDefault();
+    if(event.keyCode == 39 && zoomed){
+        description.style.display = "none";
+        var currentIndex = descriptionIds.findIndex(currentId => currentId === current);
+        currentIndex += 1;
+        if(currentIndex > 3){
+            currentIndex = 0;
+        }
+        current = descriptionIds[currentIndex];
+        description = document.getElementById(current.toString());
+        description.style.display = "block";
+    }
+}
+
 function pauseClick(event){
     event.preventDefault();
-    console.log("clicked");
+    //console.log("clicked");
     // if(event.keyCode == 32 && !zoomed){
         if(!paused){
             controls.autoRotate = false;
