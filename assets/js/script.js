@@ -15,6 +15,8 @@ var cameraPos = [600, 200, 500];
 var initCameraPos;
 var group;
 var description;
+
+
 var Element = function ( id, x, y, z, rx, ry ) {
     var div = document.createElement( 'div' );
     div.style.width = '480px';
