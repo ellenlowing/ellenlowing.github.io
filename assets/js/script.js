@@ -301,7 +301,7 @@ function aboutme(event){
                 var aEmail = document.createElement('a');
                 var textNodeEmail = document.createTextNode('');
                 aEmail.appendChild(textNodeEmail);
-                aEmail.href = "mailto:lowing@bu.edu";
+                aEmail.href = "mailto:lowing@bu.edu?subject=Hi%20Ellen!";
                 aEmail.target = "_top";
                 var addEmailFunc = setInterval(function(){
                     aEmail.innerHTML += email[counter_email];
