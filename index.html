@@ -6,15 +6,14 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Roboto:300i,400,500i" rel="stylesheet">
-		<link href="assets/css/style.css" rel="stylesheet"><!-- 
-		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" /> -->
-		<!-- <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet"> -->
+		<link href="assets/css/style.css" rel="stylesheet">
+
 	</head>
 	<body>
 		<script src="build/three.min.js"></script>
 		<script src="controls/OrbitControls.js"></script>
 		<script src="renderers/CSS3DRenderer.js"></script>
-		<!-- <div id="name">Ellen Lo</div> -->
+		<script src="http://js.leapmotion.com/leap-0.6.4.js"></script>
 		<div id="container"></div>
 		<div id="blocker"></div>
 		<div id="aboutme">
@@ -93,7 +92,7 @@
 			</div>
 		</div>
 		<div class="description" id="Hardware">
-			<h1>Hardware</h1>
+			<h1>Physical Computing</h1>
 			<p>C/C++, Arduino, Linux Kernel Programming, Gumstix</p>
 			<hr>
 			<div class="scroll-content">
@@ -115,11 +114,27 @@
 				</div>
 			</div>
 		</div>
-		<div class="description" id="VirtualReality">
-			<h1>Virtual Reality</h1>
-			<p>Unity, HTC Vive, Leap Motion</p>
+		<div class="description" id="Interactive">
+			<h1>Human-computer Interaction</h1>
+			<p>Unity, OpenCV, HTC Vive, Leap Motion, Tobii eye tracker</p>
 			<hr>
 			<div class="scroll-content">
+				<div class="work">
+					<h2>Head gesture recognition + gaze tracking</h2>
+					<div class="iframe-wrapper">
+						<iframe src="https://player.vimeo.com/video/270876630?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+					</div>
+					<p class="caption">
+						This prototype is a continuation to one of Boston University Image and Video Computing Group's projects EyeSwipe: dwell-free text entry using gaze paths.
+					</p>
+					<p class="caption">
+						As the undergraduate research assistant, I built a prototype on Qt platform that combines gaze tracking using Tobii Core SDK and head gesture recognition using OpenCV. 
+					</p>
+					<p class="caption">
+						In video, moving circular blob represents user's gaze on screen. When gaze hovers over square on interface, user can nod or shake to change its color to green or red.
+					</p>
+					<p>Code available on request</p>
+				</div>	
 				<div class="work">
 					<h2>Virtual Jenga</h2>
 					<div class="iframe-wrapper">
@@ -141,5 +156,6 @@
 		</div>
 
 		<script type="text/javascript" src="assets/js/script.js"></script>
+		<script type="text/javascript" src="assets/js/handController.js"></script>
 	</body>
 </html>
