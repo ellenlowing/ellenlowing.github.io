@@ -94,14 +94,14 @@ function init() {
     controls.enabled = false;
     var initZoomScale = 19;
 
-    window.addEventListener( 'touchstart', handleTouch, false);
-    window.addEventListener( 'resize', onWindowResize, false );
-    window.addEventListener( 'keydown', zoom, false);
-    window.addEventListener( 'keydown', spin, false);
-    window.addEventListener( 'keydown', pause, false);
-    window.addEventListener( 'keydown', aboutme, false);
-    window.addEventListener( 'keydown', last, false);
-    window.addEventListener( 'keydown', next, false);
+    window.addEventListener( 'touchend', detectDoubleTap, false);
+    // window.addEventListener( 'resize', onWindowResize, false );
+    // window.addEventListener( 'keydown', zoom, false);
+    // window.addEventListener( 'keydown', spin, false);
+    // window.addEventListener( 'keydown', pause, false);
+    // window.addEventListener( 'keydown', aboutme, false);
+    // window.addEventListener( 'keydown', last, false);
+    // window.addEventListener( 'keydown', next, false);
 
     GLrenderer = new THREE.WebGLRenderer( { alpha: 1, antialias: true, clearColor: 0xffffff }  );
     GLrenderer.setSize( window.innerWidth, window.innerHeight );
@@ -110,19 +110,27 @@ function init() {
     container.appendChild( GLrenderer.domElement );
 }
 
-function handleTouch(event){
-    console.log("touch starts");
-    switch(event.touches.length){
-        case 1: console.log("one touch");
-        case 2: console.log("two touches");
-        case 3: console.log("three touches");
+var lastTap = 0;
+var timeout;
+function detectDoubleTap(event){
+    var currentTime = new Date().getTime();
+    var tapLength = currentTime - lastTap;
+    clearTimeout(timeout);
+    if (tapLength < 300 && tapLength > 0) {
+        event.preventDefault();
+        zoom(event);
+    } else {
+        timeout = setTimeout(function() {
+            clearTimeout(timeout);
+        }, 300);
     }
-    
+    lastTap = currentTime;
 }
+
 
 function zoom(event){
     event.preventDefault();
-    if(event.key == "z" || event.key == "s" && spun){
+    //if(event.key == "z" || event.key == "s" && spun){
         if(zoomed){
             
             description.style.display = "none";
@@ -176,7 +184,7 @@ function zoom(event){
                 }
             }, 50);
         }
-    }
+    //}
 }
 
 function spin(event){
