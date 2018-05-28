@@ -121,6 +121,7 @@ function detectTap(event){
     lastTap = currentTime;
     if(zoomed){
         var touchEndPointX = event.targetTouches[0].clientX;
+        console.log("end:" + touchEndPointX);
         var swipeDistance = touchEndPointX - touchStartPointX;
         console.log("swipeDistance" + swipeDistance);
         if(swipeDistance > 20){
@@ -136,6 +137,7 @@ function detectTap(event){
 
 function detectSwipe(event){
     touchStartPointX = event.targetTouches[0].clientX;
+    console.log("start:" + touchStartPointX);
 }
 
 function zoom(event){
