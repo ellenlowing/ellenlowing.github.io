@@ -429,7 +429,11 @@ function leapAnimate( frame ) {
 
 function isMobile() {
     if(navigator.userAgent.indexOf("Mobile") == -1) alert("this is NOT a mobile device");
-    else alert("this is a mobile device");
+    else {
+        alert("this is a mobile device");
+        var text = document.getElementById("text-guide");
+        text.innerHTML = "this is a mobile device";
+    }
 }
 
 function onWindowResize() {
