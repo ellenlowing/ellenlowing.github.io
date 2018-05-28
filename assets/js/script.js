@@ -70,6 +70,7 @@ window.onload = function(){
 // //Leap.loop( {background: true, enableGestures: true}, leapAnimate ).connect();
 // animate();
 function init() {
+    isMobile();
     var container = document.getElementById( 'container' );
     camera = new THREE.PerspectiveCamera( 100, window.innerWidth / window.innerHeight, 1, 5000 );
     camera.position.set( cameraPos[0], cameraPos[1], cameraPos[2] );
@@ -425,6 +426,11 @@ function leapAnimate( frame ) {
     controls.update();
 }
 */
+
+function isMobile() {
+    if(navigator.userAgent.indexOf("Mobile") == -1) alert("this is NOT a mobile device");
+    else alert("this is a mobile device");
+}
 
 function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
