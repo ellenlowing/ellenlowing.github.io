@@ -61,12 +61,7 @@ var Element = function ( id, x, y, z, rx, ry ) {
 
 init();
 animate();
-window.onload = function(){
-    console.log("Finish loading");
-}
-// init();
-// //Leap.loop( {background: true, enableGestures: true}, leapAnimate ).connect();
-// animate();
+
 function init() {
     var container = document.getElementById( 'container' );
     camera = new THREE.PerspectiveCamera( 100, window.innerWidth / window.innerHeight, 1, 5000 );
@@ -95,13 +90,7 @@ function init() {
     var initZoomScale = 19;
 
     window.addEventListener( 'touchend', detectTap, false);
-    // window.addEventListener( 'resize', onWindowResize, false );
-    // window.addEventListener( 'keydown', zoom, false);
-    // window.addEventListener( 'keydown', spin, false);
-    // window.addEventListener( 'keydown', pause, false);
-    // window.addEventListener( 'keydown', aboutme, false);
-    // window.addEventListener( 'keydown', last, false);
-    // window.addEventListener( 'keydown', next, false);
+    window.addEventListener( 'touchstart', detectSwipe, false);
 
     GLrenderer = new THREE.WebGLRenderer( { alpha: 1, antialias: true, clearColor: 0xffffff }  );
     GLrenderer.setSize( window.innerWidth, window.innerHeight );
@@ -112,8 +101,11 @@ function init() {
 
 var lastTap = 0;
 var timeout;
+var touchStartPointX;
+var touchEndPointX;
 
 function detectTap(event){
+    var touchEndPointX = event.targetTouches[0].clientX;
     var currentTime = new Date().getTime();
     var tapLength = currentTime - lastTap;
     clearTimeout(timeout);
@@ -121,102 +113,112 @@ function detectTap(event){
         event.preventDefault();
         zoom(event);
     } else {
-        pause(event);
+        if(!zoomed) pause(event);
         timeout = setTimeout(function() {
             clearTimeout(timeout);
         }, 300);
     }
     lastTap = currentTime;
+    if(zoomed){
+        var swipeDistance = touchEndPointX - touchStartPointX;
+        console.log("swipeDistance" + swipeDistance);
+        if(swipeDistance > 20){
+            next();
+        } else if (swipeDistance < -20){
+            last();
+        }
+        touchStartPointX = 0;
+        touchEndPointX = 0;
+    }
+
 }
 
+function detectSwipe(event){
+    touchStartPointX = event.targetTouches[0].clientX;
+}
 
 function zoom(event){
     event.preventDefault();
-    //if(event.key == "z" || event.key == "s" && spun){
-        if(zoomed){
-            
-            description.style.display = "none";
-            var zoomOutFunction = setInterval( function(){
-                camera.position.set(initCameraPos[0]/scale, initCameraPos[1]/scale, initCameraPos[2]/scale);
-                scale/=1.5;
-                if(scale <= 1){
-                	zoomed = false;
-                    clearInterval(zoomOutFunction);
-                    controls.autoRotate = true;
-                    controls.autoRotateSpeed = 8;
-                    camera.position.set( initCameraPos[0], initCameraPos[1], initCameraPos[2] );
-                    document.getElementById("text-guide").innerHTML = "[double tap]: zoom in, [single tap]: pause, [e]: for ellen";
-                }
-            }, 50);
-        }else{
-            spun = false;
-            if(scale == 1){
-            	initCameraPos = [camera.position.x, camera.position.y, camera.position.z];
+    if(zoomed){
+        description.style.display = "none";
+        var zoomOutFunction = setInterval( function(){
+            camera.position.set(initCameraPos[0]/scale, initCameraPos[1]/scale, initCameraPos[2]/scale);
+            scale/=1.5;
+            if(scale <= 1){
+            	zoomed = false;
+                clearInterval(zoomOutFunction);
+                controls.autoRotate = true;
+                controls.autoRotateSpeed = 8;
+                camera.position.set( initCameraPos[0], initCameraPos[1], initCameraPos[2] );
+                document.getElementById("text-guide").innerHTML = "[double tap]: zoom in, [single tap]: pause, [e]: for ellen";
             }
-            var direction = camera.getWorldDirection();
-            for(var i = 0; i<cameraLimits.length; i++){
-                if(direction.x <= cameraLimits[i][1] && direction.x >=cameraLimits[i][0] && direction.z >= cameraLimits[i][2] && direction.z <= cameraLimits[i][3]){
-                    current = descriptionIds[i];
-                    description = document.getElementById(current.toString());
-                    if(descriptionInit[i] === 0){
-                        descriptionInit[i] = 1;
-                        var iframeClass = "iframe-" + current;
-                        var iframes = document.getElementsByClassName(iframeClass);
-                        for(var j = 0; j<iframes.length; j++){
-                            iframes[j].setAttribute('src', iframes[j].getAttribute('data-src'));
-                        } 
-                    }
-                    break;
-                }else{
-                    continue;
-                }
-            }
-            var zoomInFunction = setInterval( function(){
-                camera.position.set( initCameraPos[0]/scale, initCameraPos[1]/scale, initCameraPos[2]/scale);
-                scale*=1.5;
-                if(scale >= 11){
-                	zoomed = true;
-                    clearInterval(zoomInFunction);
-                    controls.autoRotate = false;
-                    description.style.display = "block";
-                    document.getElementById("text-guide").innerHTML = "[double tap]: zoom out, [swipe left]: previous, [swipe right]: next";
-                }
-            }, 50);
+        }, 50);
+    }else{
+        spun = false;
+        if(scale == 1){
+        	initCameraPos = [camera.position.x, camera.position.y, camera.position.z];
         }
-    //}
-}
-
-function spin(event){
-    event.preventDefault();
-    if(( event.key == "s" || event.key == "S" ) && !zoomed){
-        if(paused) {
-            controls.autoRotate = true;
-            paused = false;
-        }
-        controls.autoRotateSpeed = 500;
-        var autoSpinFunc = setInterval( function(){
-            controls.autoRotateSpeed/=1.5;
-            if(controls.autoRotateSpeed < 2){
-                clearInterval(autoSpinFunc);
-                controls.autoRotateSpeed = 0;
-                spun = true;
-                zoom(event);
+        var direction = camera.getWorldDirection();
+        for(var i = 0; i<cameraLimits.length; i++){
+            if(direction.x <= cameraLimits[i][1] && direction.x >=cameraLimits[i][0] && direction.z >= cameraLimits[i][2] && direction.z <= cameraLimits[i][3]){
+                current = descriptionIds[i];
+                description = document.getElementById(current.toString());
+                if(descriptionInit[i] === 0){
+                    descriptionInit[i] = 1;
+                    var iframeClass = "iframe-" + current;
+                    var iframes = document.getElementsByClassName(iframeClass);
+                    for(var j = 0; j<iframes.length; j++){
+                        iframes[j].setAttribute('src', iframes[j].getAttribute('data-src'));
+                    } 
+                }
+                break;
+            }else{
+                continue;
             }
-        }, 500);
+        }
+        var zoomInFunction = setInterval( function(){
+            camera.position.set( initCameraPos[0]/scale, initCameraPos[1]/scale, initCameraPos[2]/scale);
+            scale*=1.5;
+            if(scale >= 11){
+                zoomed = true;
+                clearInterval(zoomInFunction);
+                controls.autoRotate = false;
+                description.style.display = "block";
+                document.getElementById("text-guide").innerHTML = "[double tap]: zoom out, [swipe left]: previous, [swipe right]: next";
+            }
+        }, 50);
     }
 }
 
+// function spin(event){
+//     event.preventDefault();
+//     if(( event.key == "s" || event.key == "S" ) && !zoomed){
+//         if(paused) {
+//             controls.autoRotate = true;
+//             paused = false;
+//         }
+//         controls.autoRotateSpeed = 500;
+//         var autoSpinFunc = setInterval( function(){
+//             controls.autoRotateSpeed/=1.5;
+//             if(controls.autoRotateSpeed < 2){
+//                 clearInterval(autoSpinFunc);
+//                 controls.autoRotateSpeed = 0;
+//                 spun = true;
+//                 zoom(event);
+//             }
+//         }, 500);
+//     }
+// }
+
 function pause(event){
     event.preventDefault();
-    //if(event.keyCode == 32 && !zoomed){
-        if(!paused){
-            controls.autoRotate = false;
-            paused = true;
-        }else{
-            controls.autoRotate = true;
-            paused = false;
-        }
-    //}
+    if(!paused){
+        controls.autoRotate = false;
+        paused = true;
+    }else{
+        controls.autoRotate = true;
+        paused = false;
+    }
 }
 
 function last(event){
