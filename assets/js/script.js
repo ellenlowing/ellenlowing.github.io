@@ -65,12 +65,12 @@ init();
 animate();
 window.onload = function(){
     console.log("Finish loading");
+    isMobile();
 }
 // init();
 // //Leap.loop( {background: true, enableGestures: true}, leapAnimate ).connect();
 // animate();
 function init() {
-    isMobile();
     var container = document.getElementById( 'container' );
     camera = new THREE.PerspectiveCamera( 100, window.innerWidth / window.innerHeight, 1, 5000 );
     camera.position.set( cameraPos[0], cameraPos[1], cameraPos[2] );
