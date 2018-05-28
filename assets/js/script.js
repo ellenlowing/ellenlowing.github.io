@@ -428,11 +428,12 @@ function leapAnimate( frame ) {
 */
 
 function isMobile() {
-    if(navigator.userAgent.indexOf("Mobile") == -1) console.log("this is NOT a mobile device");
-    else {
-        console.log("this is a mobile device");
-        var text = document.getElementById("text-guide");
+    var md = new MobileDetect(window.navigator.userAgent);
+    if(md.mobile()){
+        var text = document.getElementById(text-guide);
         text.innerHTML = "this is a mobile device";
+    }else{
+        console.log("this is not a mobile device");
     }
 }
 
