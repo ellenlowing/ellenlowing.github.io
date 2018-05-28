@@ -94,7 +94,7 @@ function init() {
     controls.enabled = false;
     var initZoomScale = 19;
 
-    window.addEventListener( 'touchend', detectDoubleTap, false);
+    window.addEventListener( 'touchend', detectTap, false);
     // window.addEventListener( 'resize', onWindowResize, false );
     // window.addEventListener( 'keydown', zoom, false);
     // window.addEventListener( 'keydown', spin, false);
@@ -112,7 +112,8 @@ function init() {
 
 var lastTap = 0;
 var timeout;
-function detectDoubleTap(event){
+
+function detectTap(event){
     var currentTime = new Date().getTime();
     var tapLength = currentTime - lastTap;
     clearTimeout(timeout);
@@ -120,6 +121,7 @@ function detectDoubleTap(event){
         event.preventDefault();
         zoom(event);
     } else {
+        pause(event);
         timeout = setTimeout(function() {
             clearTimeout(timeout);
         }, 300);
@@ -143,13 +145,10 @@ function zoom(event){
                     controls.autoRotate = true;
                     controls.autoRotateSpeed = 8;
                     camera.position.set( initCameraPos[0], initCameraPos[1], initCameraPos[2] );
-                    document.getElementById("text-guide").innerHTML = "[z]: zoom in, [s]: spin, [spacebar]: pause, [e]: for ellen";
+                    document.getElementById("text-guide").innerHTML = "[double tap]: zoom in, [single tap]: pause, [e]: for ellen";
                 }
             }, 50);
         }else{
-
-                 
-
             spun = false;
             if(scale == 1){
             	initCameraPos = [camera.position.x, camera.position.y, camera.position.z];
@@ -180,7 +179,7 @@ function zoom(event){
                     clearInterval(zoomInFunction);
                     controls.autoRotate = false;
                     description.style.display = "block";
-                    document.getElementById("text-guide").innerHTML = "[z]: zoom out, [&larr;]: previous, [&rarr;]: next";
+                    document.getElementById("text-guide").innerHTML = "[double tap]: zoom out, [swipe left]: previous, [swipe right]: next";
                 }
             }, 50);
         }
@@ -209,7 +208,7 @@ function spin(event){
 
 function pause(event){
     event.preventDefault();
-    if(event.keyCode == 32 && !zoomed){
+    //if(event.keyCode == 32 && !zoomed){
         if(!paused){
             controls.autoRotate = false;
             paused = true;
@@ -217,7 +216,7 @@ function pause(event){
             controls.autoRotate = true;
             paused = false;
         }
-    }
+    //}
 }
 
 function last(event){
@@ -265,20 +264,6 @@ function next(event){
         description = document.getElementById(current.toString());
         description.style.display = "block";
     }
-}
-
-function pauseClick(event){
-    event.preventDefault();
-    //console.log("clicked");
-    // if(event.keyCode == 32 && !zoomed){
-        if(!paused){
-            controls.autoRotate = false;
-            paused = true;
-        }else{
-            controls.autoRotate = true;
-            paused = false;
-        }
-    // }
 }
 
 function aboutme(event){
