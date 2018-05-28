@@ -236,7 +236,7 @@ function pause(event){
 
 function last(event){
     //event.preventDefault();
-    if(event.keyCode == 37 && zoomed){
+    if(zoomed){
         description.style.display = "none";
         var currentIndex = descriptionIds.findIndex(currentId => currentId === current);
         currentIndex -= 1;
@@ -260,7 +260,7 @@ function last(event){
 
 function next(event){
     //event.preventDefault();
-    if(event.keyCode == 39 && zoomed){
+    if(zoomed){
         description.style.display = "none";
         var currentIndex = descriptionIds.findIndex(currentId => currentId === current);
         currentIndex += 1;
