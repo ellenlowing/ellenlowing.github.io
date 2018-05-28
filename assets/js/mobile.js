@@ -90,6 +90,7 @@ function init() {
     var initZoomScale = 19;
 
     window.addEventListener( 'touchend', detectTap, false);
+    window.addEventListener( 'touchmove', detectSwipeEnd, false);
     window.addEventListener( 'touchstart', detectSwipe, false);
 
     GLrenderer = new THREE.WebGLRenderer( { alpha: 1, antialias: true, clearColor: 0xffffff }  );
@@ -105,7 +106,6 @@ var touchStartPointX;
 var touchEndPointX;
 
 function detectTap(event){
-    
     var currentTime = new Date().getTime();
     var tapLength = currentTime - lastTap;
     clearTimeout(timeout);
@@ -119,25 +119,31 @@ function detectTap(event){
         }, 300);
     }
     lastTap = currentTime;
+}
+
+function detectSwipeEnd(event){
+    event.preventDefault();
     if(zoomed){
         var touchEndPointX = event.targetTouches[0].clientX;
         console.log("end:" + touchEndPointX);
         var swipeDistance = touchEndPointX - touchStartPointX;
         console.log("swipeDistance" + swipeDistance);
-        if(swipeDistance > 20){
+        if(swipeDistance > 100){
             next();
-        } else if (swipeDistance < -20){
+        } else if (swipeDistance < -100){
             last();
         }
         touchStartPointX = 0;
         touchEndPointX = 0;
     }
-
 }
 
 function detectSwipe(event){
-    touchStartPointX = event.targetTouches[0].clientX;
-    console.log("start:" + touchStartPointX);
+    event.preventDefault();
+    if(zoomed){
+        touchStartPointX = event.targetTouches[0].clientX;
+        console.log("start:" + touchStartPointX);
+    }
 }
 
 function zoom(event){
