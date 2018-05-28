@@ -89,9 +89,9 @@ function init() {
     controls.enabled = false;
     var initZoomScale = 19;
 
-    window.addEventListener( 'touchend', detectTap, false);
-    window.addEventListener( 'touchmove', detectSwipeEnd, false);
-    window.addEventListener( 'touchstart', detectSwipe, false);
+    window.addEventListener( 'touchend', handleEnd, false);
+    window.addEventListener( 'touchmove', handleMove, false);
+    window.addEventListener( 'touchstart', handleStart, false);
 
     GLrenderer = new THREE.WebGLRenderer( { alpha: 1, antialias: true, clearColor: 0xffffff }  );
     GLrenderer.setSize( window.innerWidth, window.innerHeight );
@@ -105,7 +105,7 @@ var timeout;
 var touchStartPointX;
 var touchEndPointX;
 
-function detectTap(event){
+function handleEnd(event){
     var currentTime = new Date().getTime();
     var tapLength = currentTime - lastTap;
     clearTimeout(timeout);
@@ -113,7 +113,20 @@ function detectTap(event){
         event.preventDefault();
         zoom(event);
     } else {
-        if(!zoomed) pause(event);
+        if(!zoomed) {
+            pause(event);
+        }
+        else {
+            var swipeDistance = touchEndPointX - touchStartPointX;
+            console.log("swipeDistance" + swipeDistance);
+            if(swipeDistance > 100){
+                next();
+            } else if (swipeDistance < -100){
+                last();
+            }
+            touchStartPointX = 0;
+            touchEndPointX = 0;
+        }
         timeout = setTimeout(function() {
             clearTimeout(timeout);
         }, 300);
@@ -121,24 +134,15 @@ function detectTap(event){
     lastTap = currentTime;
 }
 
-function detectSwipeEnd(event){
+function handleMove(event){
     event.preventDefault();
     if(zoomed){
         var touchEndPointX = event.targetTouches[0].clientX;
         console.log("end:" + touchEndPointX);
-        var swipeDistance = touchEndPointX - touchStartPointX;
-        console.log("swipeDistance" + swipeDistance);
-        if(swipeDistance > 100){
-            next();
-        } else if (swipeDistance < -100){
-            last();
-        }
-        touchStartPointX = 0;
-        touchEndPointX = 0;
     }
 }
 
-function detectSwipe(event){
+function handleStart(event){
     event.preventDefault();
     if(zoomed){
         touchStartPointX = event.targetTouches[0].clientX;
@@ -231,7 +235,7 @@ function pause(event){
 }
 
 function last(event){
-    event.preventDefault();
+    //event.preventDefault();
     if(event.keyCode == 37 && zoomed){
         description.style.display = "none";
         var currentIndex = descriptionIds.findIndex(currentId => currentId === current);
@@ -255,7 +259,7 @@ function last(event){
 }
 
 function next(event){
-    event.preventDefault();
+    //event.preventDefault();
     if(event.keyCode == 39 && zoomed){
         description.style.display = "none";
         var currentIndex = descriptionIds.findIndex(currentId => currentId === current);
