@@ -124,8 +124,6 @@ function handleEnd(event){
             } else if (swipeDistance < -100){
                 last();
             }
-            touchStartPointX = 0;
-            touchEndPointX = 0;
         }
         timeout = setTimeout(function() {
             clearTimeout(timeout);
@@ -137,7 +135,7 @@ function handleEnd(event){
 function handleMove(event){
     event.preventDefault();
     if(zoomed){
-        var touchEndPointX = event.targetTouches[0].clientX;
+        touchEndPointX = event.targetTouches[0].clientX;
         console.log("end:" + touchEndPointX);
     }
 }
