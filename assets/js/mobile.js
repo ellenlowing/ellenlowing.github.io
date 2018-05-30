@@ -89,7 +89,9 @@ function init() {
     controls.enabled = false;
     var initZoomScale = 19;
 
-    window.addEventListener( 'touchend', handleEnd, false);
+    window.addEventListener( 'touchend', detectHold, false);
+    window.addEventListener( 'touchend', detectTaps, false);
+    window.addEventListener( 'touchend', detectSwipe, false);
     window.addEventListener( 'touchmove', handleMove, false);
     window.addEventListener( 'touchstart', handleStart, false);
 
@@ -106,30 +108,27 @@ var timeout;
 var touchStartPointX;
 var touchEndPointX;
 
-function handleEnd(event){
+function detectSwipe(event){
+    if(zoomed) {
+        var swipeDistance = touchEndPointX - touchStartPointX;
+        if(swipeDistance > 100){
+            next();
+        } else if (swipeDistance < -100){
+            last();
+        }
+    }
+}
+
+function detectTaps(event){
     var currentTime = new Date().getTime();
     var tapLength = currentTime - lastTap;
-    var holdLength = currentTime - touchStart;
     clearTimeout(timeout);
-    if (holdLength > 800) {
-        event.preventDefault();
-        aboutme(event);
-    }
-    else if (tapLength < 300 && tapLength > 0) {
+    if (tapLength < 300 && tapLength > 0) {
         event.preventDefault();
         zoom(event);
     } else {
         if(!zoomed) {
             pause(event);
-        }
-        else {
-            var swipeDistance = touchEndPointX - touchStartPointX;
-            //console.log("swipeDistance" + swipeDistance);
-            if(swipeDistance > 100){
-                next();
-            } else if (swipeDistance < -100){
-                last();
-            }
         }
         timeout = setTimeout(function() {
             clearTimeout(timeout);
@@ -138,10 +137,20 @@ function handleEnd(event){
     lastTap = currentTime;
 }
 
+function detectHold(event){
+    if(!zoomed){
+        var currentTime = new Date().getTime();
+        var holdLength = currentTime - touchStart;
+        if(holdLength > 800) {
+            event.preventDefault();
+            aboutme(event);
+        }
+    }
+}
+
 function handleMove(event){
     if(zoomed){
         touchEndPointX = event.targetTouches[0].clientX;
-        //console.log("end:" + touchEndPointX);
     } else {
         event.preventDefault();
     }
@@ -150,7 +159,6 @@ function handleMove(event){
 function handleStart(event){
     if(zoomed){
         touchStartPointX = event.targetTouches[0].clientX;
-        //console.log("start:" + touchStartPointX);
     } else {
         event.preventDefault();
         touchStart = new Date().getTime();
@@ -269,8 +277,7 @@ function next(event){
 }
 
 function aboutme(event){
-    //event.preventDefault();
-    if(!zoomed && !spun && !nameRendered){
+    if(!zoomed && !nameRendered){
         nameRendered = true;
         var abouttext = document.getElementById("about-text");
         var counter = 0;
