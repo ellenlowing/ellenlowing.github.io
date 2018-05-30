@@ -111,9 +111,9 @@ var touchEndPointX;
 function detectSwipe(event){
     if(zoomed) {
         var swipeDistance = touchEndPointX - touchStartPointX;
-        if(swipeDistance > 100){
+        if(swipeDistance > 200){
             next();
-        } else if (swipeDistance < -100){
+        } else if (swipeDistance < -200){
             last();
         }
     }
@@ -160,7 +160,6 @@ function handleStart(event){
     if(zoomed){
         touchStartPointX = event.targetTouches[0].clientX;
     } else {
-        event.preventDefault();
         touchStart = new Date().getTime();
     }
 }
@@ -179,6 +178,7 @@ function zoom(event){
                 controls.autoRotateSpeed = 8;
                 camera.position.set( initCameraPos[0], initCameraPos[1], initCameraPos[2] );
                 document.getElementById("text-guide").innerHTML = "[double tap]: zoom in, [single tap]: pause, [hold]: for ellen";
+                document.getElementById("text-guide").fontSize = "0.7em";
             }
         }, 50);
     }else{
@@ -213,6 +213,7 @@ function zoom(event){
                 controls.autoRotate = false;
                 description.style.display = "block";
                 document.getElementById("text-guide").innerHTML = "[double tap]: zoom out, [swipe left]: previous, [swipe right]: next";
+                document.getElementById("text-guide").fontSize = "0.64em";
             }
         }, 50);
     }
@@ -230,7 +231,6 @@ function pause(event){
 }
 
 function last(event){
-    //event.preventDefault();
     if(zoomed){
         description.style.display = "none";
         var currentIndex = descriptionIds.findIndex(currentId => currentId === current);
@@ -254,7 +254,6 @@ function last(event){
 }
 
 function next(event){
-    //event.preventDefault();
     if(zoomed){
         description.style.display = "none";
         var currentIndex = descriptionIds.findIndex(currentId => currentId === current);
@@ -289,13 +288,13 @@ function aboutme(event){
         aName.target = "";
 
         var popup = document.getElementById("about-popup");
-        aName.addEventListener('mouseover', function(event) {
+        aName.addEventListener('touchstart', function(event) {
             popup.style.display = "flex";
             popup.style.left = (Math.random() * (window.innerWidth - popup.offsetWidth - 200) - 120 ).toString() + "px";
             popup.style.top = (Math.random() * (window.innerHeight - popup.offsetHeight)).toString() + "px";
             
         }, false);
-        aName.addEventListener('mouseleave', function(event) {
+        aName.addEventListener('touchend', function(event) {
             popup.style.display = "none"; 
         }, false);
 
