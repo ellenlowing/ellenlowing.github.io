@@ -109,7 +109,7 @@ html, body {
 .description p {
     font-family: 'Inconsolata', monospace;
     font-weight: 300;
-    font-size: 0.9em;
+    font-size: 0.8em;
     -webkit-margin-before: 0.5em;
     -webkit-margin-after: 0.5em;
 }
@@ -131,7 +131,7 @@ html, body {
 .scroll-content .caption {
     font-family: 'Inconsolata', monospace;
     font-weight: 300;
-    font-size: 0.9em;
+    font-size: 0.8em;
 }
 
 .scroll-content .date {
@@ -168,7 +168,7 @@ html, body {
 
 @media only screen and (max-width: 404px) {
     .scroll-content {
-        height: 60%;
+        height: 75%;
     }
 }
 

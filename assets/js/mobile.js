@@ -133,10 +133,11 @@ function handleEnd(event){
 }
 
 function handleMove(event){
-    event.preventDefault();
     if(zoomed){
         touchEndPointX = event.targetTouches[0].clientX;
         console.log("end:" + touchEndPointX);
+    } else {
+        event.preventDefault();
     }
 }
 
