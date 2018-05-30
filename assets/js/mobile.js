@@ -109,7 +109,11 @@ function handleEnd(event){
     var currentTime = new Date().getTime();
     var tapLength = currentTime - lastTap;
     clearTimeout(timeout);
-    if (tapLength < 300 && tapLength > 0) {
+    if (tapLength > 800) {
+        event.preventDefault();
+        aboutme(event);
+    }
+    else if (tapLength < 300 && tapLength > 0) {
         event.preventDefault();
         zoom(event);
     } else {
@@ -118,7 +122,7 @@ function handleEnd(event){
         }
         else {
             var swipeDistance = touchEndPointX - touchStartPointX;
-            console.log("swipeDistance" + swipeDistance);
+            //console.log("swipeDistance" + swipeDistance);
             if(swipeDistance > 100){
                 next();
             } else if (swipeDistance < -100){
@@ -135,17 +139,18 @@ function handleEnd(event){
 function handleMove(event){
     if(zoomed){
         touchEndPointX = event.targetTouches[0].clientX;
-        console.log("end:" + touchEndPointX);
+        //console.log("end:" + touchEndPointX);
     } else {
         event.preventDefault();
     }
 }
 
 function handleStart(event){
-    event.preventDefault();
     if(zoomed){
         touchStartPointX = event.targetTouches[0].clientX;
-        console.log("start:" + touchStartPointX);
+        //console.log("start:" + touchStartPointX);
+    } else {
+        event.preventDefault();
     }
 }
 
@@ -162,7 +167,7 @@ function zoom(event){
                 controls.autoRotate = true;
                 controls.autoRotateSpeed = 8;
                 camera.position.set( initCameraPos[0], initCameraPos[1], initCameraPos[2] );
-                document.getElementById("text-guide").innerHTML = "[double tap]: zoom in, [single tap]: pause, [e]: for ellen";
+                document.getElementById("text-guide").innerHTML = "[double tap]: zoom in, [single tap]: pause, [hold]: for ellen";
             }
         }, 50);
     }else{
@@ -201,26 +206,6 @@ function zoom(event){
         }, 50);
     }
 }
-
-// function spin(event){
-//     event.preventDefault();
-//     if(( event.key == "s" || event.key == "S" ) && !zoomed){
-//         if(paused) {
-//             controls.autoRotate = true;
-//             paused = false;
-//         }
-//         controls.autoRotateSpeed = 500;
-//         var autoSpinFunc = setInterval( function(){
-//             controls.autoRotateSpeed/=1.5;
-//             if(controls.autoRotateSpeed < 2){
-//                 clearInterval(autoSpinFunc);
-//                 controls.autoRotateSpeed = 0;
-//                 spun = true;
-//                 zoom(event);
-//             }
-//         }, 500);
-//     }
-// }
 
 function pause(event){
     event.preventDefault();
@@ -281,8 +266,8 @@ function next(event){
 }
 
 function aboutme(event){
-    event.preventDefault();
-    if((event.key == 'e' || event.key == 'E') && !zoomed && !spun && !nameRendered){
+    //event.preventDefault();
+    if(!zoomed && !spun && !nameRendered){
         nameRendered = true;
         var abouttext = document.getElementById("about-text");
         var counter = 0;
