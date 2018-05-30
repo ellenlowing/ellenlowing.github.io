@@ -31,13 +31,13 @@ html, body {
 }
 
 #aboutme p{
-    font-size: 1.6em;
+    font-size: 1.5em;
     font-weight: 500;
     font-style: italic;
     background-color: #000;
     -webkit-margin-before: 0em;
     -webkit-margin-after: 0em;
-    letter-spacing: 3px;
+    letter-spacing: 1.8px;
 }
 
 .about-content a:link{
@@ -79,7 +79,7 @@ html, body {
     position: absolute;
     bottom: 10px;
     left: 10px;
-    font-size: 0.75em;
+    font-size: 0.7em;
 }
 .description{
     font-family: 'Roboto', sans-serif;
@@ -117,8 +117,9 @@ html, body {
 .scroll-content {
     width: 100%;
     overflow-y: auto;
-    height: 70%;
+    height: 72%;
     line-height: 10pt;
+    margin-bottom: 0.3em;
 }
 
 .scroll-content h2 {
@@ -164,12 +165,6 @@ html, body {
 .description hr {
     border-top: 1px dashed black;
     border-bottom: 1px dashed black;
-}
-
-@media only screen and (max-width: 404px) {
-    .scroll-content {
-        height: 75%;
-    }
 }
 
 @media only screen and (min-width: 500px) {

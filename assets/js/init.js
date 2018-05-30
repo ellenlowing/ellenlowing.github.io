@@ -7,7 +7,7 @@ function isMobile() {
         script.setAttribute('src','assets/js/mobile.js');
         document.body.appendChild(script);
         var guide = document.getElementById("text-guide");
-        guide.innerHTML = "[double tap]: zoom in, [single tap]: pause, [e]: for ellen";
+        guide.innerHTML = "[double tap]: zoom in, [single tap]: pause, [hold]: for ellen";
         stylesheet.setAttribute("href", "assets/css/mobile.css");
     }else{
         console.log("this is not a mobile device");

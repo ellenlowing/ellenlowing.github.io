@@ -101,6 +101,7 @@ function init() {
 }
 
 var lastTap = 0;
+var touchStart = 0;
 var timeout;
 var touchStartPointX;
 var touchEndPointX;
@@ -108,8 +109,9 @@ var touchEndPointX;
 function handleEnd(event){
     var currentTime = new Date().getTime();
     var tapLength = currentTime - lastTap;
+    var holdLength = currentTime - touchStart;
     clearTimeout(timeout);
-    if (tapLength > 800) {
+    if (holdLength > 800) {
         event.preventDefault();
         aboutme(event);
     }
@@ -151,6 +153,7 @@ function handleStart(event){
         //console.log("start:" + touchStartPointX);
     } else {
         event.preventDefault();
+        touchStart = new Date().getTime();
     }
 }
 
