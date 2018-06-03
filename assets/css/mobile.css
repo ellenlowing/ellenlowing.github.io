@@ -5,10 +5,6 @@ html, body {
     background-color: #000;
 }
 
-body {
-    position: fixed;
-}
-
 #blocker {
     position: absolute;
     /* background-color: rgba(255, 0, 0, 0.5); */
