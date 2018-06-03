@@ -290,8 +290,8 @@ function aboutme(event){
         var popup = document.getElementById("about-popup");
         aName.addEventListener('touchstart', function(event) {
             popup.style.display = "flex";
-            popup.style.left = (Math.random() * (window.innerWidth - popup.offsetWidth - 200) - 120 ).toString() + "px";
-            popup.style.top = (Math.random() * (window.innerHeight - popup.offsetHeight)).toString() + "px";
+            popup.style.left = (Math.random() * (window.innerWidth -  280)).toString() + "px";
+            popup.style.top = (Math.random() * (window.innerHeight - 100)).toString() + "px";
             
         }, false);
         aName.addEventListener('touchend', function(event) {

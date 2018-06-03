@@ -59,7 +59,7 @@ html, body {
 }
 
 #aboutme #about-popup {
-    position: relative;
+    position: fixed;
     font-family: 'Inconsolata', monospace;
     display: none;
     width: 320px;
@@ -71,6 +71,7 @@ html, body {
     padding: 0.5em;
     z-index: 99;
     line-height: 12pt;
+    font-size:14px;
 }
 
 #text-guide {
