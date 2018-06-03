@@ -4,6 +4,11 @@ html, body {
     margin: 0 0;
     background-color: #000;
 }
+
+body {
+    position: relative;
+}
+
 #blocker {
     position: absolute;
     /* background-color: rgba(255, 0, 0, 0.5); */
