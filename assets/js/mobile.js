@@ -89,12 +89,11 @@ function init() {
     controls.enabled = false;
     var initZoomScale = 19;
 
-    var mainBody = document.getElementById("main");
-    mainBody.addEventListener( 'touchend', detectHold, false);
-    mainBody.addEventListener( 'touchend', detectTaps, false);
-    mainBody.addEventListener( 'touchend', detectSwipe, false);
-    mainBody.addEventListener( 'touchmove', handleMove, false);
-    mainBody.addEventListener( 'touchstart', handleStart, false);
+    window.addEventListener( 'touchend', detectHold, false);
+    window.addEventListener( 'touchend', detectTaps, false);
+    window.addEventListener( 'touchend', detectSwipe, false);
+    window.addEventListener( 'touchmove', handleMove, false);
+    window.addEventListener( 'touchstart', handleStart, false);
 
     GLrenderer = new THREE.WebGLRenderer( { alpha: 1, antialias: true, clearColor: 0xffffff }  );
     GLrenderer.setSize( window.innerWidth, window.innerHeight );
