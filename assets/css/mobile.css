@@ -126,7 +126,7 @@ html, body {
     width: 100%;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
-    height: 72%;
+    height: 78%;
     line-height: 10pt;
     margin-bottom: 0.3em;
 }
@@ -212,10 +212,6 @@ html, body {
         padding-right: 1.5em;
     }
 
-    .scroll-content {
-        height: 72%;
-    }
-
     .scroll-content .iframe-wrapper {
         position: relative;
         display: inline-block;
@@ -247,10 +243,6 @@ html, body {
         display: none;
         padding-left: 1.5em;
         padding-right: 1.5em;
-    }
-
-    .scroll-content {
-        height: 72%;
     }
 
     .scroll-content .iframe-wrapper {
