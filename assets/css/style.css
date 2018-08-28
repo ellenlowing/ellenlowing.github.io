@@ -100,7 +100,7 @@ html, body {
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
     font-style: italic;
-    font-size: 2.4em;
+    font-size: 1.6em;
     -webkit-text-stroke: 1.2px black;
     color: white;
     margin-top: 0.3em;
@@ -110,13 +110,13 @@ html, body {
 .description p {
     font-family: 'Inconsolata', monospace;
     font-weight: 300;
-    font-size: 0.9em;
+    font-size: 0.8em;
 }
 
 .scroll-content {
     width: 100%;
     overflow-y: auto;
-    height: 70%;
+    height: 78%;
     line-height: 10pt;
 }
 
@@ -130,7 +130,7 @@ html, body {
 .scroll-content .caption {
     font-family: 'Inconsolata', monospace;
     font-weight: 300;
-    font-size: 0.9em;
+    font-size: 0.8em;
 }
 
 .scroll-content .date {
@@ -167,7 +167,7 @@ html, body {
 
 @media only screen and (max-width: 404px) {
     .scroll-content {
-        height: 60%;
+        height: 78%;
     }
 }
 
@@ -195,7 +195,7 @@ html, body {
     }
 
     .description{
-        width: 75%;
+        width: 90%;
         top: 5%;
         margin: 0 auto;
         display: none;
@@ -203,8 +203,16 @@ html, body {
         padding-right: 1.5em;
     }
 
-    .scroll-content {
-        height: 72%;
+    .description h1 {
+        font-size: 2.0em;
+    }
+
+    .description p {
+        font-size: 0.9em;
+    }
+
+    .scroll-content .caption {
+        font-size: 0.9em;
     }
 
     .scroll-content .iframe-wrapper {
@@ -232,7 +240,7 @@ html, body {
 @media only screen and (min-width: 1280px){
     /* For larger desktops */
     .description{
-        width: 80%;
+        width: 90%;
         top: 5%;
         margin: 0 auto;
         display: none;
@@ -240,8 +248,8 @@ html, body {
         padding-right: 1.5em;
     }
 
-    .scroll-content {
-        height: 72%;
+    .description h1 {
+        font-size: 2.4em;
     }
 
     .scroll-content .iframe-wrapper {
