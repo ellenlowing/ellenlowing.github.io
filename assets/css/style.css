@@ -156,6 +156,10 @@ html, body {
     width: 100%;
 }
 
+.scroll-content img.gif {
+    width: 40%;
+}
+
 .scroll-content a:link, a:visited, a:hover, a:active {
     color: #000;
 }
