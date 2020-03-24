@@ -112,7 +112,7 @@ function init() {
 //       return check;
 //     };
 
-    
+
     window.addEventListener( 'resize', onWindowResize, false );
     window.addEventListener( 'keydown', zoom, false);
     window.addEventListener( 'keydown', spin, false);
@@ -133,7 +133,7 @@ function zoom(event){
     event.preventDefault();
     if(event.key == "z" || event.key == "s" && spun){
         if(zoomed){
-            
+
             description.style.display = "none";
             var zoomOutFunction = setInterval( function(){
                 camera.position.set(initCameraPos[0]/scale, initCameraPos[1]/scale, initCameraPos[2]/scale);
@@ -149,7 +149,7 @@ function zoom(event){
             }, 50);
         }else{
 
-                 
+
 
             spun = false;
             if(scale == 1){
@@ -166,7 +166,7 @@ function zoom(event){
                         var iframes = document.getElementsByClassName(iframeClass);
                         for(var j = 0; j<iframes.length; j++){
                             iframes[j].setAttribute('src', iframes[j].getAttribute('data-src'));
-                        } 
+                        }
                     }
                     break;
                 }else{
@@ -237,7 +237,7 @@ function last(event){
             var iframes = document.getElementsByClassName(iframeClass);
             for(var i = 0; i<iframes.length; i++){
                 iframes[i].setAttribute('src', iframes[i].getAttribute('data-src'));
-            } 
+            }
         }
         description = document.getElementById(current.toString());
         description.style.display = "block";
@@ -261,7 +261,7 @@ function next(event){
             var iframes = document.getElementsByClassName(iframeClass);
             for(var i = 0; i<iframes.length; i++){
                 iframes[i].setAttribute('src', iframes[i].getAttribute('data-src'));
-            } 
+            }
         }
         description = document.getElementById(current.toString());
         description.style.display = "block";
@@ -300,10 +300,10 @@ function aboutme(event){
             popup.style.display = "flex";
             popup.style.left = (Math.random() * (window.innerWidth - 320)).toString() + "px";
             popup.style.top = (Math.random() * (window.innerHeight - 100)).toString() + "px";
-            
+
         }, false);
         aName.addEventListener('mouseleave', function(event) {
-            popup.style.display = "none"; 
+            popup.style.display = "none";
         }, false);
 
         var addNameFunc = setInterval(function(){
@@ -314,17 +314,17 @@ function aboutme(event){
 
             if(counter >= name.length) {
                 clearInterval(addNameFunc);
-                
+
                 var span_3 = document.createElement('span');
                 var slash_3 = document.createTextNode(" / ");
                 abouttext.appendChild(slash_3);
-               
+
                 var counter_email = 0;
                 var email = "email";
                 var aEmail = document.createElement('a');
                 var textNodeEmail = document.createTextNode('');
                 aEmail.appendChild(textNodeEmail);
-                aEmail.href = "mailto:ellenlowing@gmail.com?subject=Hi%20Ellen!";
+                aEmail.href = "mailto:ellenlowing@gmail.com";
                 aEmail.target = "_top";
                 var addEmailFunc = setInterval(function(){
                     aEmail.innerHTML += email[counter_email];
@@ -357,7 +357,7 @@ function aboutme(event){
                                 var github = "github";
                                 var aGit = document.createElement('a');
                                 var textNodeGit = document.createTextNode('');
-                                aGit.appendChild(textNode);
+                                aGit.appendChild(textNodeGit);
                                 aGit.href = "https://github.com/ellenlowing";
                                 aGit.target = "_blank";
                                 var addGithubFunc = setInterval(function(){
@@ -366,6 +366,26 @@ function aboutme(event){
                                     counter_github++;
                                     if(counter_github >= github.length){
                                         clearInterval(addGithubFunc);
+
+                                        var span_4 = document.createElement('span');
+                                        var slash_4 = document.createTextNode(" / ");
+                                        abouttext.appendChild(slash_4);
+
+                                        var counter_insta = 0;
+                                        var insta = "instagram";
+                                        var aInsta = document.createElement('a');
+                                        var textNodeInsta = document.createTextNode('');
+                                        aInsta.appendChild(textNodeInsta);
+                                        aInsta.href = "https://www.instagram.com/codebrewed/?hl=en";
+                                        aInsta.target = "_blank";
+                                        var addInstaFunc = setInterval(function() {
+                                          aInsta.innerHTML += insta[counter_insta];
+                                          abouttext.appendChild(aInsta);
+                                          counter_insta++;
+                                          if(counter_insta >= insta.length) {
+                                            clearInterval(addInstaFunc);
+                                          }
+                                        }, Math.random() * (200-100) + 100);
                                     }
                                 }, Math.random() * (200-100) + 100);
                             }
@@ -417,7 +437,7 @@ function leapAnimate( frame ) {
         for(var i = 0; i < frame.gestures.length; i++){
             var gesture = frame.gestures[i];
             if(gesture.type == "swipe") {
-                //console.log(gesture.speed);   
+                //console.log(gesture.speed);
             }
         }
     }

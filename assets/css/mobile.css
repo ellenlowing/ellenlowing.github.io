@@ -36,13 +36,13 @@ html, body {
 }
 
 #aboutme p{
-    font-size: 1.5em;
+    font-size: 1.8em;
     font-weight: 500;
     font-style: italic;
     background-color: #000;
     -webkit-margin-before: 0em;
     -webkit-margin-after: 0em;
-    letter-spacing: 1.8px;
+    letter-spacing: 8px;
 }
 
 .about-content a:link{
@@ -183,7 +183,7 @@ html, body {
 @media only screen and (min-width: 500px) {
     #aboutme p {
         font-size: 1.8em;
-        letter-spacing: 4px;
+        /* letter-spacing: 4px; */
     }
     #text-guide {
         font-size: 1em;
@@ -192,7 +192,7 @@ html, body {
 
 @media only screen and (min-width: 646px) {
     #aboutme p {
-        letter-spacing: 10px;
+        letter-spacing: 8px;
     }
 }
 
