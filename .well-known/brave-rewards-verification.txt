@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: ellenlowing.com
+Token: 1adad64aed9d5c926667e42de04ca4f24852bef956bbc2d7422253ff0fce9e17
