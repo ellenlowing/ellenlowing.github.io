@@ -1,240 +1,163 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:fb="http://ogp.me/ns/fb#">
-	<head>
-		<title>Ellen Lo</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Roboto:300i,400,500i" rel="stylesheet">
-		<link id="stylesheet" href="assets/css/style.css" rel="stylesheet">
-		<meta property="og:title" content="Ellen Lo"/>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
 
-		<meta property="og:image" content="assets/screenshot.png" />
-	</head>
-	<body>
-		<script src="build/three.min.js"></script>
-		<script src="build/mobile-detect.min.js"></script>
-		<script src="controls/OrbitControls.js"></script>
-		<script src="renderers/CSS3DRenderer.js"></script>
-		<!-- <script src="http://js.leapmotion.com/leap-0.6.4.js"></script> -->
-		<div id="container"></div>
-		<div id="blocker"></div>
-		<div id="aboutme">
-			<p class="about-content" id="about-text"></p>
-			<div id="about-popup">
-				<strong style="position: relative; margin-right: 10px;">EXPLORE <br>AESTHETICS<br> WITH ME ~</strong>
-				I code and dance.<br>
-				I want to learn how to VJ.<br>
-				I like interactive installations and physical computing.<br>
-				I'm from HK &lt;3 and based in Brooklyn, NY.
-			</div>
-		</div>
-		<div id="text-guide"><span id="zoomin">[z]: zoom in,</span> <span id="spin">[s]: spin,</span> <span id="pause">[spacebar]: pause,</span> <span id="forEllen">[e]: for ellen</span></div>
-		<div class="description" id="Experimental">
-			<h1>Visual Programming Sketches</h1>
-			<p>openFrameworks, Processing, Max/MSP, TouchDesigner, GLSL</p>
-			<hr>
-			<div class="scroll-content">
-        <div class="work">
-					<h2>Kinetic Typography with Chinese</h2>
-          <img class="gif" src="assets/images/type/luen.gif" alt="">
-          <img class="gif" src="assets/images/type/gwing.gif" alt="">
-          <img class="gif" src="assets/images/type/coil.gif" alt="">
-          <img class="gif" src="assets/images/type/flag.gif" alt="">
-					<p class="caption">
-            Ongoing process of creating sketches with Processing / MatterJS since April 2019 👩🏻‍💻 More at @codebrewed on IG (linked below)!
-          </p>
-					<p><a href="https://www.instagram.com/codebrewed/?hl=en" target="_blank">@codebrewed</a></p>
-				</div>
-        <div class="work">
-					<h2>ofxFaceTracker experiments</h2>
-					<div class="iframe-wrapper">
-						<iframe class="iframe-Interactive" data-src="https://player.vimeo.com/video/313467191?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-					</div>
-					<p class="caption">
-            These visual sketches are created with ofxFaceTracker. The first mimics the effect of breath condensed on glass surface when we exhale, the second portrays a rather comical effect of swirly eyes in animations, and the third is a ofxBox2d test using facial features as obstacles that bodies can bounce off.
-          </p>
-          <p><a href="https://github.com/ellenlowing/experimental/tree/master/openframeworks/facetracker-1" target="_blank">Code</a></p>
-				</div>
-				<div class="work">
-					<h2>#FF0000, #0000FF, #FFFF00, #000000</h2>
-					<div class="iframe-wrapper">
-						<iframe class="iframe-Experimental" data-src="https://player.vimeo.com/video/287564364?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-					</div>
-					<p class="caption">
-						The idea of animating a Mondrian painting never left my head after visiting Stedelijk Museum. #FF0000, #0000FF, #FFFF00, #000000 pays tribute to Mondrian's Compositions with Red, Blue, Yellow and Black with GLSL shaders. With the use of Perlin noise, it generates a unique Mondrian composition at each frame.
-					</p>
-					<p><a href="http://thebookofshaders.com/edit.php?log=180831165639" target="_blank">Code</a></p>
-				</div>
-			</div>
-		</div>
-		<div class="description" id="Design">
-			<h1>Design</h1>
-			<p>HTML5 canvas, p5.js, Three.js</p>
-			<hr>
-			<div class="scroll-content">
-        <!-- <div class="work"> -->
-          <!-- <h2>The David Prize</h2> -->
-          <!-- <div class="iframe-wrapper">
-            <iframe class="iframe-Design" data-src="https://player.vimeo.com/video/354145702?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-          </div> -->
-          <!-- <p class="caption"></p> -->
-          <!-- <p><a href="https://thedavidprize.org/" target="_blank">Site</a></p> -->
-        <!-- </div> -->
-        <div class="work">
-          <h2>Lost Code</h2>
-          <div class="iframe-wrapper">
-            <iframe class="iframe-Design" data-src="https://player.vimeo.com/video/312985266?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-					</div>
-          <p class="caption">Lost Code is a graphic design project exploring the friction in translation. Made with Paper.js. Featured on <a target="_blank" href="https://www.itsnicethat.com/articles/double-click-december-2019-digital-031219">It's Nice That</a>!</p>
-          <p class="caption">Design by Hilda Wong. Development by Ellen Lo.</p>
-          <p><a href="http://lostcode.info/" target="_blank">Site</a> / <a href="https://github.com/ellenlowing/lost-code" target="_blank">Code</a></p>
+<head>
+    <title>Ellen Lo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300i,400,500i" rel="stylesheet">
+    <link id="stylesheet" href="assets/css/style.css" rel="stylesheet">
+    <meta property="og:title" content="Ellen Lo" />
+
+    <meta property="og:image" content="assets/screenshot.png" />
+</head>
+
+<body>
+    <script src="build/three.min.js"></script>
+    <script src="build/mobile-detect.min.js"></script>
+    <script src="controls/OrbitControls.js"></script>
+    <script src="renderers/CSS3DRenderer.js"></script>
+    <!-- <script src="http://js.leapmotion.com/leap-0.6.4.js"></script> -->
+    <div id="container"></div>
+    <div id="blocker"></div>
+    <div id="aboutme">
+        <p class="about-content" id="about-text">ellen lo~ <a target="_blank" href="assets/EllenLoResume2021.pdf">resume~</a>
+            <a target="_blank" href="https://www.instagram.com/codebrewed/">insta~</a></p>
+        <div id="about-popup">
+            <strong style="position: relative; margin-right: 10px;">WEBSITE <br>FROM<br> COLLEGE <br>LOL</strong> I code and dance.<br> I make websites,.<br> I'm from HK &lt;3 and based in LA.
         </div>
-        <div class="work">
-          <h2>Axis Mundi</h2>
-          <div class="iframe-wrapper">
-            <iframe class="iframe-Design" data-src="https://player.vimeo.com/video/354145633?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-					</div>
-          <p class="caption">Axis Mundi is an experimental exhibition project exploring man’s attempt to override nature with technology and nature’s resistance. Made with p5.js. Featured on <a href="https://klikkentheke.com/catalogue/axis-mundi/" target="_blank">klikkenthéke</a>!</p>
-          <p class="caption">Identity design by Hilda Wong. Web and installation development by Ellen Lo.</p>
-          <p><a href="http://axismundi.info" target="_blank">Site</a> / <a href="https://github.com/ellenlowing/axismundi" target="_blank">Code</a></p>
+    </div>
+    <div id="text-guide"><span id="zoomin">[z]: zoom in,</span> <span id="spin">[s]: spin,</span> <span id="pause">[spacebar]: pause</span></div>
+    <div class="description" id="Experimental">
+        <h1>Sketches</h1>
+        <p>openFrameworks, Processing, Max/MSP, TouchDesigner, GLSL</p>
+        <hr>
+        <div class="scroll-content">
+            <div class="work">
+                <img class="gif" src="assets/images/type/luen.gif" alt=""> <br>
+                <img class="gif" src="assets/images/type/covid.gif" alt=""> <br>
+                <img class="gif" src="assets/images/type/change.gif" alt=""> <br>
+                <img class="gif" src="assets/images/type/gwing.gif" alt=""> <br>
+                <img class="gif" src="assets/images/type/coil.gif" alt=""> <br>
+                <img class="gif" src="assets/images/type/flag.gif" alt=""> <br>
+
+            </div>
+
+
         </div>
-        <div class="work">
-          <h2>MICA Code Workshop</h2>
-          <a href="https://ellenlowing.com/mica-workshop/" target="_blank"><img src="assets/images/ws/screenshot.PNG" alt=""></a>
-          <p class="caption">I led a code-based design workshop for first year MFA graphic design students at MICA. The workshop aims at introducing p5.js as a design tool. Over the course of 3 days, the students designed and coded an interactive calendar for the year 2020.</p>
-          <p><a href="https://ellenlowing.com/mica-workshop/" target="_blank">Site</a></p>
+    </div>
+    <div class="description" id="Design">
+        <h1>Design</h1>
+        <p>HTML5 canvas, p5.js, Three.js</p>
+        <hr>
+        <div class="scroll-content">
+
+            <div class="work">
+                <h2>Lost Code</h2>
+                <div class="iframe-wrapper">
+                    <iframe class="iframe-Design" data-src="https://player.vimeo.com/video/312985266?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                </div>
+                <p class="caption">Lost Code is a graphic design project exploring the friction in translation. Made with Paper.js. Featured on <a target="_blank" href="https://www.itsnicethat.com/articles/double-click-december-2019-digital-031219">It's Nice That</a>!</p>
+                <p class="caption">Design by Hilda Wong. Development by Ellen Lo.</p>
+                <p><a href="http://lostcode.info/" target="_blank">Site</a> / <a href="https://github.com/ellenlowing/lost-code" target="_blank">Code</a></p>
+            </div>
+            <div class="work">
+                <h2>Axis Mundi</h2>
+                <div class="iframe-wrapper">
+                    <iframe class="iframe-Design" data-src="https://player.vimeo.com/video/354145633?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                </div>
+                <p class="caption">Axis Mundi is an experimental exhibition project exploring man’s attempt to override nature with technology and nature’s resistance. Made with p5.js. Featured on <a href="https://klikkentheke.com/catalogue/axis-mundi/" target="_blank">klikkenthéke</a>!</p>
+                <p class="caption">Identity design by Hilda Wong. Web and installation development by Ellen Lo.</p>
+                <p><a href="http://axismundi.info" target="_blank">Site</a> / <a href="https://github.com/ellenlowing/axismundi" target="_blank">Code</a></p>
+            </div>
+            <div class="work">
+                <h2>MICA Code Workshop</h2>
+                <a href="https://ellenlowing.com/mica-workshop/" target="_blank"><img src="assets/images/ws/screenshot.PNG" alt=""></a>
+                <p class="caption">I led a code-based design workshop for first year MFA graphic design students at MICA. The workshop aims at introducing p5.js as a design tool. Over the course of 3 days, the students designed and coded an interactive calendar for the
+                    year 2020.</p>
+                <p><a href="https://ellenlowing.com/mica-workshop/" target="_blank">Site</a></p>
+            </div>
+            <div class="work">
+                <h2>Kelly Li</h2>
+                <div class="iframe-wrapper">
+                    <iframe class="iframe-Design" data-src="https://player.vimeo.com/video/354145702?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                </div>
+                <p class="caption">Portfolio site for Kelly Li, featuring her photography, reel, and 2D animations as stickers which users can drag around.</p>
+                <p class="caption">Design by Kelly Li. Dev by Ellen Lo.</p>
+                <p><a href="http://kellylikk.com/" target="_blank">Site</a></p>
+            </div>
+            <div class="work">
+                <h2>The Internet is my Main Course</h2>
+                <div class="iframe-wrapper">
+                    <iframe class="iframe-Design" data-src="https://player.vimeo.com/video/354145647?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                </div>
+                <p class="caption">The Internet is my Main Course is a dinner party series curated by Hilda Wong. I developed the RSVP site and implemented custom video controls for the trailer.</p>
+                <p><a href="http://tiimmc.info/" target="_blank">Site</a> / <a href="https://github.com/ellenlowing/tiimmc" target="_blank">Code</a></p>
+            </div>
         </div>
-        <div class="work">
-          <h2>Kelly Li</h2>
-          <div class="iframe-wrapper">
-            <iframe class="iframe-Design" data-src="https://player.vimeo.com/video/354145702?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-          </div>
-          <p class="caption">Portfolio site for Kelly Li, featuring her photography, reel, and 2D animations as stickers which users can drag around.</p>
-          <p class="caption">Design by Kelly Li. Dev by Ellen Lo.</p>
-          <p><a href="http://kellylikk.com/" target="_blank">Site</a></p>
+    </div>
+    <div class="description" id="Hardware">
+        <h1>Physical Computing</h1>
+        <p>C/C++, Python, Arduino, Raspberry Pi, Linux Kernel Programming, Qt</p>
+        <hr>
+        <div class="scroll-content">
+            <div class="work">
+                <h2>A Study of Motion and Tension</h2>
+                <div class="iframe-wrapper">
+                    <iframe class="iframe-Hardware" data-src="https://player.vimeo.com/video/286766368?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                </div>
+                <p class="caption">
+                    The kinetic sculpture is a work of collaboration with Jake Abraham. It was developed over the course of our internships at Volvox Labs. It comprises 16 micro servos with custom cut servo arms, 1 Arduino Uno, a 12" x 12" cheesecloth, steel cables, crimps,
+                    3 Aluminum rods, and plywood.
+                </p>
+
+                <p><a href="https://github.com/ellenlowing/servo" target="_blank">Code</a></p>
+            </div>
+            <div class="work">
+                <h2>FLUID</h2>
+                <div class="iframe-wrapper">
+                    <iframe class="iframe-Hardware" data-src="https://player.vimeo.com/video/298233660?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                </div>
+
+                <p class="caption">
+                    The triptych is a 95” by 40” digital canvas mounted onto the wall. The lights are encapsulated in a custom CNC cut alucobond frame with patterns. They mimic the natural flow of fluids through a scalloped-like pattern. By using LiDAR sensing technologies,
+                    distance between each canvas and any object in front becomes the major interface for interaction.
+                </p>
+            </div>
+
         </div>
-        <div class="work">
-          <h2>remigai.com</h2>
-          <div class="iframe-wrapper">
-            <iframe class="iframe-Design" data-src="https://player.vimeo.com/video/346604640?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-          </div>
-          <p class="caption">My 1st time doing both design and full stack dev! 🎉</p>
-          <p class="caption">
-            I designed and implemented a fully custom Wordpress theme and CMS from scratch for Remi's blog, where he shares insights on blockchain, cryptocurrency, and technology.
-            The site has a minimalistic look and playful hover interactions to preserve the informative nature while retaining the elements of play.
-            Estimated reading time and reading progress bar are also included to increase user engagement.
-            To support Remi's enthusiasm for crypto, I integrated MetaMask API so you can tip him in ETH with the Chrome extension.
-          </p>
-          <p class="caption">
-            If you would love a site with custom CMS and interactive elements, feel free to reach out for a quote!
-          </p>
-          <p><a href="http://remigai.com/" target="_blank">Site</a></p>
+    </div>
+    <div class="description" id="Interactive">
+        <h1>Human-computer Interaction</h1>
+        <p>Unity, OpenCV, HTC Vive, Leap Motion, Kinect</p>
+        <hr>
+        <div class="scroll-content">
+            <div class="work">
+                <h2>binary smol object</h2>
+                <div class="iframe-wrapper">
+                    <iframe class="iframe-Interactive" data-src="https://player.vimeo.com/video/400089496?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                </div>
+                <p class="caption">
+                    1st face filter made with Spark AR – I used SDF circles, moved them randomly with noise, and applied SDF Union on multiple layers to create the blobs and mask the face mesh.
+                </p>
+                <p><a href="https://instagram.com/a/r/?effect_id=1264160197122874" target="_blank">Try filter!</a></p>
+            </div>
+            <!-- <div class="work">
+                <h2>1984</h2>
+                <div class="iframe-wrapper">
+                    <iframe class="iframe-Interactive" data-src="https://player.vimeo.com/video/406330412?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                </div>
+                <p class="caption">
+                    1984 is a theater adaptation of George Orwell's novel, where the dystopian landscape is reimagined with modern technologies. Directed by Clay Hopper. <br>
+                </p>
+            </div> -->
+
+
         </div>
-        <div class="work">
-          <h2>The Internet is my Main Course</h2>
-          <div class="iframe-wrapper">
-            <iframe class="iframe-Design" data-src="https://player.vimeo.com/video/354145647?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-					</div>
-          <p class="caption">The Internet is my Main Course is a dinner party series curated by Hilda Wong. I developed the RSVP site and implemented custom video controls for the trailer.</p>
-          <p><a href="http://tiimmc.info/" target="_blank">Site</a> / <a href="https://github.com/ellenlowing/tiimmc" target="_blank">Code</a></p>
-        </div>
-			</div>
-		</div>
-		<div class="description" id="Hardware">
-			<h1>Physical Computing</h1>
-			<p>C/C++, Python, Arduino, Raspberry Pi, Linux Kernel Programming, Qt</p>
-			<hr>
-			<div class="scroll-content">
-				<div class="work">
-					<h2>A Study of Motion and Tension</h2>
-					<div class="iframe-wrapper">
-						<iframe class="iframe-Hardware" data-src="https://player.vimeo.com/video/286766368?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-					</div>
-					<p class="caption">
-						The kinetic sculpture is a work of collaboration with Jake Abraham. As a study of motion and tension, it was developed over the course of our internships at Volvox Labs. It comprises 16 micro servos with custom cut servo arms, 1 Arduino Uno, a 12" x 12" cheesecloth, steel cables, crimps, 3 Aluminum rods, and plywood.
-					</p>
-					<p class="caption">
-						The installation continuously runs a sequence of 6 different animations at an update rate of 60 Hz. By altering the speed, the amplitude, and the wavelength of the sine functions, the sculpture embodies sea waves under different weather conditions.
-					</p>
-					<p><a href="https://github.com/ellenlowing/servo" target="_blank">Code</a></p>
-				</div>
-        <div class="work">
-					<h2>FLUID</h2>
-					<div class="iframe-wrapper">
-						<iframe class="iframe-Hardware" data-src="https://player.vimeo.com/video/298233660?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-					</div>
-					<p class="caption">
-            FLUID is a study of dynamic motion as an ever-changing form. This interactive installation involves laser sensing, custom LED lighting, and physical computing technology. The triptych features interactive animations, titled - DEW, WAVES, and RAIN. The installation recreates and pushes the everyday interaction humans have with matter in different fluid forms.
-          </p>
-					<p class="caption">
-            The triptych is a 95” by 40” digital canvas mounted onto the wall. The lights are encapsulated in a custom CNC cut alucobond frame with patterns. They mimic the natural flow of fluids through a scalloped-like pattern. By using LiDAR sensing technologies, distance between each canvas and any object in front becomes the major interface for interaction. The audience is invited to observe the flow of lights from afar as well as approach the installation to introduce a change in the display.
-          </p>
-				</div>
-        <div class="work">
-					<h2>IoT apps!</h2>
-					<div class="iframe-wrapper">
-            <iframe class="iframe-Hardware" data-src="https://player.vimeo.com/video/407692387?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-					</div>
-					<p class="caption">
-            This is a self-driving car for BU's Smart Systems class, one of the many IoT / embedded systems applications I developed with ESP32 Huzzah board and Raspberry Pi in C / Node.js / NoSQL / Python.
-          </p>
-          <p class="caption">
-            The repo and playlist contain source code and demo videos for RC car with live camera feed and node server, smart key with real time graph and IR message decoding, and alarm clock with servos and alphanumeric display.
-          </p>
-					<p><a href="https://github.com/ellenlowing/physical-computing" target="_blank">Code</a> / <a href="https://www.youtube.com/watch?v=XPtLPi1lXiE&t=0s&list=PL14vQhwm_O8mJvxE0nzgfcwO0CTSZc90l&index=2" target="_blank">Playlist</a></p>
-				</div>
-			</div>
-		</div>
-		<div class="description" id="Interactive">
-			<h1>Human-computer Interaction</h1>
-			<p>Unity, OpenCV, HTC Vive, Leap Motion, Kinect</p>
-			<hr>
-			<div class="scroll-content">
-        <div class="work">
-					<h2>binary smol object</h2>
-          <div class="iframe-wrapper">
-						<iframe class="iframe-Interactive" data-src="https://player.vimeo.com/video/400089496?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-					</div>
-					<p class="caption">
-            1st face filter made with Spark AR – I used SDF circles, moved them randomly with noise, and applied SDF Union on multiple layers to create the blobs and mask the face mesh.
-          </p>
-          <p><a href="https://instagram.com/a/r/?effect_id=1264160197122874" target="_blank">Try filter!</a></p>
-				</div>
-        <div class="work">
-					<h2>1984</h2>
-          <div class="iframe-wrapper">
-						<iframe class="iframe-Interactive" data-src="https://player.vimeo.com/video/406330412?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-					</div>
-          <!-- <img src="assets/images/1984/love.JPG" alt="">
-          <img src="assets/images/1984/rats.JPG" alt=""> -->
-					<p class="caption">
-            1984 is a theater adaptation of George Orwell's novel, where the dystopian landscape is reimagined with modern technologies. Directed by Clay Hopper. <br>
-          </p>
-          <p>
-            I designed and developed interactive projections for the Ministry of Truth scene with openFrameworks and Kinect, and also created renders for Ministry of Love scene.
-          </p>
-				</div>
-				<div class="work">
-					<h2>Virtual Jenga</h2>
-					<div class="iframe-wrapper">
-						<iframe class="iframe-Interactive" data-src="https://player.vimeo.com/video/248674180?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-					</div>
-					<p class="caption">Surrounded by skyscrapers made from vertically stacked blocks, which resemble the look of jenga, players can shoot bullets into the architecture with their controllers and experience the apocalypse within the virtual environment.</p>
-					<p><a href="http://www.pillowandpill.com/blog/summer-intern-vr-game/" target="_blank">Blog</a></p>
-				</div>
-				<div class="work">
-					<h2>Virtual Ball Pit</h2>
-					<div class="iframe-wrapper">
-						<iframe class="iframe-Interactive" data-src="https://player.vimeo.com/video/244472692?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-					</div>
-					<p class="caption">Implemented with Leap Motion, the experiment Virtual Ball Pit challenges players to touch intangible, nonexistent objects with their hands in a tangible, virtual environment. </p>
-					<p><a href="https://github.com/ellenlowing/ball-pit" target="_blank">Code</a></p>
-				</div>
-			</div>
-		</div>
-		<script type="text/javascript" src="assets/js/init.js"></script>
-		<!-- <script type="text/javascript" src="assets/js/handController.js"></script> -->
-	</body>
+    </div>
+    <script type="text/javascript" src="assets/js/init.js"></script>
+    <!-- <script type="text/javascript" src="assets/js/handController.js"></script> -->
+</body>
+
 </html>

@@ -1,9 +1,11 @@
-html, body {
+html,
+body {
     height: 100%;
     overflow: hidden;
     margin: 0 0;
     background-color: #000;
 }
+
 #blocker {
     position: absolute;
     /* background-color: rgba(255, 0, 0, 0.5); */
@@ -13,6 +15,7 @@ html, body {
     height: 100%;
 }
 
+
 /*#name {
     font-family: 'Inconsolata', monospace;
     position: absolute;
@@ -21,39 +24,40 @@ html, body {
 }*/
 
 #aboutme {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Inconsolata', monospace;
     position: absolute;
-    color: #6B69D6;
+    color: #fff;
     /*top: 10px;
     right: 10px;*/
-    top:0px;
-    right:0px;
+    top: 0px;
+    right: 0px;
 }
 
-#aboutme p{
+#aboutme p {
     font-size: 1.8em;
     font-weight: 500;
-    font-style: italic;
     background-color: #000;
     -webkit-margin-before: 0em;
     -webkit-margin-after: 0em;
-    letter-spacing: 8px;
 }
 
-.about-content a:link{
+.about-content a:link {
     color: #6B69D6;
     text-decoration: none;
 }
-.about-content a:visited{
+
+.about-content a:visited {
     color: #6B69D6;
     text-decoration: none;
 }
-.about-content a:hover{
+
+.about-content a:hover {
     color: #fff;
     background-color: #6B69D6;
     text-decoration: none;
 }
-.about-content a:active{
+
+.about-content a:active {
     color: #6B69D6;
     text-decoration: none;
 }
@@ -71,7 +75,7 @@ html, body {
     padding: 0.5em;
     z-index: 99;
     line-height: 12pt;
-    font-size:14px;
+    font-size: 14px;
 }
 
 #text-guide {
@@ -82,11 +86,12 @@ html, body {
     left: 10px;
     font-size: 0.8em;
 }
-.description{
+
+.description {
     font-family: 'Roboto', sans-serif;
     position: relative;
     background-color: #fff;
-    border:2px solid;
+    border: 2px solid;
     width: 85%;
     height: 90%;
     top: 5%;
@@ -96,6 +101,7 @@ html, body {
     padding-left: 1.5em;
     padding-right: 1.5em;
 }
+
 .description h1 {
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
@@ -157,10 +163,14 @@ html, body {
 }
 
 .scroll-content img.gif {
-    width: 40%;
+    width: 100%;
+    max-width: 600px;
 }
 
-.scroll-content a:link, a:visited, a:hover, a:active {
+.scroll-content a:link,
+a:visited,
+a:hover,
+a:active {
     color: #000;
 }
 
@@ -168,7 +178,6 @@ html, body {
     border-top: 1px dashed black;
     border-bottom: 1px dashed black;
 }
-
 
 @media only screen and (max-width: 404px) {
     .scroll-content {
@@ -178,7 +187,7 @@ html, body {
 
 @media only screen and (min-width: 500px) {
     #aboutme p {
-        font-size: 1.8em;
+        /* font-size: 1.8em; */
         /* letter-spacing: 4px; */
     }
     #text-guide {
@@ -188,18 +197,16 @@ html, body {
 
 @media only screen and (min-width: 646px) {
     #aboutme p {
-        letter-spacing: 8px;
+        /* letter-spacing: 8px; */
     }
 }
 
-@media only screen and (min-width: 600px){
+@media only screen and (min-width: 600px) {
     /* For desktop */
-
     #about-popup {
         width: 400px;
     }
-
-    .description{
+    .description {
         width: 90%;
         top: 5%;
         margin: 0 auto;
@@ -207,19 +214,15 @@ html, body {
         padding-left: 1.5em;
         padding-right: 1.5em;
     }
-
     .description h1 {
         font-size: 2.0em;
     }
-
     .description p {
         font-size: 0.9em;
     }
-
     .scroll-content .caption {
         font-size: 0.9em;
     }
-
     .scroll-content .iframe-wrapper {
         position: relative;
         display: inline-block;
@@ -228,23 +231,23 @@ html, body {
         padding-bottom: 253.125px;
         margin-top: 8px;
     }
-
     .scroll-content iframe {
         position: absolute;
         width: 100%;
         height: 253.125px;
     }
-
     .scroll-content img {
         width: 480px;
         max-width: 480px;
     }
-
+    #Design .scroll-content img.gif {
+        width: 100%;
+    }
 }
 
-@media only screen and (min-width: 1280px){
+@media only screen and (min-width: 1280px) {
     /* For larger desktops */
-    .description{
+    .description {
         width: 90%;
         top: 5%;
         margin: 0 auto;
@@ -252,11 +255,9 @@ html, body {
         padding-left: 1.5em;
         padding-right: 1.5em;
     }
-
     .description h1 {
         font-size: 2.4em;
     }
-
     .scroll-content .iframe-wrapper {
         position: relative;
         display: inline-block;
@@ -265,16 +266,13 @@ html, body {
         padding-bottom: 253.125px;
         margin-top: 8px;
     }
-
     .scroll-content iframe {
         position: absolute;
         width: 100%;
         height: 253.125px;
     }
-
     .scroll-content img {
         width: 600px;
         max-width: 600px;
     }
-
 }
