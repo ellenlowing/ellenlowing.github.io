@@ -18,22 +18,30 @@
     <script src="controls/OrbitControls.js"></script>
     <script src="renderers/CSS3DRenderer.js"></script>
     <div id="container"></div>
-    <div id="blocker"></div>
-    <div id="aboutme">
-        <p class="about-content" id="about-text">ellen lo~ <a target="_blank" href="assets/EllenLoResume.pdf">resume~</a>
-            <a target="_blank" href="https://www.instagram.com/codebrewed/">insta~</a></p>
-        <div id="about-popup">
-            <strong style="position: relative; margin-right: 10px;">WEBSITE <br>FROM<br> COLLEGE <br>LOL</strong> I code and dance.<br> I make websites,.<br> I'm from HK &lt;3 and based in LA.
-        </div>
+    <div class="about">
+        <h1 class="about-component about-name">Ellen Lo</h1>
+        <h2 class="about-component about-title">AR Engineer / Web Developer</h2>
+        <h2 class="about-component about-contact"><a href="mailto:ellenlowing@gmail.com">say hi 💌</a></h2>
+        <h4 class="about-component about-controls">
+            [z]: zoom <br>
+            [spacebar]: pause
+        </h4>
+        <h4 class="about-component about-controls-marquee desktopOnly">
+            <p>[z]: zoom in, [spacebar]: pause</p>
+        </h4>
+        <h4 class="about-component about-controls-marquee mobileOnly">
+            <p>double tap to zoom in, hold to pause</p>
+        </h4>
     </div>
-    <div class="desktopOnly text-guide" id="text-guide-desktop"><span id="zoomin">[z]: zoom in,</span> <span id="pause">[spacebar]: pause</span></div>
-    <div class="mobileOnly text-guide" id="text-guide-mobile"><span id="zoomin">[double tap]: zoom in,</span> <span id="pause">[tap]: pause</span></div>
+    <!-- <div class="desktopOnly text-guide" id="text-guide-desktop"><span id="zoomin">[z]: zoom in,</span> <span id="pause">[spacebar]: pause</span></div>
+    <div class="mobileOnly text-guide" id="text-guide-mobile"><span id="zoomin">[double tap]: zoom in,</span> <span id="pause">[tap]: pause</span></div> -->
     <div class="description" id="description-main">
         <div class="scroll-content">
             <div class="work">
                 <h2>Wireloop</h2>
                 <div class="iframe-wrapper">
-                    <iframe class="iframe-Interactive" data-src="https://player.vimeo.com/video/676223121?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    <!-- <iframe class="iframe-Interactive" data-src="https://player.vimeo.com/video/676223121?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> -->
+                    <div style="padding:177.78% 0 0 0;position:relative;"><iframe data-src="https://player.vimeo.com/video/676223121?autoplay=1&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
                 </div><br> 
                 <img src="https://images.squarespace-cdn.com/content/v1/56a830f9e0327ccfbf9f4c17/de2ca636-50f2-4d8e-b2fa-d54c5d878341/WireloopPromo-TW_sml.gif?format=1500w" alt=""><br>
                 
@@ -59,7 +67,7 @@
             <div class="work">
                 <h2>Nasal Swab AR Effect</h2>
                 <div class="iframe-wrapper">
-                    <iframe class="iframe-Interactive" data-src="https://player.vimeo.com/video/674264874?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    <iframe class="iframe" data-src="https://player.vimeo.com/video/674264874?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                 </div>
                 <p class="caption">
                     Read <a target="_blank" href="https://www.nytimes.com/interactive/2022/01/31/health/covid-nasal-swab-how-far.html">How Far Should a Coronavirus Test Go?</a>
@@ -72,7 +80,7 @@
             <div class="work">
                 <h2>Dalilah Muhammad AR Effect</h2>
                 <div class="iframe-wrapper">
-                    <iframe class="iframe-Interactive" data-src="https://player.vimeo.com/video/674250409?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    <iframe class="iframe" data-src="https://player.vimeo.com/video/674250409?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                 </div>
                 <p class="caption">
                     An IG filter to visualize Dalilah Muhammad's motion over the hurdle in real-scale, published to go along with her <a target="_blank" href="https://www.nytimes.com/interactive/2021/sports/olympics/dalilah-muhammad-track.html">interview</a>  with the New York Times.
@@ -82,7 +90,7 @@
             <div class="work">
                 <h2>Studio Ānanda</h2>
                 <div class="iframe-wrapper">
-                    <iframe class="iframe-Design" data-src="https://player.vimeo.com/video/674271514?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    <iframe class="iframe" data-src="https://player.vimeo.com/video/674271514?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                 </div>
                 <p class="caption">New website + CMS for Studio Ānanda ❣️ </p>
                 <p class="caption">Had a lot of fun with some CSS properties like drop shadow, blend modes, and pseudo-elements. To create the interactive logo on the home page, I used <animateMotion> to draw circles along SVG path and changed hue over time on mouseover.</p>
@@ -92,7 +100,7 @@
             <div class="work">
                 <h2>Lost Code</h2>
                 <div class="iframe-wrapper">
-                    <iframe class="iframe-Design" data-src="https://player.vimeo.com/video/312985266?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    <iframe class="iframe" data-src="https://player.vimeo.com/video/312985266?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                 </div>
                 <p class="caption">Lost Code is a graphic design project exploring the friction in translation. Made with Paper.js. Featured on <a target="_blank" href="https://www.itsnicethat.com/articles/double-click-december-2019-digital-031219">It's Nice That</a>!</p>
                 <p class="caption">Design by Hilda Wong. Development by Ellen Lo.</p>
@@ -101,7 +109,7 @@
             <div class="work">
                 <h2>Axis Mundi</h2>
                 <div class="iframe-wrapper">
-                    <iframe class="iframe-Design" data-src="https://player.vimeo.com/video/354145633?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    <iframe class="iframe" data-src="https://player.vimeo.com/video/354145633?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                 </div>
                 <p class="caption">Axis Mundi is an experimental exhibition project exploring man’s attempt to override nature with technology and nature’s resistance. Made with p5.js. Featured on <a href="https://klikkentheke.com/catalogue/axis-mundi/" target="_blank">klikkenthéke</a>!</p>
                 <p class="caption">Identity design by Hilda Wong. Web and installation development by Ellen Lo.</p>
@@ -115,9 +123,9 @@
                 <p><a href="https://ellenlowing.com/mica-workshop/" target="_blank">Site</a></p>
             </div>
             <div class="work">
-                <h2>Motion and Tension</h2>
+                <h2>A Study of Motion and Tension</h2>
                 <div class="iframe-wrapper">
-                    <iframe class="iframe-Hardware" data-src="https://player.vimeo.com/video/286766368?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    <iframe class="iframe" data-src="https://player.vimeo.com/video/286766368?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                 </div>
                 <p class="caption">
                     The kinetic sculpture is a work of collaboration with Jake Abraham. It was developed over the course of our internships at Volvox Labs. It comprises 16 micro servos with custom cut servo arms, 1 Arduino Uno, a 12" x 12" cheesecloth, steel cables, crimps,

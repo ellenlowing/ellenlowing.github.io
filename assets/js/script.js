@@ -13,7 +13,7 @@ let cameraLimits = [
 ];
 let descriptionIds = ["Experimental", "Design", "Hardware", "Interactive"];
 let descriptionInit = [0, 0, 0, 0];
-let cameraPos = [600, 200, 500];
+let cameraPos = [600, 0, 500];
 let initCameraPos;
 let group;
 let description;
@@ -83,7 +83,7 @@ window.onload = function() {
 }
 function init() {
     let container = document.getElementById('container');
-    camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 1, 5000);
+    camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 1, 1000);
     camera.position.set(cameraPos[0], cameraPos[1], cameraPos[2]);
     zoomed = false;
     paused = false;
@@ -130,7 +130,6 @@ function init() {
     } else {
         window.addEventListener('keydown', zoom, false);
         window.addEventListener('keydown', pause, false);
-        window.addEventListener('keydown', aboutme, false);
     }
     
 
@@ -223,122 +222,6 @@ function pause(event) {
             controls.autoRotate = true;
             paused = false;
         }
-    }
-}
-
-function aboutme(event) {
-    event.preventDefault();
-    if ((event.key == 'e' || event.key == 'E') && !zoomed && !spun && !nameRendered) {
-        nameRendered = true;
-        let abouttext = document.getElementById("about-text");
-        let counter = 0;
-        let name = "ellen lo";
-        let aName = document.createElement('a');
-        let textNodeName = document.createTextNode('');
-        aName.appendChild(textNodeName);
-        aName.href = "index.html";
-        aName.target = "";
-
-        let popup = document.getElementById("about-popup");
-        aName.addEventListener('mouseover', function(event) {
-            popup.style.display = "flex";
-            popup.style.left = (Math.random() * (window.innerWidth - 320)).toString() + "px";
-            popup.style.top = (Math.random() * (window.innerHeight - 100)).toString() + "px";
-
-        }, false);
-        aName.addEventListener('mouseleave', function(event) {
-            popup.style.display = "none";
-        }, false);
-
-        let addNameFunc = setInterval(function() {
-
-            aName.innerHTML += name[counter];
-            abouttext.appendChild(aName);
-            counter++;
-
-            if (counter >= name.length) {
-                clearInterval(addNameFunc);
-
-                let span_3 = document.createElement('span');
-                let slash_3 = document.createTextNode(" / ");
-                abouttext.appendChild(slash_3);
-
-                let counter_email = 0;
-                let email = "email";
-                let aEmail = document.createElement('a');
-                let textNodeEmail = document.createTextNode('');
-                aEmail.appendChild(textNodeEmail);
-                aEmail.href = "mailto:ellenlowing@gmail.com";
-                aEmail.target = "_top";
-                let addEmailFunc = setInterval(function() {
-                    aEmail.innerHTML += email[counter_email];
-                    abouttext.appendChild(aEmail);
-                    counter_email++;
-                    if (counter_email >= email.length) {
-                        clearInterval(addEmailFunc);
-                        let span = document.createElement('span');
-                        let slash = document.createTextNode(" / ");
-                        abouttext.appendChild(slash);
-
-                        let counter_resume = 0;
-                        let resume = "cv";
-                        let a = document.createElement('a');
-                        let textNode = document.createTextNode('');
-                        a.appendChild(textNode);
-                        a.href = "assets/EllenLoResume2021.pdf";
-                        a.target = "_blank";
-                        let addResumeFunc = setInterval(function() {
-                            a.innerHTML += resume[counter_resume];
-                            abouttext.appendChild(a);
-                            counter_resume++;
-                            if (counter_resume >= resume.length) {
-                                clearInterval(addResumeFunc);
-                                let span_2 = document.createElement('span');
-                                let slash_2 = document.createTextNode(" / ");
-                                abouttext.appendChild(slash_2);
-
-                                let counter_github = 0;
-                                let github = "github";
-                                let aGit = document.createElement('a');
-                                let textNodeGit = document.createTextNode('');
-                                aGit.appendChild(textNodeGit);
-                                aGit.href = "https://github.com/ellenlowing";
-                                aGit.target = "_blank";
-                                let addGithubFunc = setInterval(function() {
-                                    aGit.innerHTML += github[counter_github];
-                                    abouttext.appendChild(aGit);
-                                    counter_github++;
-                                    if (counter_github >= github.length) {
-                                        clearInterval(addGithubFunc);
-
-                                        let span_4 = document.createElement('span');
-                                        let slash_4 = document.createTextNode(" / ");
-                                        abouttext.appendChild(slash_4);
-
-                                        let counter_insta = 0;
-                                        let insta = "instagram";
-                                        let aInsta = document.createElement('a');
-                                        let textNodeInsta = document.createTextNode('');
-                                        aInsta.appendChild(textNodeInsta);
-                                        aInsta.href = "https://www.instagram.com/codebrewed/?hl=en";
-                                        aInsta.target = "_blank";
-                                        let addInstaFunc = setInterval(function() {
-                                            aInsta.innerHTML += insta[counter_insta];
-                                            abouttext.appendChild(aInsta);
-                                            counter_insta++;
-                                            if (counter_insta >= insta.length) {
-                                                clearInterval(addInstaFunc);
-                                            }
-                                        }, Math.random() * (200 - 100) + 100);
-                                    }
-                                }, Math.random() * (200 - 100) + 100);
-                            }
-                        }, Math.random() * (200 - 100) + 100);
-                    }
-                }, Math.random() * (200 - 100) + 100);
-            }
-        }, Math.random() * (200 - 100) + 100);
-
     }
 }
 
