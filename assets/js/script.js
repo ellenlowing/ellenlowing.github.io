@@ -179,9 +179,9 @@ function zoom(event) {
                     controls.autoRotate = true;
                     controls.autoRotateSpeed = 8;
                     camera.position.set(initCameraPos[0], initCameraPos[1], initCameraPos[2]);
-                    if(mobileMode) {
-                        document.getElementById("about-marquee-mobile").innerHTML = "double tap to zoom in, hold to pause";
-                    } 
+                    // if(mobileMode) {
+                    //     document.getElementById("about-marquee-mobile").innerHTML = "double tap to zoom in, hold to pause";
+                    // } 
                     // else {
                     //     document.getElementById("about-marquee-desktop").innerHTML = "[z]: zoom in, [spacebar]: pause";
                     // }
@@ -209,9 +209,9 @@ function zoom(event) {
                     clearInterval(zoomInFunction);
                     controls.autoRotate = false;
                     description.style.display = "block";
-                    if(mobileMode) {
-                        document.getElementById("about-marquee-mobile").innerHTML = "double tap to zoom out";
-                    } 
+                    // if(mobileMode) {
+                    //     document.getElementById("about-marquee-mobile").innerHTML = "double tap to zoom out";
+                    // } 
                     // else {
                     //     document.getElementById("about-marquee-desktop").innerHTML = "[z]: zoom out";
                     // }

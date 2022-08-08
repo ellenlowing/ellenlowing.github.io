@@ -197,14 +197,20 @@ p {
 .work > * {
     padding: 12px 12px;
 }
+.h1-sm {
+    display: block;
+}
+.h1-md {
+    display: none;
+}
 .work h1 {
-    font-family: space;
-    font-size: 40px;
+    font-family: space, dosis;
+    font-size: 48px;
 }
 .work h2 {
     animation: none;
     font-family: space;
-    font-size: 32px;
+    font-size: 28px;
     filter: drop-shadow(0px 0px 2px #E7E7FF);
 }
 .work p a:link,
@@ -230,7 +236,7 @@ p {
     height: auto;
 }
 .work img {
-    max-width: 100%;
+    max-width: 95%;
     max-height: 100%;
 }
 .work .iframe-wrapper-portrait {
@@ -263,6 +269,13 @@ p {
     left:0;
     width:100%;
     height:100%;
+}
+.work:last-child {
+    padding-bottom: 80px;
+}
+
+@media only screen and (min-width: 600px) {
+    /* Work page styling for wider screens */
 }
 
 @media only screen and (min-width: 750px) {
@@ -319,19 +332,50 @@ p {
     .about-controls-marquee.desktopOnly {
         display: none;
     }
-    
-    .description {
+    .work:not(:nth-of-type(1)) {
+        padding-top: 72px;
+        clear: both;
+    }
+    .work .img-wrapper-mica {
+        width: 480px;
+        float: left;
+        height: 600px;
+        /* padding: 375px 0 0 0; */
+    }
+    .work .iframe-wrapper-portrait {
+        width: 480px;
+        margin: 0;
+        padding:720px 0 0 0;
+        position:relative;
+        float: left;
+    }
+    .work .iframe-wrapper-landscape {
+        width: 520px;
         margin: 0 auto;
+        padding: 300px 0 0 0;
+        position:relative;
+        float: left;
+    }
+    .work .iframe-wrapper-landscape-sa {
+        width: 520px;
+        margin: 0 auto;
+        padding: 375px 0 0 0;
+        position:relative;
+        float: left;
+    }
+    .work .iframe-wrapper-landscape-am {
+        width: 480px;
+        margin: 0 auto;
+        padding: 480px 0 0 0;
+        position:relative;
+        float: left;
+    }
+
+    .h1-sm {
         display: none;
     }
-    .description h1 {
-        font-size: 2.0em;
-    }
-    .description p {
-        font-size: 0.9em;
-    }
-    .scroll-content .caption {
-        font-size: 0.9em;
+    .h1-md {
+        display: block;
     }
 }
 
