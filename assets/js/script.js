@@ -82,9 +82,9 @@ window.onload = function() {
     console.log("Finish loading");
 
     // automate keydown
-    window.dispatchEvent(new KeyboardEvent('keydown', {
-        'key': 'z'
-    }));
+    // window.dispatchEvent(new KeyboardEvent('keydown', {
+    //     'key': 'z'
+    // }));
 }
 function init() {
     let container = document.getElementById('container');
