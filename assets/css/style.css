@@ -5,12 +5,28 @@
     font-style: normal;
     font-stretch: normal;
 }
+@font-face {
+    font-family: dosis;
+    src: url('../fonts/Dosis/static/Dosis-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+}
 html,
 body {
     height: 100%;
     overflow: hidden;
     margin: 0 0;
     background-color: #000;
+    
+    -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Old versions of Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+                user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+
 }
 a:link,
 a:visited,
@@ -22,10 +38,14 @@ a:active {
 h1,
 h2,
 h3,
-h4 {
+h4,
+p {
     margin-block-start: 0;
     margin-block-end: 0;
 }
+/* img {
+    width: 100%;
+} */
 
 
 .desktop .desktopOnly {
@@ -91,7 +111,6 @@ h4 {
     overflow: hidden;
     position: relative;
 }
-
 .about-controls-marquee p {
     position: absolute;
     width: 100%;
@@ -105,6 +124,16 @@ h4 {
     -moz-animation: scroll-left 2s linear infinite;
     -webkit-animation: scroll-left 2s linear infinite;
     animation: scroll-left 20s linear infinite;
+    animation-play-state: running;
+    -o-animation-play-state: running;
+    -moz-animation-play-state: running;
+    -webkit-animation-play-state: running;
+}
+.about-controls-marquee p:hover {
+    animation-play-state: paused;
+    -o-animation-play-state: paused;
+    -moz-animation-play-state: paused;
+    -webkit-animation-play-state: paused;
 }
 
 @-moz-keyframes scroll-left {
@@ -138,50 +167,105 @@ h4 {
     }
 }
 
-.text-guide {
-    font-family: 'Inconsolata', monospace;
-    color: #fff;
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    font-size: 0.8em;
-}
 
 .description {
-    font-family: 'Inconsolata', monospace;
-    font-weight: 300;
-    font-size: 0.8em;
+    font-family: dosis;
     position: relative;
-    background-color: #fff;
-    border: 2px solid;
-    width: 85%;
-    height: 90%;
-    top: 5%;
+    background-color: #000;
+    color: #fff;
+    border: 2px solid white;
+    width: calc(100vw - 24px);
+    height: calc(100vh - 24px);
+    top: 12px;
     margin: 0 auto;
     z-index: 98;
     display: none;
 }
 
 .scroll-content {
+    position: relative;
     width: 100%;
-    overflow-y: auto;
     height: 100%;
-    line-height: 10pt;
+    overflow-y: auto;
+    overflow-x: hidden;
 } 
-
-.description hr {
-    border-top: 1px dashed black;
-    border-bottom: 1px dashed black;
+.work {
+    position: relative;
+    width: 100%;
+    margin: 30px 0;
+}
+.work > * {
+    padding: 12px 12px;
+}
+.work h1 {
+    font-family: space;
+    font-size: 40px;
+}
+.work h2 {
+    animation: none;
+    font-family: space;
+    font-size: 32px;
+    filter: drop-shadow(0px 0px 2px #E7E7FF);
+}
+.work p a:link,
+.work p a:visited,
+.work p a:active {
+    text-decoration: underline;
+} 
+.work p a:hover {
+    text-decoration: none;
+}
+.work h2:hover {
+    animation-name: glow;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in;
+}
+.work p {
+    font-size: 24px;
+}
+.work .img-container {
+    width: calc(100vw - 48px);
+    height: auto;
+}
+.work img {
+    max-width: 100%;
+    max-height: 100%;
+}
+.work .iframe-wrapper-portrait {
+    width: 95%;
+    margin: 0 auto;
+    padding:177.78% 0 0 0;
+    position:relative;
+}
+.work .iframe-wrapper-landscape {
+    width: 95%;
+    margin: 0 auto;
+    padding:56.25% 0 0 0;
+    position:relative;
+}
+.work .iframe-wrapper-landscape-sa {
+    width: 95%;
+    margin: 0 auto;
+    padding:78% 0 0 0;
+    position:relative;
+}
+.work .iframe-wrapper-landscape-am {
+    width: 95%;
+    margin: 0 auto;
+    padding:100% 0 0 0;
+    position:relative;
+}
+.work iframe {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
 }
 
-@media only screen and (min-width: 500px) {
-
-    #text-guide {
-        font-size: 1em;
-    }
-}
-
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 750px) {
     /* For desktop */
 
     .about {
@@ -237,8 +321,6 @@ h4 {
     }
     
     .description {
-        width: 90%;
-        top: 5%;
         margin: 0 auto;
         display: none;
     }
@@ -256,12 +338,8 @@ h4 {
 @keyframes glow {
     0% {
         text-shadow: 0px 0px 1px #E7E7FF;
-        /* -webkit-filter: drop-shadow(0px 0px 2px #E7E7FF); */
-        /* filter: drop-shadow(0px 0px 2px #E7E7FF); */
     }
     100% {
         text-shadow: 0px 0px 6px #E7E7FF;
-        /* -webkit-filter: drop-shadow(0px 0px 8px #E7E7FF); */
-        /* filter: drop-shadow(0px 0px 8px #E7E7FF); */
     }
 }

@@ -80,6 +80,11 @@ init();
 animate();
 window.onload = function() {
     console.log("Finish loading");
+
+    // automate keydown
+    window.dispatchEvent(new KeyboardEvent('keydown', {
+        'key': 'z'
+    }));
 }
 function init() {
     let container = document.getElementById('container');
@@ -138,6 +143,7 @@ function init() {
     GLrenderer.domElement.style.position = 'absolute';
     GLrenderer.domElement.style.top = 0;
     container.appendChild(GLrenderer.domElement);
+
 }
 
 function detectTaps(event) {
@@ -174,10 +180,11 @@ function zoom(event) {
                     controls.autoRotateSpeed = 8;
                     camera.position.set(initCameraPos[0], initCameraPos[1], initCameraPos[2]);
                     if(mobileMode) {
-                        document.getElementById("text-guide-mobile").innerHTML = "[double tap]: zoom in, [tap]: pause";
-                    } else {
-                        document.getElementById("text-guide-desktop").innerHTML = "[z]: zoom in, [spacebar]: pause";
-                    }
+                        document.getElementById("about-marquee-mobile").innerHTML = "double tap to zoom in, hold to pause";
+                    } 
+                    // else {
+                    //     document.getElementById("about-marquee-desktop").innerHTML = "[z]: zoom in, [spacebar]: pause";
+                    // }
                 }
             }, 50);
         } else {
@@ -190,6 +197,7 @@ function zoom(event) {
                 let iframes = document.getElementsByTagName('iframe');
                 for(let i = 0; i < iframes.length; i++) {
                     iframes[i].setAttribute('src', iframes[i].getAttribute('data-src'));
+                    // iframes[i].setAttribute('src', iframes[i].getAttribute('data-src') + "&autoplay=1&loop=1&muted=1&autopause=0&background=1");
                 }
             }
 
@@ -202,10 +210,11 @@ function zoom(event) {
                     controls.autoRotate = false;
                     description.style.display = "block";
                     if(mobileMode) {
-                        document.getElementById("text-guide-mobile").innerHTML = "[double tap]: zoom out";
-                    } else {
-                        document.getElementById("text-guide-desktop").innerHTML = "[z]: zoom out";
-                    }
+                        document.getElementById("about-marquee-mobile").innerHTML = "double tap to zoom out";
+                    } 
+                    // else {
+                    //     document.getElementById("about-marquee-desktop").innerHTML = "[z]: zoom out";
+                    // }
                 }
             }, 50);
         }
