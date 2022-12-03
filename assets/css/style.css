@@ -184,7 +184,7 @@ p {
     height: fill-available;
     height: -moz-available;
     height: stretch;
-    overflow-y: scroll;
+    overflow-y: hidden;
     top: 12px;
     margin: 0 auto;
     margin-bottom: 24px;
