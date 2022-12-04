@@ -110,9 +110,10 @@ p {
 }
 .about-controls-marquee {
     display: block;
-    font-size: 18px;
+    font-size: 20px;
     height: 40px;
     overflow: hidden;
+    width: max(1200px, 100vw);
     position: relative;
 }
 .about-controls-marquee p {
@@ -121,12 +122,12 @@ p {
     height: 100%;
     margin: 0;
     line-height: 50px;
-    text-align: center;
+    text-align: left;
     -moz-transform: translateX(100%);
     -webkit-transform: translateX(100%);
     transform: translateX(100%);
-    -moz-animation: scroll-left 2s linear infinite;
-    -webkit-animation: scroll-left 2s linear infinite;
+    -moz-animation: scroll-left 20s linear infinite;
+    -webkit-animation: scroll-left 20s linear infinite;
     animation: scroll-left 20s linear infinite;
     animation-play-state: running;
     -o-animation-play-state: running;
@@ -184,13 +185,14 @@ p {
     height: fill-available;
     height: -moz-available;
     height: stretch;
-    overflow-y: hidden;
+    overflow-y: scroll;
     top: 12px;
     margin: 0 auto;
     margin-bottom: 24px;
     z-index: 98;
     display: none;
 }
+
 
 .scroll-content {
     position: relative;
@@ -199,6 +201,18 @@ p {
     overflow-y: auto;
     overflow-x: hidden;
 } 
+.desktop .scroll-content {
+    overflow-y: scroll;
+}
+.desktop .description {
+    overflow-y: hidden;
+}
+.mobile .scroll-content {
+    overflow-y: hidden;
+}
+.mobile .description {
+    overflow-y: scroll;
+}
 .work {
     position: relative;
     width: 100%;
@@ -284,31 +298,25 @@ p {
     /* padding-bottom: 80px; */
 }
 
-@media only screen and (min-width: 600px) {
-    /* Work page styling for wider screens */
-}
-
 @media only screen and (min-width: 750px) {
     /* For desktop */
 
     .about-component {
         line-height: 0.8;
     }
-    .about h1 {
+    /* .about h1 {
         font-size: 4em;
     }
     .about h2 {
         font-size: 2.5em;
-    }
-    .about-name {
-        top: 2vw;
-        left: 2vw;
-    }
+    } */
+   
     .about-contact {
         position: absolute;
+        font-size: 2.5em !important;
         right: 2vw;
-        top: 2vw;
-        bottom: unset;
+        bottom: 30px;
+        top: unset;
         left: unset;
         transform: unset;
         animation: none;
@@ -322,22 +330,13 @@ p {
         animation-timing-function: ease-in;
         filter: drop-shadow(0px 0px 2px #E7E7FF);
     }
-    .about-title {
-        left: 2vw;
-        bottom: 2vw;
+    .about-controls-marquee {
+        font-size: 22px;
     }
-    .about-controls {
-        border: solid 1px white;
-        font-size: 1.5em;
-        text-align: right;
-        bottom: 2vw;
-        right: 2vw;
-        padding: 0.6em;
-        line-height: 1.2;
-        display: block;
-    }
-    .about-controls-marquee.desktopOnly {
-        display: none;
+    .about-controls-marquee p {
+        -moz-animation: scroll-left 30s linear infinite;
+        -webkit-animation: scroll-left 30s linear infinite;
+        animation: scroll-left 30s linear infinite;
     }
     .work:not(:nth-of-type(1)) {
         padding-top: 72px;
