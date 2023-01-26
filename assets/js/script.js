@@ -114,7 +114,6 @@ function detectTaps(event) {
     let tapLength = currentTime - lastTap;
     clearTimeout(timeout);
     if (tapLength < 200 && tapLength > 0) {
-        event.preventDefault();
         zoom(event);
     } else {
         pause(event);
@@ -126,7 +125,6 @@ function detectTaps(event) {
 }
 
 function zoom(event) {
-    event.preventDefault();
     if (zoomed) {
         description.style.display = "none";
         let zoomOutFunction = setInterval(function() {
@@ -167,7 +165,6 @@ function zoom(event) {
 }
 
 function pause(event) {
-    event.preventDefault();
     if(!zoomed) {
         if (!paused) {
             controls.autoRotate = false;
