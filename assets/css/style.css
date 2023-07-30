@@ -287,6 +287,12 @@ p {
     padding:100% 0 0 0;
     position:relative;
 }
+.work .iframe-wrapper-landscape-kapu {
+    width: 95%;
+    margin: 0 auto;
+    padding: 100% 0 0 0;
+    position:relative;
+}
 .work iframe {
     position:absolute;
     top:0;
@@ -371,6 +377,13 @@ p {
     }
     .work .iframe-wrapper-landscape-am {
         width: 480px;
+        margin: 0 auto;
+        padding: 480px 0 0 0;
+        position:relative;
+        float: left;
+    }
+    .work .iframe-wrapper-landscape-kapu {
+        width: 520px;
         margin: 0 auto;
         padding: 480px 0 0 0;
         position:relative;
