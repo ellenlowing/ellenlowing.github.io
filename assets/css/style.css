@@ -199,14 +199,38 @@ p {
     z-index: 98;
     display: none;
 }
-
-
+#cross-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 28px;
+    height: 28px;
+    margin: 16px;
+    cursor: pointer;
+    z-index:99;
+}
+#cross-svg {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 28px;
+    height: auto;
+    margin: 16px;
+    cursor:pointer;
+    pointer-events: none;
+    z-index:98;
+}
+#cross-svg line
+{
+    stroke-width: 3px;
+}
 .scroll-content {
     position: relative;
     width: 100%;
     height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
+    padding-top: 28px;
 } 
 .desktop .scroll-content {
     overflow-y: scroll;

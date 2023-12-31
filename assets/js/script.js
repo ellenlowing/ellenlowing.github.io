@@ -63,7 +63,7 @@ window.onload = function() {
     console.log("Finish loading");
 
     // debug
-    zoom();
+    // zoom();
 }
 function init() {
     let container = document.getElementById('container');
@@ -94,10 +94,11 @@ function init() {
     window.addEventListener('resize', onWindowResize, false);
     if(mobileMode) {
         window.addEventListener('touchend', detectTaps, false);
+        document.getElementById('cross-btn').addEventListener('touchstart', zoom, false);
     } else {
         window.addEventListener('click', detectTaps, false);
+        document.getElementById('cross-btn').addEventListener('click', zoom, false);
     }
-    
 
     GLrenderer = new THREE.WebGLRenderer({ alpha: 1, antialias: true, clearColor: 0xffffff });
     GLrenderer.setSize(window.innerWidth, window.innerHeight);
@@ -111,18 +112,22 @@ function detectTaps(event) {
     let currentTime = new Date().getTime();
     let tapLength = currentTime - lastTap;
     clearTimeout(timeout);
-    if (tapLength < 200 && tapLength > 0) {
+    // if (tapLength < 200 && tapLength > 0) {
+    if(!zoomed)
+    {
         zoom(event);
-    } else {
-        pause(event);
-        timeout = setTimeout(function() {
-            clearTimeout(timeout);
-        }, 200);
     }
+    // } else {
+    //     pause(event);
+    //     timeout = setTimeout(function() {
+    //         clearTimeout(timeout);
+    //     }, 200);
+    // }
     lastTap = currentTime;
 }
 
 function zoom(event) {
+    console.log("zoom");
     if (zoomed) {
         description.style.display = "none";
         let zoomOutFunction = setInterval(function() {
