@@ -19,9 +19,6 @@ let group;
 let description;
 let device;
 let lazyloaded = false;
-let lastTap = 0;
-let timeout;
-let touchStartTime;
 
 function isMobile() {
     let md = new MobileDetect(window.navigator.userAgent);
@@ -63,7 +60,7 @@ window.onload = function() {
     console.log("Finish loading");
 
     // debug
-    // zoom();
+    zoom();
 }
 function init() {
     let container = document.getElementById('container');
@@ -91,6 +88,7 @@ function init() {
     controls.enabled = false;
     description = document.getElementById('description-main');
 
+    // set up event listeners
     window.addEventListener('resize', onWindowResize, false);
     if(mobileMode) {
         window.addEventListener('touchend', detectTaps, false);
@@ -98,6 +96,12 @@ function init() {
     } else {
         window.addEventListener('click', detectTaps, false);
         document.getElementById('cross-btn').addEventListener('click', zoom, false);
+    }
+    
+    let tagSelectors = document.getElementsByClassName('tag-selector');
+    for(let selector of tagSelectors)
+    {
+        selector.addEventListener('click', filterWork, false);
     }
 
     GLrenderer = new THREE.WebGLRenderer({ alpha: 1, antialias: true, clearColor: 0xffffff });
@@ -109,25 +113,13 @@ function init() {
 }
 
 function detectTaps(event) {
-    let currentTime = new Date().getTime();
-    let tapLength = currentTime - lastTap;
-    clearTimeout(timeout);
-    // if (tapLength < 200 && tapLength > 0) {
     if(!zoomed)
     {
         zoom(event);
     }
-    // } else {
-    //     pause(event);
-    //     timeout = setTimeout(function() {
-    //         clearTimeout(timeout);
-    //     }, 200);
-    // }
-    lastTap = currentTime;
 }
 
 function zoom(event) {
-    console.log("zoom");
     if (zoomed) {
         description.style.display = "none";
         let zoomOutFunction = setInterval(function() {
@@ -190,4 +182,50 @@ function animate() {
     requestAnimationFrame(animate);
     controls.update();
     renderer.render(scene, camera);
+}
+
+function filterWork(e)
+{
+    e.target.classList.toggle("active");
+    let activeTags = document.querySelectorAll('.tag-selector.active');
+    let work = document.querySelectorAll('.work');
+    
+    if(activeTags.length == 0)
+    {
+        for(let el of work)
+        {
+            el.style.display = 'block';
+        }
+    }
+    else
+    {
+        let activeTagClassNames = [];
+        for(let tag of activeTags)
+        {
+            activeTagClassNames.push(`${tag.getAttribute("data-classname")}`);
+
+        }
+
+        for(let el of work)
+        {
+            let isActive = false;
+            for(let tag of activeTagClassNames)
+            {
+                if(el.classList.contains(tag))
+                {
+                    isActive = true;
+                    break;
+                }
+            }
+
+            if(isActive)
+            {
+                el.style.display = 'block';
+            }
+            else
+            {
+                el.style.display = 'none';
+            }
+        }
+    }
 }

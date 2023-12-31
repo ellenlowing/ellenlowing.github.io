@@ -224,6 +224,36 @@ p {
 {
     stroke-width: 3px;
 }
+
+#tags-selector
+{
+    position: sticky;
+    z-index: 99;
+    width: fit-content;
+}
+#tags-selector ul
+{
+    padding-inline-start: 0;
+    padding: 0 14px;
+    width: fit-content;
+}
+.tag-selector
+{
+    display: inline-flex;
+    list-style-type: none;
+    border: solid white 1px;
+    padding: 8px;
+    margin: 4px;
+    cursor: pointer;
+    background-color: #000;
+    color: #fff;
+}
+.tag-selector.active
+{
+    background-color: #fff;
+    color: #000;
+}
+
 .scroll-content {
     position: relative;
     width: 100%;
@@ -248,6 +278,7 @@ p {
     position: relative;
     width: 100%;
     margin: 30px 0;
+    overflow: auto;
 }
 .work > * {
     padding: 12px 12px;
