@@ -179,7 +179,6 @@ p {
     }
 }
 
-
 .description {
     font-family: dosis;
     position: relative;
@@ -187,17 +186,30 @@ p {
     color: #fff;
     border: 2px solid white;
     width: calc(100vw - 24px);
-    height: 100vh;
+    /* height: 100vh;
     height: -webkit-fill-available;
     height: fill-available;
-    height: -moz-available;
-    height: stretch;
+    height: -moz-available; */
+    /* height: stretch; */
     overflow-y: scroll;
     top: 12px;
     margin: 0 auto;
-    margin-bottom: 24px;
+    /* margin-bottom: 24px; */
     z-index: 98;
     display: none;
+}
+.desktop .description
+{
+    height: calc(100vh - 24px);
+}
+.mobile .description
+{
+    height: 100vh;
+    height: -webkit-fill-available;
+    height: fill-available;
+    height: -moz-available; 
+    height: stretch;
+    margin-bottom: 24px;
 }
 #cross-btn {
     position: absolute;
