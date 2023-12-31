@@ -62,10 +62,8 @@ animate();
 window.onload = function() {
     console.log("Finish loading");
 
-    // automate keydown
-    // window.dispatchEvent(new KeyboardEvent('keydown', {
-    //     'key': 'z'
-    // }));
+    // debug
+    zoom();
 }
 function init() {
     let container = document.getElementById('container');

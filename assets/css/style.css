@@ -12,6 +12,13 @@
     font-style: normal;
     font-stretch: normal;
 }
+::-webkit-scrollbar {
+  display: none;
+}
+* {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
 html,
 body {
     height: 100%;
@@ -293,6 +300,12 @@ p {
     padding: 100% 0 0 0;
     position:relative;
 }
+.work .iframe-wrapper-landscape-mosquito {
+    width: 95%;
+    margin: 0 auto;
+    padding: 55.56% 0 0 0;
+    position:relative;
+}
 .work iframe {
     position:absolute;
     top:0;
@@ -304,7 +317,7 @@ p {
     /* padding-bottom: 80px; */
 }
 
-@media only screen and (min-width: 750px) {
+@media only screen and (min-width: 960px) {
     /* For desktop */
 
     .about-component {
@@ -386,6 +399,13 @@ p {
         width: 520px;
         margin: 0 auto;
         padding: 480px 0 0 0;
+        position:relative;
+        float: left;
+    }
+    .work .iframe-wrapper-landscape-mosquito {
+        width: 520px;
+        margin: 0 auto;
+        padding: 272px 0 0 0;
         position:relative;
         float: left;
     }
