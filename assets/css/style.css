@@ -254,16 +254,17 @@ p {
 {
     float: none;
 }
-#tags-selector
-{
-    position: absolute;
-    margin: 16px 0;
-}
 .tags-container, #tags-selector
 {
     /* position: sticky; */
     z-index: 99;
     width: fit-content;
+}
+#tags-selector
+{
+    position: absolute;
+    margin: 16px 0;
+    width: calc(100% - 60px);
 }
 .tags-container ul, #tags-selector ul
 {
