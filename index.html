@@ -20,34 +20,50 @@
     <div id="container"></div>
     <div class="about">
         <h1 class="about-component about-name">Ellen Lo</h1>
-        <h2 class="about-component about-title">AR Engineer / Web Developer</h2>
+        <h2 class="about-component about-title">Coder + Designer</h2>
         <h2 class="about-component about-contact"><a href="mailto:ellenlowing@gmail.com">say hi 💌</a></h2>
         <h4 id="about-marquee-desktop" class="about-component about-controls-marquee desktopOnly">
             <p>
                 🖱 click anywhere to view work
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                🪞 available for freelance work – website, IG filters or anything AR!
+                🤹🏻 available for freelance work – games, websites, filters, XR prototyping
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                🐣 new website on the way
             </p>
         </h4>
         <h4 id="about-marquee-mobile" class="about-component about-controls-marquee mobileOnly">
             <p>
                 👆 tap anywhere to view work
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                🪞 available for freelance work – website, IG filters or anything AR!
+                🤹🏻 available for freelance work – games, websites, filters, XR prototyping
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                🐣 new website on the way
             </p>
         </h4>
     </div>
     <div class="description" id="description-main">
-        <div id="cross-btn">
+        <div id="top-bar">  
+            <div id="cross-btn">
+            </div>
+            <svg id="cross-svg" width="102" height="101" viewBox="0 0 102 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="1.35355" y1="0.646447" x2="101.354" y2="100.646" stroke="white"/>
+                <line x1="0.646447" y1="100.646" x2="100.646" y2="0.646468" stroke="white"/>
+            </svg>
+            <div class="tags-container" id="tags-selector">
+                <ul>
+                    <li data-classname="design" class="tag tag-selector">design</li>
+                    <li data-classname="website" class="tag tag-selector">website</li>
+                    <li data-classname="xr" class="tag tag-selector">mixed reality</li>
+                    <li data-classname="game" class="tag tag-selector">game</li>
+                    <li data-classname="experiment" class="tag tag-selector">experiment</li>
+                    <li data-classname="installation" class="tag tag-selector">installation</li>
+                    <li data-classname="workshop" class="tag tag-selector">workshop</li>
+                </ul>
+            </div>
         </div>
-        <svg id="cross-svg" width="102" height="101" viewBox="0 0 102 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <line x1="1.35355" y1="0.646447" x2="101.354" y2="100.646" stroke="white"/>
-            <line x1="0.646447" y1="100.646" x2="100.646" y2="0.646468" stroke="white"/>
-        </svg>
-
+        
         <div class="scroll-content">
-            
-            <div class="work">
+            <div class="work design website">
                 <h1 class="h1-sm">Kapu</h1>
                 <div class="iframe-wrapper-landscape-kapu">
                     <iframe class="iframe" data-src="https://player.vimeo.com/video/849836034?title=0&byline=0&portrait=0" allow="autoplay" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
@@ -61,7 +77,7 @@
                 </p>
                 <h2><a href="https://kapu.glass" target="_blank">Enter site</a></h2>
             </div>
-            <div class="work">
+            <div class="work game xr">
                 <h1 class="h1-sm">Wireloop</h1>
                 <div class="iframe-wrapper-portrait">
                     <iframe class="iframe" data-src="https://player.vimeo.com/video/737429584?title=0&byline=0&portrait=0" allow="autoplay" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
@@ -84,7 +100,7 @@
                     <a href="https://www.instagram.com/ar/1115878509182784/" target="_blank">VII</a>
                 </p>  -->
             </div>
-            <div class="work">
+            <div class="work xr">
                 <h1 class="h1-sm">Nasal Swab</h1>
                 <div class="iframe-wrapper-portrait">
                     <iframe class="iframe" data-src="https://player.vimeo.com/video/674264874?title=0&byline=0&portrait=0" allow="autoplay" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
@@ -98,7 +114,7 @@
                 </p>
                 <h2><a href="https://www.instagram.com/ar/658770018692003" target="_blank">Try it here</a></h2>
             </div>
-            <div class="work">
+            <div class="work xr">
                 <h1 class="h1-sm">A Tiny Frog's Climb</h1>
                 <div class="iframe-wrapper-portrait">
                     <iframe class="iframe" data-src="https://player.vimeo.com/video/737433617?title=0&byline=0&portrait=0" allow="autoplay" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
@@ -109,7 +125,7 @@
                 </p>
                 <h2><a href="https://www.instagram.com/ar/1142331453229649" target="_blank">Try it here</a></h2>
             </div>
-            <div class="work">
+            <div class="work website">
                 <h1 class="h1-sm">Somewhere Good</h1>
                 <div class="iframe-wrapper-landscape-sa">
                     <iframe class="iframe" data-src="https://player.vimeo.com/video/742469710?title=0&byline=0&portrait=0" allow="autoplay" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
@@ -119,7 +135,7 @@
                 <h2><a href="https://www.somewheregood.com/" target="_blank">Enter site</a></h2>
             </div>
             
-            <div class="work">
+            <div class="work website design">
                 <h1 class="h1-sm">Studio Ānanda</h1>
                 <div class="iframe-wrapper-landscape-sa">
                     <iframe class="iframe" data-src="https://player.vimeo.com/video/674271514?title=0&byline=0&portrait=0" allow="autoplay" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
@@ -128,7 +144,7 @@
                 <p class="caption">I designed and developed a new website + CMS for Studio Ānanda, channeling their spirit of wellness with soft aesthetics and use of CSS filters, blend modes, and SVG animations. Featured on <a href="https://loadmo.re/posts/studio-ananda" target="_blank">loadmo.re</a>❣️</p>
                 <h2><a href="https://www.studioananda.space/" target="_blank">Enter site</a></h2>
             </div>
-            <div class="work">
+            <div class="work game design experiment">
                 <h1 class="h1-sm">Mosquito Catcher</h1>
                 <div class="iframe-wrapper-landscape-mosquito">
                     <iframe class="iframe" data-src="https://player.vimeo.com/video/885857562?title=0&byline=0&portrait=0" allow="autoplay" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
@@ -139,7 +155,7 @@
                 </p>
                 <h2><a href="https://github.com/ellenlowing/flii" target="_blank">Read code</a></h2>
             </div>
-            <div class="work">
+            <div class="work game xr">
                 <h1 class="h1-sm">Shattered Crosswords</h1>
                 <div class="iframe-wrapper-portrait">
                     <iframe class="iframe" data-src="https://player.vimeo.com/video/898778051?title=0&byline=0&portrait=0" allow="autoplay" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
@@ -153,7 +169,7 @@
                 <!-- </p> -->
                 <h2><a href="https://rd.nytimes.com/projects/building-the-timess-first-ar-game" target="_blank">Read case study</a></h2>
             </div>
-            <div class="work">
+            <div class="work xr">
                 <h1 class="h1-sm">Dalilah Muhammad</h1>
                 <div class="iframe-wrapper-portrait">
                     <iframe class="iframe" data-src="https://player.vimeo.com/video/674250409?title=0&byline=0&portrait=0" allow="autoplay" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
@@ -164,7 +180,7 @@
                 </p>
                 <h2><a href="https://www.instagram.com/ar/915056065748952" target="_blank">Try it here</a></h2>
             </div>
-            <div class="work">
+            <div class="work xr">
                 <h1 class="h1-sm">Inflation Shrinkray</h1>
                 <div class="iframe-wrapper-portrait">
                     <iframe class="iframe" data-src="https://player.vimeo.com/video/737439295?title=0&byline=0&portrait=0" allow="autoplay" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
@@ -175,7 +191,7 @@
                 </p>
                 <h2><a href="https://www.instagram.com/ar/1626676667700070" target="_blank">Try it here</a></h2>
             </div>
-            <div class="work">
+            <div class="work website">
                 <h1 class="h1-sm">Lost Code</h1>
                 <div class="iframe-wrapper-landscape-am">
                     <iframe class="iframe" data-src="https://player.vimeo.com/video/742844748?title=0&byline=0&portrait=0" allow="autoplay" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
@@ -186,18 +202,19 @@
                 <h2><a href="http://lostcode.info/" target="_blank">Enter site</a></h2>
             </div>
 
-            <div class="work">
+            <div class="work website installation">
                 <h1 class="h1-sm">Axis Mundi</h1>
                 <div class="iframe-wrapper-landscape-am">
                     <iframe class="iframe" data-src="https://player.vimeo.com/video/354145633?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                 </div>
                 <h1 class="h1-md">Axis Mundi</h1>
                 <p class="caption">Axis Mundi is an experimental exhibition project exploring man’s attempt to override nature with technology and nature’s resistance. Featured on <a href="https://klikkentheke.com/catalogue/axis-mundi/" target="_blank">klikkenthéke</a>!</p>
-                <p class="caption">Design by Hilda Wong</p>
+                <p class="caption">Installation design and development by me</p>
+                <p class="caption">Web design by Hilda Wong</p>
                 <h2><a href="http://axismundi.info" target="_blank">Enter site</a></h2>
             </div>
             
-            <div class="work">
+            <div class="work website workshop last">
                 <h1 class="h1-sm">MICA Code Workshop</h1>
                 <a class="img-wrapper-mica" href="https://ellenlowing.com/mica-workshop/" target="_blank"><img src="assets/images/ws/screenshot.PNG" alt=""></a>
                 <h1 class="h1-md">MICA Code Workshop</h1>

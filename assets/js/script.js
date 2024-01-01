@@ -19,9 +19,6 @@ let group;
 let description;
 let device;
 let lazyloaded = false;
-let lastTap = 0;
-let timeout;
-let touchStartTime;
 
 function isMobile() {
     let md = new MobileDetect(window.navigator.userAgent);
@@ -91,13 +88,81 @@ function init() {
     controls.enabled = false;
     description = document.getElementById('description-main');
 
+    // set up event listeners
+    let tagSelectors = document.getElementsByClassName('tag-selector');
     window.addEventListener('resize', onWindowResize, false);
     if(mobileMode) {
         window.addEventListener('touchend', detectTaps, false);
         document.getElementById('cross-btn').addEventListener('touchstart', zoom, false);
+        for(let selector of tagSelectors)
+        {
+            selector.addEventListener('touchstart', filterWork, false);
+        }
     } else {
         window.addEventListener('click', detectTaps, false);
         document.getElementById('cross-btn').addEventListener('click', zoom, false);
+        for(let selector of tagSelectors)
+        {
+            selector.addEventListener('click', filterWork, false);
+        }
+    }
+
+    let scrollContent = document.getElementsByClassName('scroll-content')[0];
+    let topBar = document.getElementById('top-bar');
+    scrollContent.addEventListener('scroll', (e) => {
+        if(scrollContent.scrollTop > 50)
+        {
+            topBar.classList.add('hidden');
+        }
+        else
+        {
+            topBar.classList.remove('hidden');
+        }
+    })
+    topBar.addEventListener('mouseover', (e) => {
+        topBar.classList.remove('hidden');
+    })
+    topBar.addEventListener('mouseout', (e) => {
+        if(scrollContent.scrollTop > 50)
+        {
+            topBar.classList.add('hidden');
+        }
+    })
+
+    // generate tags for each work
+    let works = document.getElementsByClassName('work');
+    for(let work of works)
+    {
+        work.classList.add('visible');
+
+        let container = document.createElement('div');
+        container.classList.add('tags-container');
+        container.classList.add('work-tags')
+        container.style.display = "inline-block";
+
+        let refNode = work.getElementsByClassName('h1-md')[0];
+        work.insertBefore(container, refNode);
+
+        let ul = document.createElement('ul');
+        container.appendChild(ul);
+
+        for(let c of work.classList)
+        {
+            if(c != "work" && c != "visible" && c != "last")
+            {
+                let li = document.createElement('li');
+                li.classList.add('tag');
+                if(c == 'xr')
+                {
+                    li.innerHTML = 'mixed reality';
+                }
+                else
+                {
+                    li.innerHTML = c;
+                }
+                ul.appendChild(li);
+            }
+        }
     }
 
     GLrenderer = new THREE.WebGLRenderer({ alpha: 1, antialias: true, clearColor: 0xffffff });
@@ -105,29 +170,16 @@ function init() {
     GLrenderer.domElement.style.position = 'absolute';
     GLrenderer.domElement.style.top = 0;
     container.appendChild(GLrenderer.domElement);
-
 }
 
 function detectTaps(event) {
-    let currentTime = new Date().getTime();
-    let tapLength = currentTime - lastTap;
-    clearTimeout(timeout);
-    // if (tapLength < 200 && tapLength > 0) {
     if(!zoomed)
     {
         zoom(event);
     }
-    // } else {
-    //     pause(event);
-    //     timeout = setTimeout(function() {
-    //         clearTimeout(timeout);
-    //     }, 200);
-    // }
-    lastTap = currentTime;
 }
 
 function zoom(event) {
-    console.log("zoom");
     if (zoomed) {
         description.style.display = "none";
         let zoomOutFunction = setInterval(function() {
@@ -142,7 +194,6 @@ function zoom(event) {
             }
         }, 50);
     } else {
-
         if (scale == 1) {
             initCameraPos = [camera.position.x, camera.position.y, camera.position.z];
         }
@@ -162,6 +213,7 @@ function zoom(event) {
                 clearInterval(zoomInFunction);
                 controls.autoRotate = false;
                 description.style.display = "block";
+                resizeTopBar();
             }
         }, 50);
     }
@@ -177,17 +229,112 @@ function pause(event) {
             paused = false;
         }
     }
-    
 }
+
+function resizeTopBar()
+{
+    // top bar functions
+    let topBar = document.getElementById('top-bar');
+    let topBarHeight = getOuterHeight('tags-selector');
+    topBar.style.height = `${topBarHeight}px`;
+
+    let workMargin = getMargin(document.getElementsByClassName('work')[0]);
+    document.getElementsByClassName('scroll-content')[0].style.paddingTop = `${topBarHeight - workMargin/2}px`;
+}   
 
 function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
+
+    resizeTopBar();
+}
+
+function getMargin(elm)
+{
+    let elmMargin = elm;
+    if(document.all) {// IE
+        elmMargin = parseInt(elm.currentStyle.marginTop, 10);
+    } else {// Mozilla
+        elmMargin = parseInt(document.defaultView.getComputedStyle(elm, '').getPropertyValue('margin-top'));
+    }
+    return elmMargin;
+}
+
+function getOuterHeight(elmID) {
+    var elmHeight, elmMargin, elm = document.getElementById(elmID);
+    if(document.all) {// IE
+        elmHeight = parseInt(elm.currentStyle.height);
+        elmMargin = parseInt(elm.currentStyle.marginTop, 10) + parseInt(elm.currentStyle.marginBottom, 10);
+    } else {// Mozilla
+        elmHeight = parseInt(document.defaultView.getComputedStyle(elm, '').getPropertyValue('height'));
+        elmMargin = parseInt(document.defaultView.getComputedStyle(elm, '').getPropertyValue('margin-top')) + parseInt(document.defaultView.getComputedStyle(elm, '').getPropertyValue('margin-bottom'));
+    }
+    return (elmHeight+elmMargin);
 }
 
 function animate() {
     requestAnimationFrame(animate);
     controls.update();
     renderer.render(scene, camera);
+}
+
+function filterWork(e)
+{
+    const topbar = document.getElementById('top-bar');
+    if(!topbar.classList.contains('hidden'))
+    {
+        e.target.classList.toggle("active");
+        let activeTags = document.querySelectorAll('.tag-selector.active');
+        let work = document.querySelectorAll('.work');
+        
+        if(activeTags.length == 0)
+        {
+            for(let el of work)
+            {
+                if(!el.classList.contains('visible')) el.classList.add('visible');
+            }
+        }
+        else
+        {
+            let activeTagClassNames = [];
+            for(let tag of activeTags)
+            {
+                activeTagClassNames.push(`${tag.getAttribute("data-classname")}`);
+
+            }
+
+            for(let el of work)
+            {
+                let isActive = false;
+                for(let tag of activeTagClassNames)
+                {
+                    if(el.classList.contains(tag))
+                    {
+                        isActive = true;
+                        break;
+                    }
+                }
+
+                if(isActive)
+                {
+                    el.classList.add('visible');
+                }
+                else
+                {
+                    el.classList.remove('visible');
+                }
+            }
+        }
+
+        // remove any last tags
+        // add last tag to visible work
+        for(let el of work)
+        {
+            el.classList.remove('last');
+        }
+        let visiblework = document.querySelectorAll('.visible.work');
+        visiblework[visiblework.length-1].classList.add('last');
+    }
+
 }
