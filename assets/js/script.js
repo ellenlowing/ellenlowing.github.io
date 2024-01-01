@@ -60,7 +60,7 @@ window.onload = function() {
     console.log("Finish loading");
 
     // debug
-    zoom();
+    // zoom();
 }
 function init() {
     let container = document.getElementById('container');
@@ -138,7 +138,6 @@ function init() {
     GLrenderer.domElement.style.position = 'absolute';
     GLrenderer.domElement.style.top = 0;
     container.appendChild(GLrenderer.domElement);
-
 }
 
 function detectTaps(event) {
@@ -163,7 +162,6 @@ function zoom(event) {
             }
         }, 50);
     } else {
-
         if (scale == 1) {
             initCameraPos = [camera.position.x, camera.position.y, camera.position.z];
         }
@@ -183,6 +181,7 @@ function zoom(event) {
                 clearInterval(zoomInFunction);
                 controls.autoRotate = false;
                 description.style.display = "block";
+                initTopBar();
             }
         }, 50);
     }
@@ -198,13 +197,48 @@ function pause(event) {
             paused = false;
         }
     }
-    
 }
+
+function initTopBar()
+{
+    // top bar functions
+    let topBar = document.getElementById('top-bar');
+    let topBarHeight = getOuterHeight('tags-selector');
+    topBar.style.height = `${topBarHeight}px`;
+
+    let workMargin = getMargin(document.getElementsByClassName('work')[0]);
+    document.getElementsByClassName('scroll-content')[0].style.paddingTop = `${topBarHeight - workMargin/2}px`;
+}   
 
 function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
+
+    initTopBar();
+}
+
+function getMargin(elm)
+{
+    let elmMargin = elm;
+    if(document.all) {// IE
+        elmMargin = parseInt(elm.currentStyle.marginTop, 10);
+    } else {// Mozilla
+        elmMargin = parseInt(document.defaultView.getComputedStyle(elm, '').getPropertyValue('margin-top'));
+    }
+    return elmMargin;
+}
+
+function getOuterHeight(elmID) {
+    var elmHeight, elmMargin, elm = document.getElementById(elmID);
+    if(document.all) {// IE
+        elmHeight = parseInt(elm.currentStyle.height);
+        elmMargin = parseInt(elm.currentStyle.marginTop, 10) + parseInt(elm.currentStyle.marginBottom, 10);
+    } else {// Mozilla
+        elmHeight = parseInt(document.defaultView.getComputedStyle(elm, '').getPropertyValue('height'));
+        elmMargin = parseInt(document.defaultView.getComputedStyle(elm, '').getPropertyValue('margin-top')) + parseInt(document.defaultView.getComputedStyle(elm, '').getPropertyValue('margin-bottom'));
+    }
+    return (elmHeight+elmMargin);
 }
 
 function animate() {
