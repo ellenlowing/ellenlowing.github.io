@@ -296,7 +296,7 @@ p {
     color: #fff;
     transition: background-color 0.5s, color 0.5s;
 }
-.tag-selector:hover,
+.desktop .tag-selector:hover,
 .tag-selector.active
 {
     background-color: #fff;

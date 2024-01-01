@@ -88,21 +88,25 @@ function init() {
     controls.enabled = false;
     description = document.getElementById('description-main');
 
+    let tagSelectors = document.getElementsByClassName('tag-selector');
     // set up event listeners
     window.addEventListener('resize', onWindowResize, false);
     if(mobileMode) {
         window.addEventListener('touchend', detectTaps, false);
         document.getElementById('cross-btn').addEventListener('touchstart', zoom, false);
+        for(let selector of tagSelectors)
+        {
+            selector.addEventListener('touchstart', filterWork, false);
+        }
     } else {
         window.addEventListener('click', detectTaps, false);
         document.getElementById('cross-btn').addEventListener('click', zoom, false);
+        for(let selector of tagSelectors)
+        {
+            selector.addEventListener('click', filterWork, false);
+        }
     }
     
-    let tagSelectors = document.getElementsByClassName('tag-selector');
-    for(let selector of tagSelectors)
-    {
-        selector.addEventListener('click', filterWork, false);
-    }
 
     // generate tags for each work
     let works = document.getElementsByClassName('work');
@@ -123,7 +127,7 @@ function init() {
 
         for(let c of work.classList)
         {
-            if(c != "work" && c != "visible")
+            if(c != "work" && c != "visible" && c != "last")
             {
                 let li = document.createElement('li');
                 li.classList.add('tag');
