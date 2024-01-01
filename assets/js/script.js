@@ -127,7 +127,14 @@ function init() {
             {
                 let li = document.createElement('li');
                 li.classList.add('tag');
-                li.innerHTML = c;
+                if(c == 'xr')
+                {
+                    li.innerHTML = 'mixed reality';
+                }
+                else
+                {
+                    li.innerHTML = c;
+                }
                 ul.appendChild(li);
             }
         }
