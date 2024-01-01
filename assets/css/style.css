@@ -220,11 +220,14 @@ p {
     top:0;
     width: 100%;
     height: 80px;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
 }
 #cross-btn {
     position: absolute;
     right: 0;
     top: 0;
+    padding:4px;
     width: 28px;
     height: 28px;
     margin: 16px;
@@ -235,6 +238,7 @@ p {
     position: absolute;
     right: 0;
     top: 0;
+    padding:4px;
     width: 28px;
     height: auto;
     margin: 16px;
@@ -266,20 +270,27 @@ p {
     padding-inline-start: 0;
     margin-block-start: 0;
     margin-block-end: 0;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
 }
 #tags-selector ul
 {
     padding: 0 14px;
     width: fit-content;
 }
+.tag-selector
+{
+    cursor: pointer;
+}
 .tag, .tag-selector
 {
-    display: inline-flex;
+    /* display: inline-flex; */
+    display: block;
     list-style-type: none;
     border: solid white 1px;
     padding: 8px;
-    margin: 0 4px;
-    cursor: pointer;
+    /* margin: 4px; */
     background-color: #000;
     color: #fff;
     transition: background-color 0.5s, color 0.5s;
@@ -314,7 +325,7 @@ p {
 .work {
     position: relative;
     width: 100%;
-    margin: 30px 0;
+    margin: 60px 0;
     overflow: auto;
 }
 .work > * {
@@ -405,8 +416,16 @@ p {
     width:100%;
     height:100%;
 }
-.work:last-child {
-    /* padding-bottom: 80px; */
+.work.visible
+{
+    display: block;
+}
+.work
+{
+    display: none;
+}
+.visible.last {
+    padding-bottom: 80px;
 }
 
 @media only screen and (min-width: 960px) {

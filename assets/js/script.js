@@ -108,6 +108,8 @@ function init() {
     let works = document.getElementsByClassName('work');
     for(let work of works)
     {
+        work.classList.add('visible');
+
         let container = document.createElement('div');
         container.classList.add('tags-container');
         container.classList.add('work-tags')
@@ -121,7 +123,7 @@ function init() {
 
         for(let c of work.classList)
         {
-            if(c != "work")
+            if(c != "work" && c != "visible")
             {
                 let li = document.createElement('li');
                 li.classList.add('tag');
@@ -221,7 +223,7 @@ function filterWork(e)
     {
         for(let el of work)
         {
-            el.style.display = 'block';
+            if(!el.classList.contains('visible')) el.classList.add('visible');
         }
     }
     else
@@ -247,12 +249,21 @@ function filterWork(e)
 
             if(isActive)
             {
-                el.style.display = 'block';
+                el.classList.add('visible');
             }
             else
             {
-                el.style.display = 'none';
+                el.classList.remove('visible');
             }
         }
     }
+
+    // remove any last tags
+    // add last tag to visible work
+    for(let el of work)
+    {
+        el.classList.remove('last');
+    }
+    let visiblework = document.querySelectorAll('.visible.work');
+    visiblework[visiblework.length-1].classList.add('last');
 }
