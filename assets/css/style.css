@@ -212,6 +212,15 @@ p {
     height: stretch;
     margin-bottom: 24px;
 }
+
+/* TOP BAR */
+#top-bar
+{
+    position: absolute;
+    top:0;
+    width: 100%;
+    height: 80px;
+}
 #cross-btn {
     position: absolute;
     right: 0;
@@ -235,15 +244,20 @@ p {
 }
 #cross-svg line
 {
-    stroke-width: 3px;
+    stroke-width: 4px;
 }
 .work-tags
 {
     float: none;
 }
+#tags-selector
+{
+    position: absolute;
+    margin: 16px 0;
+}
 .tags-container, #tags-selector
 {
-    position: sticky;
+    /* position: sticky; */
     z-index: 99;
     width: fit-content;
 }
@@ -264,11 +278,13 @@ p {
     list-style-type: none;
     border: solid white 1px;
     padding: 8px;
-    margin: 4px;
+    margin: 0 4px;
     cursor: pointer;
     background-color: #000;
     color: #fff;
+    transition: background-color 0.5s, color 0.5s;
 }
+.tag-selector:hover,
 .tag-selector.active
 {
     background-color: #fff;
@@ -281,7 +297,7 @@ p {
     height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
-    padding-top: 28px;
+    padding-top: 80px;
 } 
 .desktop .scroll-content {
     overflow-y: scroll;

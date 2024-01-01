@@ -60,7 +60,7 @@ window.onload = function() {
     console.log("Finish loading");
 
     // debug
-    // zoom();
+    zoom();
 }
 function init() {
     let container = document.getElementById('container');
