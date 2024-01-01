@@ -49,6 +49,7 @@ h4,
 p {
     margin-block-start: 0;
     margin-block-end: 0;
+    font-weight: 400;
 }
 /* img {
     width: 100%;
@@ -236,20 +237,28 @@ p {
 {
     stroke-width: 3px;
 }
-
-#tags-selector
+.work-tags
+{
+    float: none;
+}
+.tags-container, #tags-selector
 {
     position: sticky;
     z-index: 99;
     width: fit-content;
 }
-#tags-selector ul
+.tags-container ul, #tags-selector ul
 {
     padding-inline-start: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+#tags-selector ul
+{
     padding: 0 14px;
     width: fit-content;
 }
-.tag-selector
+.tag, .tag-selector
 {
     display: inline-flex;
     list-style-type: none;
@@ -424,8 +433,12 @@ p {
         -webkit-animation: scroll-left 30s linear infinite;
         animation: scroll-left 30s linear infinite;
     }
-    .work:not(:nth-of-type(1)) {
-        padding-top: 72px;
+    .work-tags
+    {
+        float: right;
+    }
+    .work {
+        padding-bottom: 72px;
         clear: both;
     }
     .work .img-wrapper-mica {

@@ -60,7 +60,7 @@ window.onload = function() {
     console.log("Finish loading");
 
     // debug
-    zoom();
+    // zoom();
 }
 function init() {
     let container = document.getElementById('container');
@@ -102,6 +102,33 @@ function init() {
     for(let selector of tagSelectors)
     {
         selector.addEventListener('click', filterWork, false);
+    }
+
+    // generate tags for each work
+    let works = document.getElementsByClassName('work');
+    for(let work of works)
+    {
+        let container = document.createElement('div');
+        container.classList.add('tags-container');
+        container.classList.add('work-tags')
+        container.style.display = "inline-block";
+
+        let refNode = work.getElementsByClassName('h1-md')[0];
+        work.insertBefore(container, refNode);
+
+        let ul = document.createElement('ul');
+        container.appendChild(ul);
+
+        for(let c of work.classList)
+        {
+            if(c != "work")
+            {
+                let li = document.createElement('li');
+                li.classList.add('tag');
+                li.innerHTML = c;
+                ul.appendChild(li);
+            }
+        }
     }
 
     GLrenderer = new THREE.WebGLRenderer({ alpha: 1, antialias: true, clearColor: 0xffffff });
