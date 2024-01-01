@@ -60,7 +60,7 @@ window.onload = function() {
     console.log("Finish loading");
 
     // debug
-    // zoom();
+    zoom();
 }
 function init() {
     let container = document.getElementById('container');
@@ -88,8 +88,8 @@ function init() {
     controls.enabled = false;
     description = document.getElementById('description-main');
 
-    let tagSelectors = document.getElementsByClassName('tag-selector');
     // set up event listeners
+    let tagSelectors = document.getElementsByClassName('tag-selector');
     window.addEventListener('resize', onWindowResize, false);
     if(mobileMode) {
         window.addEventListener('touchend', detectTaps, false);
@@ -106,7 +106,28 @@ function init() {
             selector.addEventListener('click', filterWork, false);
         }
     }
-    
+
+    let scrollContent = document.getElementsByClassName('scroll-content')[0];
+    let topBar = document.getElementById('top-bar');
+    scrollContent.addEventListener('scroll', (e) => {
+        if(scrollContent.scrollTop > 50)
+        {
+            topBar.classList.add('hidden');
+        }
+        else
+        {
+            topBar.classList.remove('hidden');
+        }
+    })
+    topBar.addEventListener('mouseover', (e) => {
+        topBar.classList.remove('hidden');
+    })
+    topBar.addEventListener('mouseout', (e) => {
+        if(scrollContent.scrollTop > 50)
+        {
+            topBar.classList.add('hidden');
+        }
+    })
 
     // generate tags for each work
     let works = document.getElementsByClassName('work');
@@ -192,7 +213,7 @@ function zoom(event) {
                 clearInterval(zoomInFunction);
                 controls.autoRotate = false;
                 description.style.display = "block";
-                initTopBar();
+                resizeTopBar();
             }
         }, 50);
     }
@@ -210,7 +231,7 @@ function pause(event) {
     }
 }
 
-function initTopBar()
+function resizeTopBar()
 {
     // top bar functions
     let topBar = document.getElementById('top-bar');
@@ -226,7 +247,7 @@ function onWindowResize() {
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
 
-    initTopBar();
+    resizeTopBar();
 }
 
 function getMargin(elm)
@@ -260,55 +281,60 @@ function animate() {
 
 function filterWork(e)
 {
-    e.target.classList.toggle("active");
-    let activeTags = document.querySelectorAll('.tag-selector.active');
-    let work = document.querySelectorAll('.work');
-    
-    if(activeTags.length == 0)
+    const topbar = document.getElementById('top-bar');
+    if(!topbar.classList.contains('hidden'))
     {
-        for(let el of work)
+        e.target.classList.toggle("active");
+        let activeTags = document.querySelectorAll('.tag-selector.active');
+        let work = document.querySelectorAll('.work');
+        
+        if(activeTags.length == 0)
         {
-            if(!el.classList.contains('visible')) el.classList.add('visible');
-        }
-    }
-    else
-    {
-        let activeTagClassNames = [];
-        for(let tag of activeTags)
-        {
-            activeTagClassNames.push(`${tag.getAttribute("data-classname")}`);
-
-        }
-
-        for(let el of work)
-        {
-            let isActive = false;
-            for(let tag of activeTagClassNames)
+            for(let el of work)
             {
-                if(el.classList.contains(tag))
+                if(!el.classList.contains('visible')) el.classList.add('visible');
+            }
+        }
+        else
+        {
+            let activeTagClassNames = [];
+            for(let tag of activeTags)
+            {
+                activeTagClassNames.push(`${tag.getAttribute("data-classname")}`);
+
+            }
+
+            for(let el of work)
+            {
+                let isActive = false;
+                for(let tag of activeTagClassNames)
                 {
-                    isActive = true;
-                    break;
+                    if(el.classList.contains(tag))
+                    {
+                        isActive = true;
+                        break;
+                    }
+                }
+
+                if(isActive)
+                {
+                    el.classList.add('visible');
+                }
+                else
+                {
+                    el.classList.remove('visible');
                 }
             }
-
-            if(isActive)
-            {
-                el.classList.add('visible');
-            }
-            else
-            {
-                el.classList.remove('visible');
-            }
         }
+
+        // remove any last tags
+        // add last tag to visible work
+        for(let el of work)
+        {
+            el.classList.remove('last');
+        }
+        let visiblework = document.querySelectorAll('.visible.work');
+        visiblework[visiblework.length-1].classList.add('last');
     }
 
-    // remove any last tags
-    // add last tag to visible work
-    for(let el of work)
-    {
-        el.classList.remove('last');
-    }
-    let visiblework = document.querySelectorAll('.visible.work');
-    visiblework[visiblework.length-1].classList.add('last');
 }
