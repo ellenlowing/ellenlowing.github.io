@@ -60,7 +60,7 @@ window.onload = function() {
     console.log("Finish loading");
 
     // debug
-    // zoom();
+    zoom();
 }
 function init() {
     let container = document.getElementById('container');
@@ -141,7 +141,8 @@ function init() {
         container.style.display = "inline-block";
 
         let refNode = work.getElementsByClassName('caption')[0];
-        work.insertBefore(container, refNode);
+        let sidesection = work.getElementsByClassName('work-sidesection')[0];
+        sidesection.insertBefore(container, refNode);
 
         let ul = document.createElement('ul');
         container.appendChild(ul);

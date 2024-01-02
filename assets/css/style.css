@@ -346,6 +346,16 @@ p {
 .work > * {
     padding: 12px 12px;
 }
+.work-sidesection {
+    display: block;
+    overflow: hidden;
+    padding:0;
+}
+.work-sidesection > *
+{
+    padding: 12px 12px;
+}
+
 .h1-sm {
     display: block;
 }
@@ -482,12 +492,6 @@ p {
         -moz-animation: scroll-left 30s linear infinite;
         -webkit-animation: scroll-left 30s linear infinite;
         animation: scroll-left 30s linear infinite;
-    }
-    .work-tags
-    {
-        /* float: right; */
-        padding: 0;
-        margin: 8px 0;
     }
     .work {
         padding-bottom: 72px;
