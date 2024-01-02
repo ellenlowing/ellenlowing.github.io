@@ -353,7 +353,7 @@ p {
 }
 .work-sidesection > *
 {
-    padding: 12px 12px;
+    padding: 12px;
 }
 
 .h1-sm {
@@ -496,6 +496,10 @@ p {
     .work {
         padding-bottom: 72px;
         clear: both;
+    }
+    .work-sidesection > *
+    {
+        padding: 12px 12px 12px 0;
     }
     .work .img-wrapper-mica {
         width: 480px;
