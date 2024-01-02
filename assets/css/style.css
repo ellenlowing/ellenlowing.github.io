@@ -266,6 +266,7 @@ p {
 .work-tags
 {
     float: none;
+    
 }
 .tags-container, #tags-selector
 {
@@ -484,7 +485,9 @@ p {
     }
     .work-tags
     {
-        float: right;
+        /* float: right; */
+        padding: 0;
+        margin: 8px 0;
     }
     .work {
         padding-bottom: 72px;
