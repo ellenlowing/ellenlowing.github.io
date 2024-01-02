@@ -40,7 +40,7 @@ let Element = function(id, x, y, z, rx, ry) {
     img.style.width = '480px';
     img.style.height = '480px';
     img.style.border = '0px';
-    img.style.opacity = "0.9";
+    img.style.opacity = "1";
     img.style.border = "0px";
     img.alt = "";
     let src = "assets/images/faces/";
@@ -140,8 +140,9 @@ function init() {
         container.classList.add('work-tags')
         container.style.display = "inline-block";
 
-        let refNode = work.getElementsByClassName('h1-md')[0];
-        work.insertBefore(container, refNode);
+        let refNode = work.getElementsByClassName('caption')[0];
+        let sidesection = work.getElementsByClassName('work-sidesection')[0];
+        sidesection.insertBefore(container, refNode);
 
         let ul = document.createElement('ul');
         container.appendChild(ul);
