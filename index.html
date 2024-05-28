@@ -1,113 +1,281 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
-
-<head>
+  <head>
     <title>Ellen Lo</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300i,400,500i" rel="stylesheet">
-    <link id="stylesheet" href="assets/css/style.css" rel="stylesheet">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Inconsolata"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300i,400,500i"
+      rel="stylesheet"
+    />
+    <link id="stylesheet" href="assets/css/style.css" rel="stylesheet" />
     <meta property="og:title" content="Ellen Lo" />
     <meta property="og:image" content="assets/screenshot.png" />
-</head>
+  </head>
 
-<body>
+  <body>
     <script src="build/three.min.js"></script>
     <script src="build/mobile-detect.min.js"></script>
     <script src="controls/OrbitControls.js"></script>
     <script src="renderers/CSS3DRenderer.js"></script>
     <div id="container"></div>
     <div class="about">
-        <h1 class="about-component about-name">Ellen Lo</h1>
-        <h2 class="about-component about-title">Coder + Designer</h2>
-        <h2 class="about-component about-contact"><a href="mailto:ellenlowing@gmail.com">say hi 💌</a></h2>
-        <h4 id="about-marquee-desktop" class="about-component about-controls-marquee desktopOnly">
-            <p>
-                🖱 click anywhere to view work
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                🤹🏻 available for freelance work – games, websites, XR prototyping
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                🐣 new website on the way
-            </p>
-        </h4>
-        <h4 id="about-marquee-mobile" class="about-component about-controls-marquee mobileOnly">
-            <p>
-                👆 tap anywhere to view work
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                🤹🏻 available for freelance work – games, websites, XR prototyping
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                🐣 new website on the way
-            </p>
-        </h4>
+      <h1 class="about-component about-name">Ellen Lo</h1>
+      <h2 class="about-component about-title">Coder + Designer</h2>
+      <h2 class="about-component about-contact">
+        <a href="mailto:ellenlowing@gmail.com">say hi 💌</a>
+      </h2>
+      <h4
+        id="about-marquee-desktop"
+        class="about-component about-controls-marquee desktopOnly"
+      >
+        <p>
+          🖱 click anywhere to view work
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 🤹🏻 available for
+          freelance work – games, websites, XR prototyping
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 🐣 new website on the
+          way
+        </p>
+      </h4>
+      <h4
+        id="about-marquee-mobile"
+        class="about-component about-controls-marquee mobileOnly"
+      >
+        <p>
+          👆 tap anywhere to view work
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 🤹🏻 available for
+          freelance work – games, websites, XR prototyping
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 🐣 new website on the
+          way
+        </p>
+      </h4>
     </div>
     <div class="description" id="description-main">
-        <div id="top-bar">  
-            <div id="cross-btn">
-            </div>
-            <svg id="cross-svg" width="102" height="101" viewBox="0 0 102 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <line x1="1.35355" y1="0.646447" x2="101.354" y2="100.646" stroke="white"/>
-                <line x1="0.646447" y1="100.646" x2="100.646" y2="0.646468" stroke="white"/>
-            </svg>
-            <div class="tags-container" id="tags-selector">
-                <ul>
-                    <li data-classname="design" class="tag tag-selector">design</li>
-                    <li data-classname="website" class="tag tag-selector">website</li>
-                    <li data-classname="xr" class="tag tag-selector">mixed reality</li>
-                    <li data-classname="game" class="tag tag-selector">game</li>
-                    <li data-classname="experiment" class="tag tag-selector">experiment</li>
-                    <li data-classname="installation" class="tag tag-selector">installation</li>
-                    <!-- <li data-classname="workshop" class="tag tag-selector">workshop</li> -->
-                </ul>
-            </div>
+      <div id="top-bar">
+        <div id="cross-btn"></div>
+        <svg
+          id="cross-svg"
+          width="102"
+          height="101"
+          viewBox="0 0 102 101"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <line
+            x1="1.35355"
+            y1="0.646447"
+            x2="101.354"
+            y2="100.646"
+            stroke="white"
+          />
+          <line
+            x1="0.646447"
+            y1="100.646"
+            x2="100.646"
+            y2="0.646468"
+            stroke="white"
+          />
+        </svg>
+        <div class="tags-container" id="tags-selector">
+          <ul>
+            <li data-classname="design" class="tag tag-selector">design</li>
+            <li data-classname="website" class="tag tag-selector">website</li>
+            <li data-classname="xr" class="tag tag-selector">mixed reality</li>
+            <li data-classname="game" class="tag tag-selector">game</li>
+            <li data-classname="experiment" class="tag tag-selector">
+              experiment
+            </li>
+            <li data-classname="installation" class="tag tag-selector">
+              installation
+            </li>
+            <!-- <li data-classname="workshop" class="tag tag-selector">workshop</li> -->
+          </ul>
         </div>
-        
-        <div class="scroll-content">
-             <div class="work game xr">
-                <h1 class="h1-sm">Pikmin XR</h1>
-                <div class="iframe-wrapper-landscape-kapu">
-                    <iframe class="iframe" data-src="https://player.vimeo.com/video/899284463?title=0&byline=0&portrait=0&loop=1&autopause=0" allow="autoplay" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                </div>
-                <div class="work-sidesection">
-                    <h1 class="h1-md">Pikmin XR</h1>
-                    <p class="caption">
-                        This is a project exploring how existing 3D game mechanics can be borrowed and adapted to create more intuitive and immersive gameplay in mixed reality. Using the Pikmin game series as an example, I reproduced various classic interactions in passthrough, such as Throw and Pluck, that introduce some alternative interaction patterns in XR.
-                    </p>
-                    <h2><a href="https://github.com/ellenlowing/PikminPassthrough" target="_blank">Read code</a></h2>
-                </div>
-            </div>
-            <div class="work design website">
-                <h1 class="h1-sm">Kapu</h1>
-                <div class="iframe-wrapper-landscape-kapu">
-                    <iframe class="iframe" data-src="https://player.vimeo.com/video/849836034?title=0&byline=0&portrait=0&loop=1&autopause=0" allow="autoplay" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                </div>
-                <div class="work-sidesection">
-                    <h1 class="h1-md">Kapu</h1>
-                    <p class="caption">
-                        Kapu is a glass making practice by Prinita Thevarajah and she takes inspiration from shapes found in children's playgrounds. The endless scroll of images down the shapes and paths was a whimsical way to incorporate her work, and also an imagination of nonlinear navigation on the web.
-                    </p>
-                    <p class="caption">
-                        Every moving element on the site was hand coded with p5 and roughjs - sketchy clouds and stars, shape shifting butterfly, wiggly caterpillars and more are uniquely generated per visit. Take a stroll in our online playground ॱ⋅.˳˳.⋅˙ॱᐧ.˳˳.⋅ઇଓ
-                    </p>
-                    <h2><a href="https://kapu.glass" target="_blank">Enter site</a></h2>
-                </div>
-            </div>
-            <div class="work game xr">
-                <h1 class="h1-sm">Wireloop</h1>
-                <div class="iframe-wrapper-portrait">
-                    <iframe class="iframe" data-src="https://player.vimeo.com/video/737429584?title=0&byline=0&portrait=0&loop=1&autopause=0" allow="autoplay" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                </div>
-                <div class="work-sidesection">
-                    <h1 class="h1-md">Wireloop</h1>
-                    <p class="caption">
-                        Inspired by the classic buzzwire game, Wireloop is a series of AR games built with the New York Times. Users are encouraged to move the ring ("phone"), trace and light up the dark wire, and reveal hidden shapes. 
-                    </p>
-                    <p class="caption">
-                        To recreate the "buzz" without access to haptic feedback, we focused on refining the visual by leveraging Spark's particle system and custom shaders, with the goal of delivering an elegant, stress-free gameplay. 
-                    </p>
-                    <h2><a href="https://www.instagram.com/ar/4706581316062553" target="_blank">Try it here</a></h2>
-                </div>
-                <!-- <p>
+      </div>
+
+      <div class="scroll-content">
+        <div class="work game xr">
+          <h1 class="h1-sm">BUGSKILL</h1>
+          <div class="iframe-wrapper-landscape-mosquito">
+            <iframe
+              class="iframe"
+              data-src="https://player.vimeo.com/video/950977849?title=0&byline=0&portrait=0&loop=1&autopause=0"
+              allow="autoplay"
+              frameborder="0"
+              webkitallowfullscreen
+              mozallowfullscreen
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="work-sidesection">
+            <h1 class="h1-md">BUGSKILL</h1>
+            <p class="caption">
+              This is a game where players battle against a house fly
+              infestation in mixed reality. Players can kill flies by slapping
+              them against surfaces, clap them out of the air, or feed them to
+              their pet frog hand puppet. This immersive experience is enhanced
+              with spatial audio cues to help players locate the flies.
+            </p>
+            <p class="caption">
+              Built with Unity and Meta Quest SDKs, the game is designed to be
+              played in a room-scale environment. The game was developed in a
+              team of 4 for the Meta Quest Presence Platform Hackathon 2024.
+            </p>
+            <h2>
+              <a
+                href="https://devpost.com/software/the-real-house-flies?ref_content=my-projects-tab&ref_feature=my_projects"
+                target="_blank"
+                >Read submission</a
+              >
+            </h2>
+          </div>
+        </div>
+        <div class="work game xr">
+          <h1 class="h1-sm">Scavenger Hunt</h1>
+          <div class="iframe-wrapper-landscape-kapu">
+            <iframe
+              class="iframe"
+              data-src="https://player.vimeo.com/video/951213441?title=0&byline=0&portrait=0&loop=1&autopause=0"
+              allow="autoplay"
+              frameborder="0"
+              webkitallowfullscreen
+              mozallowfullscreen
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="work-sidesection">
+            <h1 class="h1-md">Scavenger Hunt</h1>
+            <p class="caption">
+              This is a multiplayer XR game where gacha collectibles are
+              scattered around the arcade space and players must race to collect
+              them all. Players are equipped with the Extendo 3000, a device
+              that extends up to 10 meters long and rewards precise aiming,
+              allowing them to grab out-of-reach items. As they successfully
+              extract the collectibles, they transform into charms that can be
+              worn on the player's wrist.
+            </p>
+            <p class="caption">
+              Built with Unity, OpenXR, and Normcore. Demoed at Creator Campus
+              Beta Night in March 2024, the game was developed originally at the
+              40,000 sqft arcade space of Two Bit Circus in DTLA. In-game
+              collectibles were localized and hand-picked to match the
+              surrounding arcade cabinets.
+            </p>
+            <!-- <h2>
+              <a
+                href="https://devpost.com/software/the-real-house-flies?ref_content=my-projects-tab&ref_feature=my_projects"
+                target="_blank"
+                >Read submission</a
+              >
+            </h2> -->
+          </div>
+        </div>
+        <div class="work game xr">
+          <h1 class="h1-sm">Pikmin XR</h1>
+          <div class="iframe-wrapper-landscape-kapu">
+            <iframe
+              class="iframe"
+              data-src="https://player.vimeo.com/video/899284463?title=0&byline=0&portrait=0&loop=1&autopause=0"
+              allow="autoplay"
+              frameborder="0"
+              webkitallowfullscreen
+              mozallowfullscreen
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="work-sidesection">
+            <h1 class="h1-md">Pikmin XR</h1>
+            <p class="caption">
+              This is a project exploring how existing 3D game mechanics can be
+              borrowed and adapted to create more intuitive and immersive
+              gameplay in mixed reality. Using the Pikmin game series as an
+              example, I reproduced various classic interactions in passthrough,
+              such as Throw and Pluck, that introduce some alternative
+              interaction patterns in XR.
+            </p>
+            <h2>
+              <a
+                href="https://github.com/ellenlowing/PikminPassthrough"
+                target="_blank"
+                >Read code</a
+              >
+            </h2>
+          </div>
+        </div>
+        <div class="work design website">
+          <h1 class="h1-sm">Kapu</h1>
+          <div class="iframe-wrapper-landscape-kapu">
+            <iframe
+              class="iframe"
+              data-src="https://player.vimeo.com/video/849836034?title=0&byline=0&portrait=0&loop=1&autopause=0"
+              allow="autoplay"
+              frameborder="0"
+              webkitallowfullscreen
+              mozallowfullscreen
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="work-sidesection">
+            <h1 class="h1-md">Kapu</h1>
+            <p class="caption">
+              Kapu is a glass making practice by Prinita Thevarajah and she
+              takes inspiration from shapes found in children's playgrounds. The
+              endless scroll of images down the shapes and paths was a whimsical
+              way to incorporate her work, and also an imagination of nonlinear
+              navigation on the web.
+            </p>
+            <p class="caption">
+              Every moving element on the site was hand coded with p5 and
+              roughjs - sketchy clouds and stars, shape shifting butterfly,
+              wiggly caterpillars and more are uniquely generated per visit.
+              Take a stroll in our online playground ॱ⋅.˳˳.⋅˙ॱᐧ.˳˳.⋅ઇଓ
+            </p>
+            <h2><a href="https://kapu.glass" target="_blank">Enter site</a></h2>
+          </div>
+        </div>
+        <div class="work game xr">
+          <h1 class="h1-sm">Wireloop</h1>
+          <div class="iframe-wrapper-portrait">
+            <iframe
+              class="iframe"
+              data-src="https://player.vimeo.com/video/737429584?title=0&byline=0&portrait=0&loop=1&autopause=0"
+              allow="autoplay"
+              frameborder="0"
+              webkitallowfullscreen
+              mozallowfullscreen
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="work-sidesection">
+            <h1 class="h1-md">Wireloop</h1>
+            <p class="caption">
+              Inspired by the classic buzzwire game, Wireloop is a series of AR
+              games built with the New York Times. Users are encouraged to move
+              the ring ("phone"), trace and light up the dark wire, and reveal
+              hidden shapes.
+            </p>
+            <p class="caption">
+              To recreate the "buzz" without access to haptic feedback, we
+              focused on refining the visual by leveraging Spark's particle
+              system and custom shaders, with the goal of delivering an elegant,
+              stress-free gameplay.
+            </p>
+            <h2>
+              <a
+                href="https://www.instagram.com/ar/4706581316062553"
+                target="_blank"
+                >Try it here</a
+              >
+            </h2>
+          </div>
+          <!-- <p>
                     <a href="https://www.instagram.com/ar/568677291107165/" target="_blank">I</a>
                     <a href="https://www.instagram.com/ar/317275733557666/" target="_blank">II</a>
                     <a href="https://www.instagram.com/ar/295208809149227/" target="_blank">III</a>
@@ -116,142 +284,320 @@
                     <a href="https://www.instagram.com/ar/1246161392526705/" target="_blank">VI</a>
                     <a href="https://www.instagram.com/ar/1115878509182784/" target="_blank">VII</a>
                 </p>  -->
-            </div>
-            <div class="work xr">
-                <h1 class="h1-sm">Nasal Swab</h1>
-                <div class="iframe-wrapper-portrait">
-                    <iframe class="iframe" data-src="https://player.vimeo.com/video/674264874?title=0&byline=0&portrait=0&loop=1&autopause=0" allow="autoplay" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                </div>
-                <div class="work-sidesection">
-                    <h1 class="h1-md">Nasal Swab</h1>
-                    <p class="caption">
-                        Read <a target="_blank" href="https://www.nytimes.com/interactive/2022/01/31/health/covid-nasal-swab-how-far.html">How Far Should a Coronavirus Test Go?</a>
-                    </p>
-                    <p class="caption">
-                        We worked with illustrator Julia Rothman to create a AR face effect to show the interior of a nasal cavity in 2.5D. 
-                    </p>
-                    <h2><a href="https://www.instagram.com/ar/658770018692003" target="_blank">Try it here</a></h2>
-                </div>
-            </div>
-            <div class="work xr">
-                <h1 class="h1-sm">A Tiny Frog's Climb</h1>
-                <div class="iframe-wrapper-portrait">
-                    <iframe class="iframe" data-src="https://player.vimeo.com/video/737433617?title=0&byline=0&portrait=0&loop=1&autopause=0" allow="autoplay" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                </div>
-                <div class="work-sidesection">
-                    <h1 class="h1-md">A Tiny Frog's Climb</h1>
-                    <p class="caption">
-                        Working with NYT Kids for the launch of their “Tiny Issue,” we built a real-scale immersive rainforest environment to show the journey of the tiny strawberry poison frog.
-                    </p>
-                    <h2><a href="https://www.instagram.com/ar/1142331453229649" target="_blank">Try it here</a></h2>
-                </div>
-            </div>
-            <div class="work website">
-                <h1 class="h1-sm">Somewhere Good</h1>
-                <div class="iframe-wrapper-landscape-sa">
-                    <iframe class="iframe" data-src="https://player.vimeo.com/video/742469710?title=0&byline=0&portrait=0&loop=1&autopause=0" allow="autoplay" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                </div>
-                <div class="work-sidesection">
-                <h1 class="h1-md">Somewhere Good</h1>
-                    <p class="caption">For the Somewhere Good app launch, I worked with Annika Hansteen-Izora and helped them revamp their colorful and motion-heavy website. I also created a mini quiz that helps new users find their community through a series of intimate questions.</p>
-                    <h2><a href="https://www.somewheregood.com/" target="_blank">Enter site</a></h2>
-                </div>
-            </div>
-            
-            <div class="work website design">
-                <h1 class="h1-sm">Studio Ānanda</h1>
-                <div class="iframe-wrapper-landscape-sa">
-                    <iframe class="iframe" data-src="https://player.vimeo.com/video/674271514?title=0&byline=0&portrait=0&loop=1&autopause=0" allow="autoplay" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                </div>
-                <div class="work-sidesection">
-                    <h1 class="h1-md">Studio Ānanda</h1>
-                    <p class="caption">I designed and developed a new website + CMS for Studio Ānanda, channeling their spirit of wellness with soft aesthetics and use of CSS filters, blend modes, and SVG animations. Featured on <a href="https://loadmo.re/posts/studio-ananda" target="_blank">loadmo.re</a>❣️</p>
-                    <h2><a href="https://www.studioananda.space/" target="_blank">Enter site</a></h2>
-                </div>
-            </div>
-            <div class="work game design experiment">
-                <h1 class="h1-sm">Mosquito Catcher</h1>
-                <div class="iframe-wrapper-landscape-mosquito">
-                    <iframe class="iframe" data-src="https://player.vimeo.com/video/885857562?title=0&byline=0&portrait=0&loop=1&autopause=0" allow="autoplay" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                </div>
-                <div class="work-sidesection">
-                    <h1 class="h1-md">Mosquito Catcher</h1>
-                    <p class="caption">
-                        This is a prototype for an asymmetrical 2-player game I designed, where one player catches mosquitoes and the other plays as a mosquito. In front of a webcam, the catcher uses their hand to capture the mosquito, while the mosquito uses a joystick to evade capture and suck blood out of the catcher's hand.
-                    </p>
-                    <h2><a href="https://github.com/ellenlowing/flii" target="_blank">Read code</a></h2>
-                </div>
-            </div>
-            <div class="work game xr">
-                <h1 class="h1-sm">Shattered Crosswords</h1>
-                <div class="iframe-wrapper-portrait">
-                    <iframe class="iframe" data-src="https://player.vimeo.com/video/898778051?title=0&byline=0&portrait=0&loop=1&autopause=0" allow="autoplay" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                </div>
-                <div class="work-sidesection">
-                    <h1 class="h1-md">Shattered Crosswords</h1>
-                    <p class="caption">
-                        The first AR game of NYT – this game takes the crossword and explodes it, using mobile AR technologies to create a 3D hunt for the proper perspective on a word to fit into the puzzle.
-                    </p>
-                    <!-- <p class="caption"> -->
-                        <!-- Take a look at the case study <a target="_blank" href="https://rd.nytimes.com/projects/building-the-timess-first-ar-game">here</a> ;) -->
-                    <!-- </p> -->
-                    <h2><a href="https://rd.nytimes.com/projects/building-the-timess-first-ar-game" target="_blank">Read case study</a></h2>
-                </div>
-            </div>
-            <div class="work xr">
-                <h1 class="h1-sm">Dalilah Muhammad</h1>
-                <div class="iframe-wrapper-portrait">
-                    <iframe class="iframe" data-src="https://player.vimeo.com/video/674250409?title=0&byline=0&portrait=0&loop=1&autopause=0" allow="autoplay" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                </div>
-                <div class="work-sidesection">
-                    <h1 class="h1-md">Dalilah Muhammad</h1>
-                    <p class="caption">
-                        For Olympics 2021, we created an AR effect to visualize Dalilah Muhammad's motion over the hurdle in real-scale, published to go along with her <a target="_blank" href="https://www.nytimes.com/interactive/2021/sports/olympics/dalilah-muhammad-track.html">interview</a>  with the New York Times.
-                    </p>
-                    <h2><a href="https://www.instagram.com/ar/915056065748952" target="_blank">Try it here</a></h2>
-                </div>
-            </div>
-            <div class="work xr">
-                <h1 class="h1-sm">Inflation Shrinkray</h1>
-                <div class="iframe-wrapper-portrait">
-                    <iframe class="iframe" data-src="https://player.vimeo.com/video/737439295?title=0&byline=0&portrait=0&loop=1&autopause=0" allow="autoplay" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                </div>
-                <div class="work-sidesection">
-                    <h1 class="h1-md">Inflation Shrinkray</h1>
-                    <p class="caption">
-                        We created a shrink ray in augmented reality where users can interact directly with consumer goods and see how inflation has affected buying power.
-                    </p>
-                    <h2><a href="https://www.instagram.com/ar/1626676667700070" target="_blank">Try it here</a></h2>
-                </div>
-            </div>
-            <div class="work website">
-                <h1 class="h1-sm">Lost Code</h1>
-                <div class="iframe-wrapper-landscape-am">
-                    <iframe class="iframe" data-src="https://player.vimeo.com/video/742844748?title=0&byline=0&portrait=0&loop=1&autopause=0" allow="autoplay" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                </div>
-                <div class="work-sidesection">
-                    <h1 class="h1-md">Lost Code</h1>
-                    <p class="caption">Lost Code is a graphic design project exploring the friction in translation. Made with Paper.js. Featured on <a target="_blank" href="https://www.itsnicethat.com/articles/double-click-december-2019-digital-031219">It's Nice That</a>!</p>
-                    <p class="caption">Design by Hilda Wong</p>
-                    <h2><a href="http://lostcode.info/" target="_blank">Enter site</a></h2>
-                </div>
-            </div>
+        </div>
+        <div class="work xr">
+          <h1 class="h1-sm">Nasal Swab</h1>
+          <div class="iframe-wrapper-portrait">
+            <iframe
+              class="iframe"
+              data-src="https://player.vimeo.com/video/674264874?title=0&byline=0&portrait=0&loop=1&autopause=0"
+              allow="autoplay"
+              frameborder="0"
+              webkitallowfullscreen
+              mozallowfullscreen
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="work-sidesection">
+            <h1 class="h1-md">Nasal Swab</h1>
+            <p class="caption">
+              Read
+              <a
+                target="_blank"
+                href="https://www.nytimes.com/interactive/2022/01/31/health/covid-nasal-swab-how-far.html"
+                >How Far Should a Coronavirus Test Go?</a
+              >
+            </p>
+            <p class="caption">
+              We worked with illustrator Julia Rothman to create a AR face
+              effect to show the interior of a nasal cavity in 2.5D.
+            </p>
+            <h2>
+              <a
+                href="https://www.instagram.com/ar/658770018692003"
+                target="_blank"
+                >Try it here</a
+              >
+            </h2>
+          </div>
+        </div>
+        <div class="work xr">
+          <h1 class="h1-sm">A Tiny Frog's Climb</h1>
+          <div class="iframe-wrapper-portrait">
+            <iframe
+              class="iframe"
+              data-src="https://player.vimeo.com/video/737433617?title=0&byline=0&portrait=0&loop=1&autopause=0"
+              allow="autoplay"
+              frameborder="0"
+              webkitallowfullscreen
+              mozallowfullscreen
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="work-sidesection">
+            <h1 class="h1-md">A Tiny Frog's Climb</h1>
+            <p class="caption">
+              Working with NYT Kids for the launch of their “Tiny Issue,” we
+              built a real-scale immersive rainforest environment to show the
+              journey of the tiny strawberry poison frog.
+            </p>
+            <h2>
+              <a
+                href="https://www.instagram.com/ar/1142331453229649"
+                target="_blank"
+                >Try it here</a
+              >
+            </h2>
+          </div>
+        </div>
+        <div class="work website">
+          <h1 class="h1-sm">Somewhere Good</h1>
+          <div class="iframe-wrapper-landscape-sa">
+            <iframe
+              class="iframe"
+              data-src="https://player.vimeo.com/video/742469710?title=0&byline=0&portrait=0&loop=1&autopause=0"
+              allow="autoplay"
+              frameborder="0"
+              webkitallowfullscreen
+              mozallowfullscreen
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="work-sidesection">
+            <h1 class="h1-md">Somewhere Good</h1>
+            <p class="caption">
+              For the Somewhere Good app launch, I worked with Annika
+              Hansteen-Izora and helped them revamp their colorful and
+              motion-heavy website. I also created a mini quiz that helps new
+              users find their community through a series of intimate questions.
+            </p>
+            <h2>
+              <a href="https://www.somewheregood.com/" target="_blank"
+                >Enter site</a
+              >
+            </h2>
+          </div>
+        </div>
 
-            <div class="work website installation">
-                <h1 class="h1-sm">Axis Mundi</h1>
-                <div class="iframe-wrapper-landscape-am">
-                    <iframe class="iframe" data-src="https://player.vimeo.com/video/354145633?title=0&byline=0&portrait=0&loop=1&autopause=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                </div>
-                <div class="work-sidesection">
-                    <h1 class="h1-md">Axis Mundi</h1>
-                    <p class="caption">Axis Mundi is an experimental exhibition project exploring man’s attempt to override nature with technology and nature’s resistance. Featured on <a href="https://klikkentheke.com/catalogue/axis-mundi/" target="_blank">klikkenthéke</a>!</p>
-                    <p class="caption">Installation design and development by me</p>
-                    <p class="caption">Web design by Hilda Wong</p>
-                    <h2><a href="http://axismundi.info" target="_blank">Enter site</a></h2>
-                </div>
-            </div>
-            
-            <!-- <div class="work website workshop last">
+        <div class="work website design">
+          <h1 class="h1-sm">Studio Ānanda</h1>
+          <div class="iframe-wrapper-landscape-sa">
+            <iframe
+              class="iframe"
+              data-src="https://player.vimeo.com/video/674271514?title=0&byline=0&portrait=0&loop=1&autopause=0"
+              allow="autoplay"
+              frameborder="0"
+              webkitallowfullscreen
+              mozallowfullscreen
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="work-sidesection">
+            <h1 class="h1-md">Studio Ānanda</h1>
+            <p class="caption">
+              I designed and developed a new website + CMS for Studio Ānanda,
+              channeling their spirit of wellness with soft aesthetics and use
+              of CSS filters, blend modes, and SVG animations. Featured on
+              <a href="https://loadmo.re/posts/studio-ananda" target="_blank"
+                >loadmo.re</a
+              >❣️
+            </p>
+            <h2>
+              <a href="https://www.studioananda.space/" target="_blank"
+                >Enter site</a
+              >
+            </h2>
+          </div>
+        </div>
+        <div class="work game design experiment">
+          <h1 class="h1-sm">Mosquito Catcher</h1>
+          <div class="iframe-wrapper-landscape-mosquito">
+            <iframe
+              class="iframe"
+              data-src="https://player.vimeo.com/video/885857562?title=0&byline=0&portrait=0&loop=1&autopause=0"
+              allow="autoplay"
+              frameborder="0"
+              webkitallowfullscreen
+              mozallowfullscreen
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="work-sidesection">
+            <h1 class="h1-md">Mosquito Catcher</h1>
+            <p class="caption">
+              This is a prototype for an asymmetrical 2-player game I designed,
+              where one player catches mosquitoes and the other plays as a
+              mosquito. In front of a webcam, the catcher uses their hand to
+              capture the mosquito, while the mosquito uses a joystick to evade
+              capture and suck blood out of the catcher's hand.
+            </p>
+            <h2>
+              <a href="https://github.com/ellenlowing/flii" target="_blank"
+                >Read code</a
+              >
+            </h2>
+          </div>
+        </div>
+        <div class="work game xr">
+          <h1 class="h1-sm">Shattered Crosswords</h1>
+          <div class="iframe-wrapper-portrait">
+            <iframe
+              class="iframe"
+              data-src="https://player.vimeo.com/video/898778051?title=0&byline=0&portrait=0&loop=1&autopause=0"
+              allow="autoplay"
+              frameborder="0"
+              webkitallowfullscreen
+              mozallowfullscreen
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="work-sidesection">
+            <h1 class="h1-md">Shattered Crosswords</h1>
+            <p class="caption">
+              The first AR game of NYT – this game takes the crossword and
+              explodes it, using mobile AR technologies to create a 3D hunt for
+              the proper perspective on a word to fit into the puzzle.
+            </p>
+            <!-- <p class="caption"> -->
+            <!-- Take a look at the case study <a target="_blank" href="https://rd.nytimes.com/projects/building-the-timess-first-ar-game">here</a> ;) -->
+            <!-- </p> -->
+            <h2>
+              <a
+                href="https://rd.nytimes.com/projects/building-the-timess-first-ar-game"
+                target="_blank"
+                >Read case study</a
+              >
+            </h2>
+          </div>
+        </div>
+        <div class="work xr">
+          <h1 class="h1-sm">Dalilah Muhammad</h1>
+          <div class="iframe-wrapper-portrait">
+            <iframe
+              class="iframe"
+              data-src="https://player.vimeo.com/video/674250409?title=0&byline=0&portrait=0&loop=1&autopause=0"
+              allow="autoplay"
+              frameborder="0"
+              webkitallowfullscreen
+              mozallowfullscreen
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="work-sidesection">
+            <h1 class="h1-md">Dalilah Muhammad</h1>
+            <p class="caption">
+              For Olympics 2021, we created an AR effect to visualize Dalilah
+              Muhammad's motion over the hurdle in real-scale, published to go
+              along with her
+              <a
+                target="_blank"
+                href="https://www.nytimes.com/interactive/2021/sports/olympics/dalilah-muhammad-track.html"
+                >interview</a
+              >
+              with the New York Times.
+            </p>
+            <h2>
+              <a
+                href="https://www.instagram.com/ar/915056065748952"
+                target="_blank"
+                >Try it here</a
+              >
+            </h2>
+          </div>
+        </div>
+        <div class="work xr">
+          <h1 class="h1-sm">Inflation Shrinkray</h1>
+          <div class="iframe-wrapper-portrait">
+            <iframe
+              class="iframe"
+              data-src="https://player.vimeo.com/video/737439295?title=0&byline=0&portrait=0&loop=1&autopause=0"
+              allow="autoplay"
+              frameborder="0"
+              webkitallowfullscreen
+              mozallowfullscreen
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="work-sidesection">
+            <h1 class="h1-md">Inflation Shrinkray</h1>
+            <p class="caption">
+              We created a shrink ray in augmented reality where users can
+              interact directly with consumer goods and see how inflation has
+              affected buying power.
+            </p>
+            <h2>
+              <a
+                href="https://www.instagram.com/ar/1626676667700070"
+                target="_blank"
+                >Try it here</a
+              >
+            </h2>
+          </div>
+        </div>
+        <div class="work website">
+          <h1 class="h1-sm">Lost Code</h1>
+          <div class="iframe-wrapper-landscape-am">
+            <iframe
+              class="iframe"
+              data-src="https://player.vimeo.com/video/742844748?title=0&byline=0&portrait=0&loop=1&autopause=0"
+              allow="autoplay"
+              frameborder="0"
+              webkitallowfullscreen
+              mozallowfullscreen
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="work-sidesection">
+            <h1 class="h1-md">Lost Code</h1>
+            <p class="caption">
+              Lost Code is a graphic design project exploring the friction in
+              translation. Made with Paper.js. Featured on
+              <a
+                target="_blank"
+                href="https://www.itsnicethat.com/articles/double-click-december-2019-digital-031219"
+                >It's Nice That</a
+              >!
+            </p>
+            <p class="caption">Design by Hilda Wong</p>
+            <h2>
+              <a href="http://lostcode.info/" target="_blank">Enter site</a>
+            </h2>
+          </div>
+        </div>
+
+        <div class="work website installation">
+          <h1 class="h1-sm">Axis Mundi</h1>
+          <div class="iframe-wrapper-landscape-am">
+            <iframe
+              class="iframe"
+              data-src="https://player.vimeo.com/video/354145633?title=0&byline=0&portrait=0&loop=1&autopause=0"
+              frameborder="0"
+              webkitallowfullscreen
+              mozallowfullscreen
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="work-sidesection">
+            <h1 class="h1-md">Axis Mundi</h1>
+            <p class="caption">
+              Axis Mundi is an experimental exhibition project exploring man’s
+              attempt to override nature with technology and nature’s
+              resistance. Featured on
+              <a
+                href="https://klikkentheke.com/catalogue/axis-mundi/"
+                target="_blank"
+                >klikkenthéke</a
+              >!
+            </p>
+            <p class="caption">Installation design and development by me</p>
+            <p class="caption">Web design by Hilda Wong</p>
+            <h2>
+              <a href="http://axismundi.info" target="_blank">Enter site</a>
+            </h2>
+          </div>
+        </div>
+
+        <!-- <div class="work website workshop last">
                 <h1 class="h1-sm">MICA Code Workshop</h1>
                 <a class="img-wrapper-mica" href="https://ellenlowing.com/mica-workshop/" target="_blank"><img src="assets/images/ws/screenshot.PNG" alt=""></a>
                 <div class="work-sidesection">
@@ -261,8 +607,8 @@
                     <h2><a href="https://ellenlowing.com/mica-workshop/" target="_blank">Enter site</a></p>
                 </div>
             </div> -->
-            
-            <!-- <div class="work">
+
+        <!-- <div class="work">
                 <h1 class="h1-sm">A Study of Motion and Tension</h1>
                 <div class="iframe-wrapper">
                     <iframe class="iframe" data-src="https://player.vimeo.com/video/286766368?title=0&byline=0&portrait=0&loop=1&autopause=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
@@ -274,9 +620,8 @@
 
                 <p><a href="https://github.com/ellenlowing/servo" target="_blank">Code</a></p>
             </div>  -->
-        </div>
+      </div>
     </div>
     <script type="text/javascript" src="assets/js/script.js"></script>
-</body>
-
+  </body>
 </html>
