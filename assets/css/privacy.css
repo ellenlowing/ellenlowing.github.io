@@ -1,0 +1,31 @@
+@font-face {
+  font-family: space;
+  src: url("../fonts/Space-Notorious-rounded.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+}
+@font-face {
+  font-family: dosis;
+  src: url("../fonts/Dosis/static/Dosis-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+}
+* {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+html,
+body {
+  background-color: #000;
+  font-family: dosis;
+  font-size: 20px;
+  color: #fff;
+}
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: #fff;
+}
