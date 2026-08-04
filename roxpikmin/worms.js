@@ -52,7 +52,7 @@ const SPECIES = {
     len: [0.42, 0.58], minPx: 92, speedMul: 0.6, biteEverySec: 1.3, bitesPerWorm: 6,
     biteR: 0.085, weight: 3, fly: false,
     pen: { rough: 1.0, bow: 1.7, stroke: 1.15 },
-    skins: ["#FF9DB6", "#C9A7EB", "#9FD8A4"],
+    skins: ["#FF9DB6", "#B9E85C", "#9FD8A4"],
     sprite: wormSprite,
   },
   ladybug: {
@@ -66,7 +66,7 @@ const SPECIES = {
     len: [0.5, 0.62], minPx: 98, speedMul: 1.25, biteEverySec: 0.55, bitesPerWorm: 2,
     biteR: 0.07, weight: 4, fly: true, bob: 0.5,
     pen: { rough: 0.8, bow: 2.4, stroke: 0.6, single: true },
-    skins: ["#7FB5E6", "#8FD9B6", "#C9A7EB"],
+    skins: ["#7FB5E6", "#8FD9B6", "#B9E85C"],
     sprite: dragonflySprite,
   },
   ant: {

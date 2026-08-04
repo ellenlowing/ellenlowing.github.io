@@ -20,8 +20,8 @@
 
 html, body {
   height: 100%;
-  background: #1b1024;
-  color: #fff;
+  background: #8ACE00;
+  color: #000;
   font-family: "Gaegu", ui-rounded, "Comic Sans MS", "Trebuchet MS", system-ui, sans-serif;
   overflow: hidden;
 }
@@ -32,7 +32,7 @@ html, body {
   height: 100vh;
   overflow: hidden;
   background:
-    radial-gradient(120% 90% at 50% 0%, #3a1f4d 0%, #1b1024 70%);
+    radial-gradient(120% 90% at 50% 0%, #A5E52B 0%, #8ACE00 70%);
 }
 
 /* the <video> is only a texture source — we paint it onto the canvas ourselves */
@@ -65,8 +65,9 @@ html, body {
 }
 
 .pill {
-  background: rgba(0, 0, 0, 0.45);
-  border: 2px solid rgba(255, 255, 255, 0.18);
+  background: rgba(0, 0, 0, 0.62);
+  border: 2px solid #8ACE00;
+  color: #8ACE00;
   border-radius: 999px;
   padding: 5px 13px;
   font-size: 13px;
@@ -83,7 +84,7 @@ html, body {
   z-index: 10;
   display: grid;
   place-items: center;
-  background: rgba(20, 10, 28, 0.82);
+  background: rgba(0, 0, 0, 0.82);
   backdrop-filter: blur(10px);
 }
 
@@ -92,8 +93,9 @@ html, body {
 .fail-card {
   width: min(460px, 88vw);
   text-align: center;
-  background: #2a1638;
-  border: 4px solid #ffb3d1;
+  background: #8ACE00;
+  border: 4px solid #000;
+  color: #000;
   border-radius: 28px;
   padding: 34px 30px 30px;
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
@@ -113,16 +115,15 @@ html, body {
 .fail-card h1 {
   margin: 12px 0 10px;
   font-size: 30px;
-  color: #ffe08a;
-  text-shadow: 3px 3px 0 #6b4226;
+  color: #000;
 }
 
 #err {
   font-size: 15px;
   line-height: 1.55;
-  opacity: 0.85;
+  opacity: 0.75;
   min-height: 1.2em;
-  color: #ff9aa9;
+  color: #000;
 }
 
 #retryBtn {
@@ -130,15 +131,15 @@ html, body {
   font: inherit;
   font-size: 18px;
   padding: 13px 30px;
-  border: 4px solid #6b4226;
+  border: 4px solid #000;
   border-radius: 999px;
-  background: #8fe3c8;
-  color: #21362f;
+  background: #000;
+  color: #8ACE00;
   cursor: pointer;
   transition: transform 0.12s ease, background 0.12s ease;
 }
 
-#retryBtn:hover  { background: #a6f0d8; transform: translateY(-2px) rotate(-1.5deg); }
+#retryBtn:hover  { background: #1a1a1a; transform: translateY(-2px) rotate(-1.5deg); }
 #retryBtn:active { transform: translateY(1px) scale(0.97); }
 
 /* ---------- intro prompt ---------- */
@@ -150,8 +151,8 @@ html, body {
   z-index: 6;
   text-align: center;
   pointer-events: none;
-  background: rgba(20, 10, 28, 0.55);
-  border: 3px solid #ffb3d1;
+  background: rgba(0, 0, 0, 0.62);
+  border: 3px solid #8ACE00;
   border-radius: 24px;
   padding: 16px 30px 18px;
   backdrop-filter: blur(8px);
@@ -168,13 +169,17 @@ html, body {
   line-height: 1;
   letter-spacing: 8px;
   animation: bob 1.6s ease-in-out infinite;
+  /* Explicit, not inherited: the counter's "waiting" state is a plain `·`,
+     which would take the black body colour and vanish on this dark panel.
+     The 👍 states render as colour emoji either way. */
+  color: #8ACE00;
 }
 
 #prompt p {
   margin-top: 8px;
   font-size: 17px;
   line-height: 1.45;
-  color: #ffe08a;
+  color: #8ACE00;
 }
 
 .prompt-alt { font-size: 13px; opacity: 0.6; }

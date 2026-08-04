@@ -31,7 +31,7 @@ export const confettiConfig = {
 };
 
 // The cake's sprinkle palette, so the confetti belongs to the same party.
-const COLORS = ["#FF6B9D", "#6C8CFF", "#FFC93C", "#3FC98A", "#9B5DE5", "#FF8FA3"];
+const COLORS = ["#FF6B9D", "#6C8CFF", "#FFC93C", "#3FC98A", "#8ACE00", "#FF8FA3"];
 const SHAPES = ["strip", "dot", "tri", "squiggle"];
 const VARIANTS = 3; // distinct sketches per (shape, size, colour)
 

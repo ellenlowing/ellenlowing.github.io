@@ -29,7 +29,7 @@ const OUTLINE = "#4A2C17";
 // declared up here because LAYERS below references it
 const ICING_FAMILY = '"Flavors"';
 const CREAM = "#FFF8EE";
-const SPRINKLES = ["#FF6B9D", "#6C8CFF", "#FFC93C", "#3FC98A", "#9B5DE5"];
+const SPRINKLES = ["#FF6B9D", "#6C8CFF", "#FFC93C", "#3FC98A", "#8ACE00"];
 
 export const LAYERS = [
   {
