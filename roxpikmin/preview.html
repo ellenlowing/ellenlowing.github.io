@@ -1,0 +1,354 @@
+<!doctype html>
+<!-- Dev harness: renders the cake against a fake standing pose so you can tune
+     widthMul / the SVG band boundaries without standing in front of a camera.
+     Drag the pink dots. Uses the exact same cake.js the live app does. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>cake preview (no camera)</title>
+  <style>
+    body { margin:0; background:#241533; color:#fff;
+           font-family: ui-rounded, "Trebuchet MS", system-ui, sans-serif; }
+    canvas { display:block; margin:0 auto; cursor:grab; height:78vh; width:auto; }
+    p { text-align:center; opacity:.6; font-size:13px; margin:10px; }
+    button { font:inherit; font-size:13px; margin:0 4px; padding:6px 14px;
+             border:0; border-radius:999px; background:#8fe3c8; cursor:pointer; }
+    #bar { text-align:center; margin:12px; }
+    #hingeWrap, .ctl { font-size:13px; margin-left:14px; vertical-align:middle; }
+    #hingeWrap b, .ctl b { display:inline-block; width:2.6em; text-align:left; opacity:.7; }
+    .ctl select { font:inherit; border-radius:6px; padding:2px 6px; }
+    #bar br { line-height:2.2; }
+  </style>
+</head>
+<body>
+  <canvas id="c" width="960" height="1000"></canvas>
+  <div id="bar">
+    <button data-pose="stand">stand</button>
+    <button data-pose="crouch">crouch</button>
+    <button data-pose="tilt">tilt</button>
+    <button data-pose="nolegs">legs out of frame</button>
+    <label id="hingeWrap">hinge <input id="hinge" type="range" min="0" max="1" step="0.05" value="0.7"><b id="hingeVal">0.70</b></label>
+    <label id="hingeWrap">head turn <input id="yaw" type="range" min="0.1" max="1" step="0.05" value="1"><b id="yawVal">1.00</b></label>
+    <br>
+    <label class="ctl">fill
+      <select id="fill">
+        <option value="hachure">hachure</option>
+        <option value="zigzag" selected>zigzag</option>
+        <option value="cross-hatch">cross-hatch</option>
+        <option value="dots">dots</option>
+      </select>
+    </label>
+    <label class="ctl">roughness <input id="rough" type="range" min="0" max="6" step="0.1" value="3.2"><b id="roughVal">3.20</b></label>
+    <label class="ctl">stroke <input id="strokeW" type="range" min="0.4" max="2.5" step="0.1" value="0.5"><b id="strokeVal">0.50</b></label>
+    <button id="dropBtn">replay drop</button>
+    <button id="wormBtn">worms: off</button>
+    <button id="wormNow">+worm</button>
+    <button id="confettiBtn">confetti: off</button>
+  </div>
+  <p>drag the pink dots · rings are the hinge pins · same draw code as the live app</p>
+
+<script type="module">
+import { LAYERS, config, loadLayers, computeBase, solveLayer, drawCake, midpoint, easeOutBack } from "./cake.js";
+import { updateWorms, drawWorms, spawnWorm, wormConfig, wormStats } from "./worms.js";
+import { updateConfetti, drawConfetti, confettiConfig, confettiCount } from "./confetti.js";
+
+const c = document.getElementById("c");
+const ctx = c.getContext("2d");
+
+// MediaPipe landmark indices we actually use
+const IDX = { earL:7, earR:8, shoulderL:11, shoulderR:12, hipL:23, hipR:24, kneeL:25, kneeR:26, ankleL:27, ankleR:28 };
+
+// Shifted down the canvas: the mask tier rises well above the ears (cake over
+// the forehead, then candles), so a head near y=0 clips off the top.
+const POSES = {
+  stand: {
+    earL:[445,265],      earR:[515,265],
+    shoulderL:[390,360], shoulderR:[570,360], hipL:[410,640], hipR:[550,640],
+    kneeL:[415,870],     kneeR:[545,870],
+  },
+  crouch: {
+    earL:[447,300],      earR:[513,300],
+    shoulderL:[390,395], shoulderR:[570,395], hipL:[405,565], hipR:[555,565],
+    kneeL:[400,715],     kneeR:[560,715],
+  },
+  tilt: {
+    earL:[425,290],      earR:[495,262],
+    shoulderL:[360,400], shoulderR:[560,330], hipL:[420,620], hipR:[570,580],
+    kneeL:[390,840],     kneeR:[560,870],
+  },
+  // knees gone: exercises the bottom tier's fallback aim + span
+  nolegs: {
+    earL:[445,265],      earR:[515,265],
+    shoulderL:[390,360], shoulderR:[570,360], hipL:[410,640], hipR:[550,640],
+  },
+};
+
+let pts = [];
+const dropState = [null, null, null]; // intro drop offsets, applied in draw()
+let yaw = 1; // 1 = facing camera, ->0 turns the head away (squashes width only)
+
+function setPose(name) {
+  pts = [];
+  for (const [k, v] of Object.entries(POSES[name])) {
+    pts[IDX[k]] = { x: v[0], y: v[1], v: 1 };
+  }
+  syncFace();
+  draw();
+}
+
+// Derive eyes (2,5) and mouth (9,10) from the ears, at real face proportions,
+// so the harness exercises the same faceSpan() path the live app does. Turning
+// the head foreshortens horizontal spacing but never the eye->mouth drop —
+// which is exactly why faceSpan() needs both measures.
+function syncFace() {
+  const a = pts[7], b = pts[8];
+  if (!a || !b) return;
+  const cx = (a.x + b.x) / 2, cy = (a.y + b.y) / 2;
+  const hw = Math.hypot(a.x - b.x, a.y - b.y) / Math.max(yaw, 0.02); // true width
+  const ang = Math.atan2(b.y - a.y, b.x - a.x);
+  const ux = Math.cos(ang), uy = Math.sin(ang);   // along the ear axis
+  const px = -uy, py = ux;                        // down the face
+  const put = (i, alongFrac, downFrac) => {
+    const along = alongFrac * hw * yaw, down = downFrac * hw;
+    pts[i] = { x: cx + ux * along + px * down, y: cy + uy * along + py * down, v: 1 };
+  };
+  put(2, -0.19, 0);      put(5, 0.19, 0);         // eyes
+  put(9, -0.15, 0.4545); put(10, 0.15, 0.4545);   // mouth: 1/2.2 of head width
+}
+
+function draw() {
+  ctx.clearRect(0, 0, c.width, c.height);
+
+  // fake body, for reference
+  ctx.strokeStyle = "rgba(255,255,255,.20)";
+  ctx.lineWidth = 24; ctx.lineCap = "round";
+  const bones = [[7,8],[7,11],[8,12],[11,12],[11,23],[12,24],[23,24],[23,25],[24,26],[25,27],[26,28]];
+  ctx.beginPath();
+  for (const [a,b] of bones) {
+    if (!pts[a] || !pts[b]) continue;
+    ctx.moveTo(pts[a].x, pts[a].y); ctx.lineTo(pts[b].x, pts[b].y);
+  }
+  ctx.stroke();
+
+  // stand-in for the webcam face, so the mask's hole has something to reveal
+  if (pts[7] && pts[8]) {
+    const hw = Math.hypot(pts[7].x-pts[8].x, pts[7].y-pts[8].y);
+    const cx = (pts[7].x+pts[8].x)/2, cy = (pts[7].y+pts[8].y)/2;
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(Math.atan2(pts[8].y-pts[7].y, pts[8].x-pts[7].x));
+    ctx.fillStyle = "#c98f6a";
+    ctx.beginPath(); ctx.ellipse(0, hw*0.1, hw*0.72, hw*0.95, 0, 0, 7); ctx.fill();
+    ctx.fillStyle = "#3a2418";
+    for (const s of [-1, 1]) { ctx.beginPath(); ctx.ellipse(s*hw*0.3, -hw*0.05, hw*0.09, hw*0.12, 0, 0, 7); ctx.fill(); }
+    ctx.beginPath(); ctx.ellipse(0, hw*0.5, hw*0.26, hw*0.13, 0, 0, Math.PI); ctx.fill();
+    ctx.restore();
+  }
+
+  const base = computeBase(pts);
+  // set .state so the worms can read tier transforms, then draw from it
+  for (const L of LAYERS) L.state = solveLayer(L, pts, base);
+  // draw() rebuilds state each frame, so the intro's drop offsets have to be
+  // re-applied here or they'd be wiped before drawCake sees them
+  LAYERS.forEach((L, i) => { if (L.state && dropState[i]) Object.assign(L.state, dropState[i]); });
+  drawCake(ctx);
+
+  ctx.fillStyle = "#ff2e88";
+  for (const p of pts) {
+    if (!p) continue;
+    ctx.beginPath(); ctx.arc(p.x, p.y, 8, 0, 7); ctx.fill();
+  }
+
+  // hinge pins: the landmark midpoints consecutive tiers pivot about
+  ctx.strokeStyle = "#00e5ff"; ctx.lineWidth = 4;
+  for (const layer of LAYERS) {
+    for (const pair of [layer.pair, layer.next]) {
+      const m = midpoint(pts, pair);
+      if (!m) continue;
+      ctx.beginPath(); ctx.arc(m.x, m.y, 13, 0, 7); ctx.stroke();
+    }
+  }
+}
+
+let drag = -1;
+c.addEventListener("pointerdown", e => {
+  const r = c.getBoundingClientRect();
+  const x = (e.clientX-r.left)*c.width/r.width, y = (e.clientY-r.top)*c.height/r.height;
+  drag = pts.findIndex(p => p && Math.hypot(p.x-x, p.y-y) < 26);
+});
+c.addEventListener("pointermove", e => {
+  if (drag < 0) return;
+  const r = c.getBoundingClientRect();
+  pts[drag].x = (e.clientX-r.left)*c.width/r.width;
+  pts[drag].y = (e.clientY-r.top)*c.height/r.height;
+  draw();
+});
+addEventListener("pointerup", () => drag = -1);
+
+for (const b of document.querySelectorAll("[data-pose]")) {
+  b.onclick = () => { yaw = 1; yawEl.value = 1; yawVal.textContent = '1.00'; baseEars = null; setPose(b.dataset.pose); };
+}
+
+const hingeEl = document.getElementById("hinge");
+const hingeVal = document.getElementById("hingeVal");
+hingeEl.oninput = () => {
+  config.hinge = parseFloat(hingeEl.value);
+  hingeVal.textContent = config.hinge.toFixed(2);
+  draw();
+};
+window.__setHinge = (v) => { hingeEl.value = v; hingeEl.oninput(); };
+
+const yawEl = document.getElementById("yaw");
+const yawVal = document.getElementById("yawVal");
+let baseEars = null;
+yawEl.oninput = () => {
+  const nv = parseFloat(yawEl.value);
+  if (!baseEars) baseEars = [{...pts[7]}, {...pts[8]}];
+  const cx = (baseEars[0].x + baseEars[1].x) / 2, cy = (baseEars[0].y + baseEars[1].y) / 2;
+  for (const [i, e] of [[7, baseEars[0]], [8, baseEars[1]]]) {
+    pts[i] = { x: cx + (e.x - cx) * nv, y: cy + (e.y - cy) * nv, v: 1 };
+  }
+  yaw = nv; yawVal.textContent = nv.toFixed(2);
+  syncFace(); draw();
+};
+// Must NOT reset baseEars — it's the unsquashed baseline. Clearing it here
+// would re-capture the already-squashed ears and compound the turn each call.
+window.__setYaw = (v) => { yawEl.value = v; yawEl.oninput(); };
+
+// Style knobs write straight into config; the tier cache keys on these values
+// (see drawLayer), so draw() alone is enough to rebuild.
+const fillEl = document.getElementById("fill");
+fillEl.oninput = () => { config.fillStyle = fillEl.value; draw(); };
+const roughEl = document.getElementById("rough");
+const roughVal = document.getElementById("roughVal");
+roughEl.oninput = () => {
+  config.roughness = parseFloat(roughEl.value);
+  roughVal.textContent = config.roughness.toFixed(2);
+  draw();
+};
+const strokeEl = document.getElementById("strokeW");
+const strokeVal = document.getElementById("strokeVal");
+strokeEl.oninput = () => {
+  config.strokeWidth = parseFloat(strokeEl.value);
+  strokeVal.textContent = config.strokeWidth.toFixed(2);
+  draw();
+};
+window.__setStyle = (fill, rough, strokeW) => {
+  if (fill != null) { fillEl.value = fill; fillEl.oninput(); }
+  if (rough != null) { roughEl.value = rough; roughEl.oninput(); }
+  if (strokeW != null) { strokeEl.value = strokeW; strokeEl.oninput(); }
+};
+
+/* ---- worms: mouse is the swatting hand ---- */
+const wormBtn = document.getElementById("wormBtn");
+const wormNow = document.getElementById("wormNow");
+const confettiBtn = document.getElementById("confettiBtn");
+let wormsOn = false;
+let simOn = false;
+let lastT = 0;
+// The buttons are authoritative in the harness, so start both systems idle
+// rather than inheriting the live game's defaults.
+wormConfig.enabled = false;
+confettiConfig.enabled = false;
+const mouseHand = { id: 0, x: -9999, y: -9999, vx: 0, vy: 0 };
+let lastMouse = null;
+
+c.addEventListener("pointermove", (e) => {
+  const r = c.getBoundingClientRect();
+  const mx = (e.clientX - r.left) * c.width / r.width;
+  const my = (e.clientY - r.top) * c.height / r.height;
+  const t = performance.now();
+  if (lastMouse) {
+    const mdt = Math.max((t - lastMouse.t) / 1000, 1e-3);
+    mouseHand.vx = (mx - lastMouse.x) / mdt;
+    mouseHand.vy = (my - lastMouse.y) / mdt;
+  }
+  mouseHand.x = mx; mouseHand.y = my;
+  lastMouse = { x: mx, y: my, t };
+});
+
+function wormEnv() {
+  return { w: c.width, h: c.height, base: computeBase(pts), hands: [mouseHand] };
+}
+
+// One animation loop drives both the bugs and the confetti; the buttons decide
+// which of them is actually doing anything. Same mouse-as-hand for both — move
+// it fast to swat a bug, and to throw confetti.
+function tick(now) {
+  if (!simOn) return;
+  const dt = Math.min((now - lastT) / 1000, 0.06);
+  lastT = now;
+  const env = wormEnv();
+  draw();
+  updateWorms(dt, env);
+  drawWorms(ctx);
+  updateConfetti(dt, env);
+  drawConfetti(ctx);
+  // decay so a parked mouse stops counting as a fast hand
+  mouseHand.vx *= 0.8; mouseHand.vy *= 0.8;
+  if (wormsOn) wormBtn.textContent = `worms: on · bites ${wormStats.bites} · swatted ${wormStats.swatted}`;
+  if (confettiConfig.enabled) confettiBtn.textContent = `confetti: on · ${confettiCount()}`;
+  requestAnimationFrame(tick);
+}
+
+function startSim() {
+  if (simOn) return;
+  simOn = true;
+  lastT = performance.now();
+  requestAnimationFrame(tick);
+}
+
+wormBtn.onclick = () => {
+  wormsOn = !wormsOn;
+  wormConfig.enabled = wormsOn;
+  if (wormsOn) startSim();
+  else wormBtn.textContent = "worms: off";
+};
+confettiBtn.onclick = () => {
+  confettiConfig.enabled = !confettiConfig.enabled;
+  if (confettiConfig.enabled) startSim();
+  else confettiBtn.textContent = "confetti: off";
+};
+wormNow.onclick = () => { if (wormsOn) spawnWorm(wormEnv()); };
+window.__worms = () => { if (!wormsOn) wormBtn.onclick(); };
+window.__spawn = (species) => spawnWorm(wormEnv(), species);
+window.__confetti = () => { confettiConfig.enabled = true; startSim(); };
+window.__confettiCount = confettiCount;
+// Drive the fake hand directly, so confetti can be tested without a mouse.
+window.__hand = (x, y, vx, vy) => {
+  mouseHand.x = x; mouseHand.y = y; mouseHand.vx = vx; mouseHand.vy = vy;
+};
+window.__env = wormEnv;
+
+// Replay the intro drop (same curve and stagger the live app uses), so the
+// landing can be eyeballed without a camera or a thumbs-up.
+const DROP_STAGGER = 0.38, DROP_DUR = 0.7;
+document.getElementById("dropBtn").onclick = () => {
+  const t0 = performance.now();
+  const fall = c.height * 1.15;
+  (function step(now) {
+    const t = (now - t0) / 1000;
+    let landed = 0;
+    LAYERS.forEach((l, i) => {
+      const local = t - i * DROP_STAGGER;
+      if (local <= 0) dropState[i] = { hidden: true, dropY: 0 };
+      else if (local >= DROP_DUR) { dropState[i] = { hidden: false, dropY: 0 }; landed++; }
+      else dropState[i] = { hidden: false, dropY: -(1 - easeOutBack(local / DROP_DUR)) * fall };
+    });
+    draw();
+    if (landed < LAYERS.length) requestAnimationFrame(step);
+  })(t0);
+};
+window.__dropState = dropState;
+
+await loadLayers();
+setPose("stand");
+window.__setPose = setPose;
+// inspection hook: what each tier resolves to for the current fake pose
+window.__solve = () => {
+  const base = computeBase(pts);
+  return LAYERS.map((l) => ({ key: l.key, ...solveLayer(l, pts, base) }));
+};
+</script>
+</body>
+</html>

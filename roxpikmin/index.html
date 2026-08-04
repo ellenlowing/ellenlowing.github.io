@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>🎂 Cake Body 🎂</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="stage">
+    <video id="video" playsinline muted></video>
+    <canvas id="canvas"></canvas>
+
+    <div id="hud">
+      <span class="pill" id="fps">— fps</span>
+      <span class="pill" id="status">booting…</span>
+      <span class="pill" id="worms">🐛 0</span>
+      <span class="pill hint">SPACE = stack · M = mute · R = restart · W = worms · F = confetti · D = skeleton · V = video · C = cake</span>
+    </div>
+
+    <!-- Intro prompt: shown until both thumbs go up. -->
+    <div id="prompt">
+      <div class="prompt-hands" id="promptCount">· ·</div>
+      <p>Give a <b>thumbs up with both hands</b><br>to stack your cake
+      <br><span class="prompt-alt">(or press space)</span></p>
+    </div>
+
+    <!-- No start gate: the camera comes up on load. This only appears if that
+         fails (permission denied, no camera, insecure origin). -->
+    <div id="fail" hidden>
+      <div class="fail-card">
+        <div class="fail-cake">🎂</div>
+        <h1>Can't see you</h1>
+        <p id="err"></p>
+        <button id="retryBtn">Try again</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+.DS_Store
+__pycache__/
+*.pyc
+
+# Source photos for the roxpikmin bug heads. Only the generated cutouts
+# (head1-5.png) are used at runtime; the full-resolution originals stay local.
+roxpikmin/assets/ROXPIKMIN/*.HEIC
+roxpikmin/assets/ROXPIKMIN/*.heic
+roxpikmin/assets/ROXPIKMIN/*.JPG
+roxpikmin/assets/ROXPIKMIN/*.jpg
+roxpikmin/assets/ROXPIKMIN/*.jpeg
+roxpikmin/assets/ROXPIKMIN/*.PNG
+!roxpikmin/assets/ROXPIKMIN/head*.png
+
+# Background music is not distributed with the site.
+roxpikmin/assets/bgm.mp3

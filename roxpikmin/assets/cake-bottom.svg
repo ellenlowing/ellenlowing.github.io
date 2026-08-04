@@ -1,0 +1,87 @@
+<!--
+  Band layout (viewBox units) — see cake.js LAYERS[].geom
+    top0     40   top of the drip cap == the tracked keypoint sits here
+    capEnd  148   end of fixed top band (cap + drips + sprinkles)
+    bodyEnd 232   end of the STRETCHABLE band
+    bot0    266   body bottom == meets the next tier's top0
+
+  The 148..232 band may only contain VERTICAL detail. Vertical piping and a
+  horizontal-only shading gradient stretch losslessly; anything with a
+  horizontal edge in there smears. That is why the piping runs top-to-bottom
+  and the pearl border lives below bodyEnd.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 300" width="440" height="300">
+  <defs>
+    <!-- horizontal-only: survives vertical stretching untouched -->
+    <linearGradient id="cyl" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0.00" stop-color="#2A1408" stop-opacity="0.30"/>
+      <stop offset="0.16" stop-color="#2A1408" stop-opacity="0.06"/>
+      <stop offset="0.38" stop-color="#FFFFFF" stop-opacity="0.30"/>
+      <stop offset="0.56" stop-color="#FFFFFF" stop-opacity="0.10"/>
+      <stop offset="0.82" stop-color="#2A1408" stop-opacity="0.08"/>
+      <stop offset="1.00" stop-color="#2A1408" stop-opacity="0.28"/>
+    </linearGradient>
+
+    <!-- vertical buttercream piping -->
+    <pattern id="pipe" width="31" height="20" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="15" height="20" fill="#8AD8BA"/>
+    </pattern>
+
+    <!-- piped pearl border, sits below bodyEnd so it never stretches -->
+    <pattern id="pearl" width="31" height="34" patternUnits="userSpaceOnUse" x="3">
+      <circle cx="15.5" cy="17" r="12.5" fill="#FFF8EE" stroke="#4A2C17" stroke-width="4.5"/>
+    </pattern>
+
+    <clipPath id="body">
+      <rect x="34" y="56" width="372" height="210" rx="17"/>
+    </clipPath>
+  </defs>
+
+  <g stroke="#4A2C17" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+
+    <!-- cake board -->
+    <ellipse cx="220" cy="272" rx="203" ry="17" fill="#E7D3B7"/>
+
+    <!-- ===== tier body ===== -->
+    <rect x="34" y="56" width="372" height="210" rx="17" fill="#A8E6CF"/>
+    <g clip-path="url(#body)" stroke="none">
+      <rect x="34" y="56" width="372" height="210" fill="url(#pipe)"/>
+      <rect x="34" y="56" width="372" height="210" fill="url(#cyl)"/>
+    </g>
+    <rect x="34" y="56" width="372" height="210" rx="17" fill="none"/>
+
+    <!-- ===== white drip cap (top0 = 40) ===== -->
+    <path fill="#FFF8EE" d="
+      M 24,62 Q 24,40 46,40
+      H 394 Q 416,40 416,62
+      V 96
+      C 416,96 404,96 396,96
+      C 396,130 358,130 358,96
+      H 322
+      C 322,120 292,120 292,96
+      H 256
+      C 256,138 210,138 210,96
+      H 178
+      C 178,116 150,116 150,96
+      H 116
+      C 116,132 70,132 70,96
+      H 24
+      Z"/>
+    <!-- gloss on the cap -->
+    <path d="M 52,58 H 168" stroke="#FFFFFF" stroke-width="9" opacity="0.85"/>
+
+    <g stroke="none">
+      <rect x="72"  y="56" width="20" height="7" rx="3.5" fill="#FF6B9D" transform="rotate(-18 82 59)"/>
+      <rect x="130" y="66" width="20" height="7" rx="3.5" fill="#FFC93C" transform="rotate(24 140 69)"/>
+      <rect x="188" y="54" width="20" height="7" rx="3.5" fill="#6C8CFF" transform="rotate(-8 198 57)"/>
+      <rect x="246" y="68" width="20" height="7" rx="3.5" fill="#FF6B9D" transform="rotate(40 256 71)"/>
+      <rect x="302" y="55" width="20" height="7" rx="3.5" fill="#9B5DE5" transform="rotate(-32 312 58)"/>
+      <rect x="354" y="67" width="20" height="7" rx="3.5" fill="#FFC93C" transform="rotate(12 364 70)"/>
+    </g>
+
+    <!-- ===== pearl border (band C) ===== -->
+    <g clip-path="url(#body)" stroke="none">
+      <rect x="34" y="232" width="372" height="34" fill="url(#pearl)"/>
+    </g>
+  </g>
+</svg>
