@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Three-tier cake, in the same palette cake.js uses for the real thing.
+       Deliberately chunky: at 16x16 anything finer than a ~2px stroke
+       disappears, so this is stacked bars + candles and nothing else. -->
+  <g stroke="#4A2C17" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
+    <!-- flames -->
+    <g stroke-width="1.6">
+      <path d="M24 10c0-2 2-2.4 2-4.4 1.6 1.2 2 2.6 2 4.4a2 2 0 0 1-4 0z" fill="#FFC93C"/>
+      <path d="M30 8.6c0-2 2-2.4 2-4.4 1.6 1.2 2 2.6 2 4.4a2 2 0 0 1-4 0z" fill="#FFC93C"/>
+      <path d="M36 10c0-2 2-2.4 2-4.4 1.6 1.2 2 2.6 2 4.4a2 2 0 0 1-4 0z" fill="#FFC93C"/>
+    </g>
+    <!-- candles -->
+    <rect x="24" y="11" width="4" height="7" fill="#FF6B9D"/>
+    <rect x="30" y="9.6" width="4" height="8.4" fill="#6C8CFF"/>
+    <rect x="36" y="11" width="4" height="7" fill="#3FC98A"/>
+
+    <!-- top tier -->
+    <rect x="18" y="17" width="28" height="12" rx="2.5" fill="#FFE3A0"/>
+    <path d="M18 21.5c2.6 0 2.6 2.6 5.2 2.6s2.6-2.6 5.2-2.6 2.6 2.6 5.2 2.6 2.6-2.6 5.2-2.6 2.6 2.6 5.2 2.6h2V19.5a2 2 0 0 0-2-2H20a2 2 0 0 0-2 2z" fill="#FFF8EE"/>
+
+    <!-- middle tier -->
+    <rect x="11" y="29" width="42" height="13" rx="2.5" fill="#FFC2D6"/>
+    <path d="M11 33.5c2.8 0 2.8 2.8 5.6 2.8s2.8-2.8 5.6-2.8 2.8 2.8 5.6 2.8 2.8-2.8 5.6-2.8 2.8 2.8 5.6 2.8 2.8-2.8 5.6-2.8 2.8 2.8 5.6 2.8h3.8V31.5a2 2 0 0 0-2-2H13a2 2 0 0 0-2 2z" fill="#FFF8EE"/>
+
+    <!-- bottom tier -->
+    <rect x="5" y="42" width="54" height="14" rx="3" fill="#A8E6CF"/>
+    <path d="M5 46.5c3 0 3 2.8 6 2.8s3-2.8 6-2.8 3 2.8 6 2.8 3-2.8 6-2.8 3 2.8 6 2.8 3-2.8 6-2.8 3 2.8 6 2.8 3-2.8 6-2.8h.9V45a3 3 0 0 0-3-3H8a3 3 0 0 0-3 3z" fill="#FFF8EE"/>
+
+    <!-- plate -->
+    <path d="M3 58h58" stroke-width="2.6"/>
+  </g>
+</svg>
