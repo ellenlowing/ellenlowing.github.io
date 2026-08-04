@@ -1,10 +1,28 @@
+/* UI face. Gaegu ships with full Hangul (~3MB per weight), which this Latin-only
+   interface has no use for — these are subset to Latin + punctuation and served
+   as woff2, taking the pair from 5.8MB to 33KB.
+   The cake's icing lettering is a different face entirely; cake.js registers
+   its own font. */
+@font-face {
+  font-family: "Gaegu";
+  src: url("assets/fonts/Gaegu-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap; /* UI text shows immediately in the fallback, then swaps */
+}
+@font-face {
+  font-family: "Gaegu";
+  src: url("assets/fonts/Gaegu-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 html, body {
   height: 100%;
   background: #1b1024;
   color: #fff;
-  font-family: ui-rounded, "Comic Sans MS", "Trebuchet MS", system-ui, sans-serif;
+  font-family: "Gaegu", ui-rounded, "Comic Sans MS", "Trebuchet MS", system-ui, sans-serif;
   overflow: hidden;
 }
 
