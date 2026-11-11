@@ -75,10 +75,7 @@ p {
   position: absolute;
   width: 100vw;
   height: 100vh;
-  height: -webkit-fill-available;
-  height: fill-available;
-  height: -moz-available;
-  height: stretch;
+  height: 100dvh;
   overflow: hidden;
   z-index: 2;
   top: 0;
