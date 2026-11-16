@@ -466,3 +466,5 @@ main,.site-header,.site-footer{max-width:1240px;margin-left:auto;margin-right:au
 .concept-slide img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:center}
 .concept-slide figcaption{min-height:0}
 @media(max-height:740px){.concept-preview{width:min(280px,calc(100vw - 32px))}}
+
+#jubbo-reference{width:210px}

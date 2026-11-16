@@ -1,3 +1,14 @@
+// Defer video requests until near the viewport or explicitly opened.
+const loadVideo = video => {
+  let changed = false;
+  video.querySelectorAll('source[data-src]').forEach(source => {
+    source.src = source.dataset.src;
+    delete source.dataset.src;
+    changed = true;
+  });
+  if (changed) video.load();
+};
+
 // Reference images stay off the reading surface until requested.
 document.querySelectorAll('[data-reference]').forEach((trigger) => {
   const panel = document.getElementById(trigger.dataset.reference);
@@ -20,7 +31,7 @@ document.querySelectorAll('[data-reference]').forEach((trigger) => {
   const open = () => {
     clearTimeout(closeTimer);
     panel.showPopover();
-    panel.querySelectorAll('video').forEach(video => { video.dispatchEvent(new Event('previewopen')); video.play().catch(() => {}); });
+    panel.querySelectorAll('video').forEach(video => { loadVideo(video); video.dataset.userPaused = 'false'; video.dispatchEvent(new Event('previewopen')); video.play().catch(() => {}); });
     trigger.setAttribute('aria-expanded', 'true');
     position();
   };
@@ -166,6 +177,8 @@ document.querySelectorAll('main video').forEach((video) => {
     hovered = false;
     syncSound();
     if (soundEnabled) {
+      loadVideo(video);
+      video.dataset.userPaused = 'false';
       if (video.paused) video.play().catch(sync);
       startSound();
     } else silence();
@@ -174,9 +187,11 @@ document.querySelectorAll('main video').forEach((video) => {
   video.addEventListener('previewclose', () => { hovered = false; soundEnabled = false; syncSound(); silence(); });
   button.addEventListener('click', () => {
     if (video.paused || video.ended) {
+      loadVideo(video);
+      video.dataset.userPaused = 'false';
       video.play().catch(sync);
       startSound();
-    } else video.pause();
+    } else { video.dataset.userPaused = 'true'; video.pause(); }
   });
   button.addEventListener('pointerenter', (event) => {
     if (event.pointerType !== 'mouse') return;
@@ -269,7 +284,9 @@ if (islandTeaser) {
     caption.textContent = `${name} — ${description}`;
     video.setAttribute('aria-label', `${name} gameplay teaser`);
     if (file) {
+      delete source.dataset.src;
       source.src = `../assets/videos/superadventureland/${file}`;
+      video.dataset.userPaused = 'false';
       video.load();
       const reveal = () => {
         if (request !== transitionId) return;
@@ -314,3 +331,32 @@ if (conceptPanel) {
     }
   });
 }
+
+// Loading and playback have separate boundaries: prepare nearby clips, but
+// only run visible ones. A manual pause persists across scroll-away/return.
+const viewportVideos = [...document.querySelectorAll('main video')].filter(video => !video.closest('[popover]'));
+const visibleVideos = new Set();
+const updateVideoPlayback = video => {
+  if (!document.hidden && visibleVideos.has(video) && video.dataset.userPaused !== 'true' && video.hasAttribute('data-autoplay')) {
+    loadVideo(video);
+    video.play().catch(() => {});
+  } else video.pause();
+};
+if ('IntersectionObserver' in window) {
+  const preloadObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { loadVideo(entry.target); preloadObserver.unobserve(entry.target); }
+    });
+  }, { rootMargin: '250px 0px' });
+  const playbackObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && entry.intersectionRatio >= 0.05) visibleVideos.add(entry.target);
+      else visibleVideos.delete(entry.target);
+      updateVideoPlayback(entry.target);
+    });
+  }, { threshold: [0, 0.05] });
+  viewportVideos.forEach(video => { preloadObserver.observe(video); playbackObserver.observe(video); });
+} else {
+  viewportVideos.forEach(video => { visibleVideos.add(video); updateVideoPlayback(video); });
+}
+document.addEventListener('visibilitychange', () => viewportVideos.forEach(updateVideoPlayback));
