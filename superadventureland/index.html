@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Super Adventure Land — Ellen Lo</title>
+    <meta name="description" content="Ellen Lo’s gameplay programming and design work on Super Adventure Land: a new boss, five-world progression, visual tutorials, and interactive island transitions." />
+    <link rel="canonical" href="https://ellenlowing.com/superadventureland/" />
+    <meta property="og:title" content="Super Adventure Land — Ellen Lo" />
+    <meta property="og:description" content="Shaping Dream Sequence into a five-world adventure. Gameplay programming, encounter design, and interactive storytelling." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ellenlowing.com/superadventureland/" />
+    <link rel="stylesheet" href="../assets/css/project.css?v=concept-compact" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="page-frame">
+      <header class="site-header">
+        <a class="wordmark" href="/">Ellen Lo</a>
+        <a href="mailto:ellenlowing@gmail.com">say hi 💌</a>
+      </header>
+      <main id="main">
+
+        <section class="project-intro" aria-labelledby="project-title">
+          <div>
+            <p class="eyebrow">Selected work / mixed reality game</p>
+            <h1 id="project-title">Super Adventure Land</h1>
+            <p class="lead">Shaping a collection of playful mechanics into a five-world adventure.</p>
+          </div>
+
+          <aside class="project-role" aria-label="Project contributions">
+            <div>
+              <h2 class="eyebrow">My role</h2>
+              <p>Lead Game Developer · <button type="button" class="reference-keyword" data-reference="behind-scenes-photo" aria-controls="behind-scenes-photo" aria-expanded="false">Dream Park</button></p>
+
+            </div>
+            <div>
+              <h2 class="eyebrow">Focus</h2>
+              <ul class="focus-list">
+                <li>Game systems &amp; gameplay programming</li>
+                <li>Level progression &amp; encounter design</li>
+                <li>Character design &amp; interactive storytelling</li>
+              </ul>
+            </div>
+          </aside>
+
+        </section>
+
+        <div class="index-divider" aria-hidden="true"><svg class="divider-star" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 2v28M2 16h28M6.1 6.1l19.8 19.8M6.1 25.9L25.9 6.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+
+        <section class="chapter" id="mama-pengo" aria-labelledby="boss-title">
+          <p class="eyebrow">01 / Boss design</p>
+          <div class="boss-layout">
+            <div class="boss-intro">
+              <h2 id="boss-title">Mama Pengo: a new boss</h2>
+              <p>I created Mama Pengo around Snowlands’ two defining elements: penguins and ice pits. Her belly slide becomes an attack, while the ice gives players a way to fight back.</p>
+            </div>
+            <div class="boss-clips">
+              <figure>
+                <div class="boss-mechanic">
+                  <h3>Belly slide attack</h3>
+                  <div>
+                    <p>Mama Pengo slides on her belly across the ice toward the player, dealing damage on contact.</p>
+                  </div>
+                </div>
+                <div class="boss-video-frame">
+                <video autoplay loop muted playsinline controls preload="metadata" aria-label="Mama Pengo belly-slides toward the player and deals damage"><source src="../assets/videos/superadventureland/mama-pengo-belly-slide.mp4" type="video/mp4" />Your browser does not support video playback.</video>
+                </div>
+                <figcaption>Taunt → belly slide → player damage</figcaption>
+              </figure>
+              <figure>
+                <div class="boss-mechanic">
+                  <h3>Break the ice to counter</h3>
+                  <p>The hammer power-up opens a hole in her slide path. Mama Pengo falls through and takes damage; her frosted breath restores the ice for the next exchange.</p>
+                </div>
+                <div class="boss-video-frame">
+                <video autoplay loop muted playsinline controls preload="metadata" aria-label="Hammer breaks the ice, Mama Pengo falls through, and frosted breath restores the arena"><source src="../assets/videos/superadventureland/mama-pengo-ice-counter.mp4" type="video/mp4" />Your browser does not support video playback.</video>
+                </div>
+                <figcaption>Hammer → drown → ice reset</figcaption>
+              </figure>
+            </div>
+            <aside class="damage-sidenote" aria-label="Design note: damage effect"><span>Design note: damage effect</span> The early game had no punishment mechanic, something operators and players asked for. I designed the screen-crack effect to communicate lava damage, and it later became standard damage feedback across many Dream Park titles—including boss combat.</aside>
+          </div>
+          <section class="character-development" aria-labelledby="character-title">
+            <h3 id="character-title">From reference to final character</h3>
+            <div class="prose character-design">
+              <p>I based Mama Pengo on <button type="button" class="reference-keyword" data-reference="royal-penguin-references" aria-controls="royal-penguin-references" aria-expanded="false">royal penguins</button>, exaggerating their yellow-and-black feather crests to give her an expressive face. I added sunset-colored eyeshadow for extra flair, while keeping her consistent with <button type="button" class="reference-keyword" data-reference="pengo-reference" aria-controls="pengo-reference" aria-expanded="false">Pengo</button> and Super Adventure Land’s existing visual style.</p>
+              <p>I art-directed <button type="button" class="reference-keyword" data-reference="mama-pengo-concepts" aria-controls="mama-pengo-concepts" aria-expanded="false">concept images</button> in Higgsfield and generated the final 3D model with Meshy. With Claude Opus 5.5, I developed a Blender Python workflow for custom rigging and keyframed animation, then integrated the character into Unity through Unity MCP.</p>
+              <p>I directed and refined her animation timing, blinking, expressions, and feather-crest movement. Iteration addressed deformation issues like distorted eyeshadow; the final facial setup used shader-driven eyes adapted from <button type="button" class="reference-keyword" data-reference="jubbo-reference" aria-controls="jubbo-reference" aria-expanded="false">Jubbo</button>’s system.</p>
+            </div>
+            <div id="mama-pengo-concepts" class="reference-preview concept-preview" popover="manual" role="region" aria-label="Mama Pengo concept explorations">
+              <p class="concept-preview-title">Selected explorations</p>
+              <div class="concept-slides" aria-roledescription="carousel" aria-label="Concept iterations">
+                <figure class="concept-slide"><img src="../assets/images/superadventureland/mama-pengo-family-wider.jpg" alt="Early Mama Pengo concept beside an existing Pengo character." /><figcaption><strong>The family check</strong>I thought this version was cute, but beside the baby Pengos, she didn’t look related to them. They needed similar facial features for her to feel like their mother.</figcaption></figure>
+                <figure class="concept-slide" hidden><img src="../assets/images/superadventureland/mama-pengo-dark-exploration.jpg" alt="Rejected dark Mama Pengo concept with an icy cape, glowing eyes, and human feet in glass heels." /><figcaption><strong>A little too cursed</strong>I tried a more evil queen direction with glass heels, but AI gave her human feet… which made me decide to go with closed-toe shoes.</figcaption></figure>
+                <figure class="concept-slide" hidden><img src="../assets/images/superadventureland/mama-pengo-near-final-concept.jpg" alt="Near-final Mama Pengo concept with sunset eyeshadow, yellow-and-black feather crests, an ice crown, and white boots." /><figcaption><strong>Closest to final</strong>This had the features I wanted, but still needed to fit the game’s derpy, cartoonish style.</figcaption></figure>
+              </div>
+              <div class="concept-carousel-controls"><button type="button" data-concept-prev aria-label="Previous concept">←</button><span class="concept-counter" aria-live="polite">1 / 3</span><button type="button" data-concept-next aria-label="Next concept">→</button></div>
+            </div>
+            <div id="royal-penguin-references" class="reference-preview" popover="manual" role="region" aria-label="Royal penguin reference images">
+              <div class="reference-images">
+                <img src="../assets/images/superadventureland/royal-penguin-reference-front.png" width="447" height="447" alt="Front view of a royal penguin showing its long yellow-and-black feather crest." />
+                <img src="../assets/images/superadventureland/royal-penguin-reference-profile.png" width="800" height="593" alt="Three-quarter view of a royal penguin with sweeping yellow-and-black crest feathers; watermarked Science Photo Library reference." />
+              </div>
+              <p>Royal penguin references · feather crests and facial features</p>
+            </div>
+            <div id="jubbo-reference" class="reference-preview reference-preview-single" popover="manual" role="region" aria-label="Jubbo character reference"><img src="../assets/images/superadventureland/jubbo-reference.png" width="512" height="512" alt="Jubbo, an orange character with white eyes, a yellow mouth, and purple shoes." /><p>Jubbo · existing game character</p></div>
+            <div id="pengo-reference" class="reference-preview pengo-variants-preview" popover="manual" role="region" aria-label="Existing Pengo character reference">
+              <div class="reference-images"><img src="../assets/images/superadventureland/pengo-reference.png" width="512" height="512" alt="Pengo, the existing blue penguin character, with a white belly, yellow beak, cyan helmet, and red shoes." /><img src="../assets/images/superadventureland/jetpack-pengo-reference.png" width="204" height="193" alt="Jetpack Pengo wearing sunglasses and a blue jetpack." /></div>
+              <p>Pengo &amp; Jetpack Pengo · existing Snowlands characters</p>
+            </div>
+            <figure class="character-sheet">
+              <img src="../assets/images/superadventureland/mama-pengo-character-sheet.png" width="3600" height="900" loading="lazy" alt="Mama Pengo character sheet showing front, three-quarter, facial detail, and side views, with yellow-and-black eyebrow crests, sunset-colored eyeshadow, and an ice crown." />
+              <figcaption>Mama Pengo’s final design: royal-penguin crests, sunset eyeshadow, an ice crown, and closed-toe snow boots.</figcaption>
+            </figure>
+          </section>
+        </section>
+
+        <div class="index-divider section-divider" aria-hidden="true"><svg class="divider-star" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 2v28M2 16h28M6.1 6.1l19.8 19.8M6.1 25.9L25.9 6.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+
+        <section class="chapter" id="expansion" aria-labelledby="expansion-title">
+          <p class="eyebrow">02 / Expansion</p>
+          <div class="boss-intro expansion-intro">
+            <div class="expansion-heading">
+              <h2 id="expansion-title">Expanding Dream Sequence</h2>
+              <dl class="expansion-metrics">
+                <div><dt>Levels</dt><dd>15 <span aria-label="to">→</span> 40</dd></div>
+                <div><dt>Islands</dt><dd>5</dd></div>
+                <div><dt>Estimated playtime</dt><dd>15 <span aria-label="to">→</span> 45 <small>min</small></dd></div>
+              </dl>
+            </div>
+            <div class="prose"><p>Each island brings a distinct environment, new layouts, and mechanics that build on familiar game elements. A boss encounter closes each eight-level chapter, followed by a pause before players teleport to the next island.</p></div>
+          </div>
+          <div class="island-showcase">
+
+            <figure class="island-teaser" id="island-teaser">
+            <div class="island-teaser-stage">
+              <video autoplay muted playsinline preload="metadata" aria-label="Sunny Meadows gameplay teaser"><source src="../assets/videos/superadventureland/meadow-teaser-trimmed.mp4" type="video/mp4" />Your browser does not support video playback.</video>
+              <div class="island-teaser-empty" hidden><span aria-hidden="true">🌱</span><p>Sunny Meadows gameplay teaser</p><span>Coming soon</span></div>
+            </div>
+            <progress class="island-teaser-progress" max="1" value="0" aria-label="Progress until next island teaser"></progress>
+            <figcaption class="island-teaser-caption" aria-live="polite">Sunny Meadows — Island gameplay preview.</figcaption>
+          </figure>
+          <ol class="island-route island-selector" aria-label="Choose an island gameplay teaser">
+            <li><button type="button" data-island="meadow" aria-pressed="true" aria-controls="island-teaser"><span aria-hidden="true">🌱</span><span>Sunny Meadows</span></button></li>
+            <li><button type="button" data-island="lava" aria-pressed="false" aria-controls="island-teaser"><span aria-hidden="true">🌋</span><span>Lava Caves</span></button></li>
+            <li><button type="button" data-island="snow" aria-pressed="false" aria-controls="island-teaser"><span aria-hidden="true">☃️</span><span>Snowlands</span></button></li>
+            <li><button type="button" data-island="desert" aria-pressed="false" aria-controls="island-teaser"><span aria-hidden="true">🏜️</span><span>Desert Ruins</span></button></li>
+            <li><button type="button" data-island="beach" aria-pressed="false" aria-controls="island-teaser"><span aria-hidden="true">🏖️</span><span>Pirate Beach</span></button></li>
+          </ol>
+
+          </div>
+          <div class="progression-example">
+            <div class="prose">
+              <h3>One new element at a time</h3>
+              <p>I designed the progression to teach one new mechanic at a time, giving players a chance to practice before combining it with familiar elements in later levels.</p>
+            </div>
+            <div class="progression-steps">
+              <figure>
+                <p class="eyebrow progression-label">01 / Introduce</p>
+                <video autoplay loop muted playsinline controls preload="metadata" aria-label="Lava causes screen heat, damage, and coin loss"><source src="../assets/videos/superadventureland/lava-damage.mp4" type="video/mp4" />Your browser does not support video playback.</video>
+                <figcaption>Stepping into lava heats up the screen, cracks the player’s screen, and costs coins.</figcaption>
+              </figure>
+              <figure>
+                <p class="eyebrow progression-label">02 / Practice</p>
+                <video autoplay loop muted playsinline controls preload="metadata" aria-label="Standing on a platform inside the lava pit is safe"><source src="../assets/videos/superadventureland/lava-safe-platform.mp4" type="video/mp4" />Your browser does not support video playback.</video>
+                <figcaption>Platforms provide safe footing inside the lava pit.</figcaption>
+              </figure>
+              <figure>
+                <p class="eyebrow progression-label">03 / Combine</p>
+                <video autoplay loop muted playsinline controls preload="metadata" aria-label="Navigating a full-size lava maze with moving platforms"><source src="../assets/videos/superadventureland/lava-moving-platform-maze-trimmed.mp4" type="video/mp4" />Your browser does not support video playback.</video>
+                <figcaption>A full-size lava maze adds moving platforms, asking players to time their steps and movement.</figcaption>
+              </figure>
+            </div>
+            <div class="combat-progression" id="lionheart-progression">
+              <p class="progression-bridge">The same approach prepares players for boss combat: two preceding levels teach players to use cover before applying it against Lionheart.</p>
+            <div class="progression-steps">
+              <figure>
+                <p class="eyebrow progression-label">01 / Introduce</p>
+                <video autoplay loop muted playsinline controls preload="metadata" aria-label="A targeted boulder teaches players to hide behind a pyramid"><source src="../assets/videos/superadventureland/boulder-cover-stitched.mp4" type="video/mp4" />Your browser does not support video playback.</video>
+                <figcaption>A boulder targets the player and deals damage on contact. A speech bubble guides them to take cover behind a pyramid.</figcaption>
+              </figure>
+              <figure>
+                <p class="eyebrow progression-label">02 / Practice</p>
+                <video autoplay loop muted playsinline controls preload="metadata" aria-label="A spawning pillar provides another form of cover"><source src="../assets/videos/superadventureland/pillar-cover.mp4" type="video/mp4" />Your browser does not support video playback.</video>
+                <figcaption>A spawning pillar introduces another form of cover before the boss fight.</figcaption>
+              </figure>
+              <figure>
+                <p class="eyebrow progression-label">03 / Apply</p>
+                <video autoplay loop muted playsinline controls preload="metadata" aria-label="Lionheart crashes into a pillar, becomes dizzy, and the player steps on its tail"><source src="../assets/videos/superadventureland/lionheart-counter-trimmed.mp4" type="video/mp4" />Your browser does not support video playback.</video>
+                <figcaption>Bait Lionheart into a pillar, then step on its tail while it’s dizzy.</figcaption>
+              </figure>
+            </div>
+            </div>
+          </div>
+
+          <div class="split design-story">
+            <div class="prose"><h3>World map diorama</h3><p>I built a diorama for each island and assembled them into a 3D map that shows the adventure’s scope, tracks progress, and previews what comes next. <button type="button" class="reference-keyword" data-reference="cannonsnout-note" aria-controls="cannonsnout-note" aria-expanded="false">Cannonsnout</button> sails to each destination, unlocking it for the player to touch and select.</p><p>With AR’s viewpoint tied to the player’s movement, I used a custom cutout shader to create a zoom-like transition: the selected island moves to the center as the surrounding map is cropped away.</p></div>
+            <figure class="island-transition-media"><video autoplay loop muted playsinline controls preload="metadata" aria-label="Interactive island transition showing the ship approach, island selection, and scene reveal"><source src="../assets/videos/superadventureland/island-transitions.mp4" type="video/mp4" />Your browser does not support video playback.</video><figcaption>The map shows the full adventure, the player’s progress, and the next destination.</figcaption></figure>
+          </div>
+        </section>
+
+        <div class="index-divider section-divider" aria-hidden="true"><svg class="divider-star" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 2v28M2 16h28M6.1 6.1l19.8 19.8M6.1 25.9L25.9 6.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+
+        <section class="chapter" id="gallery" aria-labelledby="gallery-title">
+          <p class="eyebrow">03 / Additional features</p>
+          <div class="gallery-heading"><h2 id="gallery-title">Feature gallery</h2><button type="button" class="cooler-easter-egg" data-reference="cooler-note" aria-controls="cooler-note" aria-expanded="false" aria-label="About the Jubbo cooler"><img src="../assets/images/superadventureland/jubbo-cooler.png" width="1280" height="1280" loading="lazy" alt="An orange cooler with Jubbo’s face and a white handle." /></button></div>
+          <p class="section-intro">A few highlights I added: new characters, mechanics, and animations.</p>
+          <div class="feature-gallery">
+            <figure><div class="boss-video-frame"><video autoplay loop muted playsinline controls preload="metadata" aria-label="Scarab gameplay in Desert Ruins"><source src="../assets/videos/superadventureland/scarab.mp4" type="video/mp4" />Your browser does not support video playback.</video></div><figcaption>New character for Desert Ruins: a coin-stealing scarab that gets in the way of collecting every coin.</figcaption></figure>
+            <figure><div class="boss-video-frame"><video autoplay loop muted playsinline controls preload="metadata" aria-label="Lionheart encounter loop showing a pillar respawn, collision, and tail counter"><source src="../assets/videos/superadventureland/lionheart-gallery-cropped.mp4" type="video/mp4" />Your browser does not support video playback.</video></div><figcaption>Full Lionheart loop: attack → crash → defeat.</figcaption></figure>
+            <figure><div class="boss-video-frame"><video autoplay loop muted playsinline controls preload="metadata" aria-label="Sphinx treasure gameplay in Desert Ruins"><source src="../assets/videos/superadventureland/sphinx-treasure.mp4" type="video/mp4" />Your browser does not support video playback.</video></div><figcaption>The sphinx hides coins, scarabs, and even a key to a puzzle challenge.</figcaption></figure>
+            <figure><div class="boss-video-frame"><video autoplay loop muted playsinline controls preload="metadata" aria-label="Volleyball challenge gameplay in Pirate Beach"><source src="../assets/videos/superadventureland/volleyball-challenge.mp4" type="video/mp4" />Your browser does not support video playback.</video></div><figcaption>Jubbos line up and turn toward you before passing, giving you a cue to anticipate your return.</figcaption></figure>
+            <figure><div class="boss-video-frame"><video autoplay loop muted playsinline controls preload="metadata" aria-label="A pearl inside a clam shell blows bubbles and releases coin rewards"><source src="../assets/videos/superadventureland/clam-bubbles.mp4" type="video/mp4" />Your browser does not support video playback.</video></div><figcaption>A pearl hidden inside a clam shell blows bubbles and releases coin rewards.</figcaption></figure>
+            <figure><div class="boss-video-frame"><video autoplay loop muted playsinline controls preload="metadata" aria-label="Jubbo repairing ruined sandcastles"><source src="../assets/videos/superadventureland/sandcastles.mp4" type="video/mp4" />Your browser does not support video playback.</video></div><figcaption>Jubbo unlocks a headspin move to repair crumbling sandcastles.</figcaption></figure>
+          </div>
+        </section>
+        <div id="behind-scenes-photo" class="reference-preview behind-scenes-preview" popover="manual" role="region" aria-label="Behind the scenes at Dream Park">
+          <img src="../assets/images/superadventureland/ellen-superadventureland.jpg" loading="lazy" width="1600" height="941" alt="Ellen beside a Super Adventure Land character against a colorful backdrop of printed game elements." />
+          <p>Demo at IAAPA Expo 2025, Orlando, Florida</p>
+        </div>
+        <div id="cannonsnout-note" class="reference-preview cannonsnout-preview" popover="manual" role="region" aria-label="About Cannonsnout"><video loop muted playsinline preload="metadata" aria-label="Cannonsnout’s evil laugh"><source src="../assets/videos/superadventureland/cannonsnout-laugh.mp4" type="video/mp4" /></video><p>Cannonsnout, the game’s main villain.</p></div>
+        <p class="project-credit">Built on Super Adventure Land’s existing world, assets &amp; systems.</p>
+      </main>
+      <footer class="site-footer"><a class="wordmark" href="/">← More work</a><a href="#main">Back to top ↑</a><div class="footer-signoff"><a href="mailto:ellenlowing@gmail.com">say hi 💌</a></div></footer>
+      <div id="cooler-note" class="reference-preview cooler-note" popover="manual" role="region" aria-label="Unused Jubbo cooler concept"><p>Jubbo cooler was an unused beach prop; it’s too cute to leave behind &gt;&lt;</p></div>
+    </div>
+    <script src="../assets/js/project.js?v=concept-carousel" defer></script>
+  </body>
+</html>
