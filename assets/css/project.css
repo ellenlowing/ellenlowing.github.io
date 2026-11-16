@@ -468,3 +468,6 @@ main,.site-header,.site-footer{max-width:1240px;margin-left:auto;margin-right:au
 @media(max-height:740px){.concept-preview{width:min(280px,calc(100vw - 32px))}}
 
 #jubbo-reference{width:210px}
+
+/* Match gameplay highlight titles across case studies. */
+.boss-mechanic h3{font-size:24px;line-height:1.2}

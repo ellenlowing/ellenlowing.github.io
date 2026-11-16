@@ -131,7 +131,7 @@ document.querySelectorAll('main video').forEach((video) => {
     fadeTo(0);
   };
   const startSound = () => {
-    if ((!hovered && !soundEnabled) || video.paused || startingAudio) return;
+    if (video.hasAttribute('data-silent') || (!hovered && !soundEnabled) || video.paused || startingAudio) return;
     const source = video.currentSrc || video.querySelector('source').src;
     // Avoid restarting or seeking a track already playing from a previous event.
     if (audio.src === source && !audio.paused) { fadeTo(1); return; }
