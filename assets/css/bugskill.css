@@ -49,3 +49,5 @@
 .mechanic{gap:12px}
 .mechanic>figure{margin-top:6px}
 @media(max-width:640px){.mechanic>p{font-size:15px}}
+
+.dodge-highlight{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:42px;align-items:start;padding-top:16px}.dodge-highlight h3{font-size:24px;line-height:1.2}.dodge-highlight .prose>p{font:400 16px/1.65 'DM Sans',sans-serif;color:#ccc}.dodge-highlight .prose{gap:12px}.dodge-highlight .damage-sidenote{margin-top:6px}@media(max-width:700px){.dodge-highlight{grid-template-columns:minmax(0,1fr);gap:22px}}@media(max-width:640px){.dodge-highlight .prose>p{font-size:15px}}
