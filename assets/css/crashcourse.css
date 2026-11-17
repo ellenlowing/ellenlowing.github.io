@@ -1,0 +1,108 @@
+/* Crash Course follows the shared case-study typography and note styles. */
+.crashcourse-page .project-intro{padding-bottom:38px}
+.crashcourse-page h3{color:#d6d0f3}
+.project-overview,.experience-story{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:48px;align-items:start}
+.race-trailer,.experience-story>figure{width:100%;max-width:400px;justify-self:end}
+.trailer-frame{position:relative;aspect-ratio:9/16;background:#111}
+.trailer-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.launch-note{font:17px/1.45 dosis,sans-serif;color:#bbb}
+.story-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:42px;align-items:start;margin-bottom:12px}
+.clip-frame{background:#111;overflow:hidden}
+.clip-frame video,.clip-frame .video-toggle{display:block;width:100%;height:auto}
+.clip-frame:has(video[data-silent]) .video-sound-toggle{display:none}
+.physics-pair,.example-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
+.mechanic{display:flex;flex-direction:column;gap:12px}
+.mechanic h3{font-size:24px;line-height:1.2}
+.mechanic>p{font:400 16px/1.65 'DM Sans',sans-serif;color:#ccc;flex:1}
+.mechanic>figure{margin-top:6px}
+.physics-pair .rig-image{display:block;width:100%;aspect-ratio:1;object-fit:contain;background:transparent}
+.physics-pair .clip-frame,.physics-pair .video-toggle,.physics-pair video{aspect-ratio:1}
+.press-note{display:grid;gap:12px;margin:64px 0 36px;font:18px/1.5 dosis,sans-serif;color:#d6d0f3}
+@media(max-width:800px){.story-intro{grid-template-columns:minmax(0,1fr);gap:24px}.project-overview,.experience-story{gap:28px}}
+@media(max-width:640px){.project-overview,.experience-story,.physics-pair,.example-pair{grid-template-columns:minmax(0,1fr);gap:32px}.race-trailer,.experience-story>figure{justify-self:center;max-width:360px}.mechanic>p{font-size:15px}.press-note{margin-top:40px}}
+
+.physics-reuse{padding-top:14px}.physics-reuse h3{font-size:24px}.physics-reuse p{font:400 16px/1.65 'DM Sans',sans-serif;color:#ccc}@media(max-width:640px){.physics-reuse p{font-size:15px}}
+
+/* Original sketches stay uncropped and can be opened at full size. */
+.planning-story{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:48px;align-items:start;padding-top:16px}
+.planning-story figure{max-width:400px;justify-self:end}
+.planning-story img,.planning-sketches img{display:block;width:100%;height:auto}
+.planning-story a,.planning-sketches a{display:block}
+.course-pacing{display:grid;gap:20px;padding-top:20px}
+.course-pacing>p{max-width:72ch}
+.pacing-stages{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 40px;margin:0;padding-left:24px;color:#d6d0f3}
+.pacing-stages li{padding-left:8px}
+.pacing-stages h4{font:500 24px/1.2 dosis,sans-serif;margin:0 0 12px}
+.pacing-stages p{font:400 16px/1.65 'DM Sans',sans-serif;color:#ccc}
+.planning-sketches{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;margin:8px 0 14px}
+.planning-sketches a{height:100%}
+.planning-sketches figure{display:grid;grid-template-rows:1fr auto;align-content:start}
+.planning-sketches img{height:100%;object-fit:contain;object-position:top}
+@media(max-width:700px){.planning-story,.planning-sketches{grid-template-columns:minmax(0,1fr);gap:28px}.planning-story figure{max-width:400px;justify-self:center}.planning-sketches figure{display:block}.planning-sketches img{height:auto}}
+@media(max-width:640px){.pacing-stages{grid-template-columns:minmax(0,1fr);gap:24px}.pacing-stages p{font-size:15px}}
+
+/* Hide the notebook strip beneath the selected blue Post-it. */
+.planning-story figure>a{aspect-ratio:1496/1480;overflow:hidden}
+.planning-story figure>a>img{height:100%;object-fit:cover;object-position:center top}
+
+/* Sketch-to-final comparison: matching visible heights and caption baselines. */
+.sketch-comparison{display:grid;gap:24px;padding-top:8px}
+.sketch-comparison .planning-sketches{margin:0;align-items:start}
+.sketch-comparison .planning-sketches figure{display:block}
+.sketch-comparison .planning-sketches figure>a{position:relative;display:block;height:auto;aspect-ratio:1004/1072;overflow:hidden}
+.sketch-comparison .planning-sketches figure>a>img{position:absolute;max-width:none}
+.sketch-comparison .planning-sketches figure:nth-child(1)>a>img{width:124.098%;height:auto;left:-13.201%;top:-16.9811%;clip-path:inset(13.6571% 13.961% 5.9181% 15.4221%)}
+.sketch-comparison .planning-sketches figure:nth-child(2)>a>img{inset:0;width:100%;height:100%;object-fit:contain}
+.sketch-comparison figcaption{margin-top:12px}
+.sketch-comparison figure:first-child figcaption{margin-left:5.94%}
+
+.route-testing .video-sound-toggle{display:flex}
+
+/* Keep the process recording secondary to the course plans. */
+.route-testing{width:100%;max-width:760px;justify-self:center}
+
+/* Pair the brainstorm artifact with the route test. */
+.planning-story{grid-template-columns:minmax(0,1fr);gap:24px}
+.planning-story>.prose{max-width:72ch}
+.planning-media{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:32px;align-items:center}
+.planning-media>figure{max-width:none;width:100%;justify-self:stretch}
+.planning-media>figure:first-child>a{aspect-ratio:1496/1480}
+@media(max-width:700px){.planning-media{grid-template-columns:minmax(0,1fr);gap:28px}.planning-media>figure:first-child{max-width:360px;justify-self:center}}
+
+.course-in-action{width:100%;max-width:360px;justify-self:center;margin-top:12px}
+
+/* Show the plan, editor layout, and live course together. */
+.sketch-comparison .planning-sketches{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.sketch-comparison .planning-sketches .course-in-action{max-width:none;margin-top:0;justify-self:stretch}
+.sketch-comparison .course-in-action .clip-frame{aspect-ratio:1004/1072}
+.sketch-comparison .course-in-action .video-toggle,.sketch-comparison .course-in-action video{height:100%;width:100%;object-fit:contain}
+@media(max-width:700px){.sketch-comparison .planning-sketches{grid-template-columns:minmax(0,1fr);gap:28px}.sketch-comparison .planning-sketches .course-in-action{max-width:360px;justify-self:center}.sketch-comparison .course-in-action .clip-frame{aspect-ratio:446/640}}
+
+.course-in-action .clip-frame{background:transparent}
+
+@media(min-width:701px){.planning-media>figure:first-child>a{width:100%;max-width:284px}}
+
+.planning-media>figure:first-child>a>img{clip-path:inset(0 0 0 5px);transform:translateX(-5px);width:calc(100% + 5px);max-width:none}
+
+/* A compact view of the rig, response, and reusable variations. */
+.physics-gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.physics-gallery .rig-image,.physics-gallery .clip-frame{width:100%;aspect-ratio:1;background:transparent}
+.physics-gallery .rig-image{display:block;height:auto;object-fit:contain}
+.physics-gallery .video-toggle,.physics-gallery video{width:100%;height:100%;object-fit:contain}
+@media(max-width:900px){.physics-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 24px}}
+@media(max-width:480px){.physics-gallery{grid-template-columns:minmax(0,1fr)}}
+
+.physics-gallery{grid-template-columns:repeat(2,minmax(0,1fr));width:100%;max-width:800px;justify-self:center}
+#spine-rig-preview{width:240px}
+@media(max-width:480px){.physics-gallery{grid-template-columns:minmax(0,1fr)}}
+
+/* Use the same visible height for both physics clips. */
+.physics-gallery .clip-frame{aspect-ratio:1;background:transparent}
+.physics-gallery .clip-frame .video-toggle{display:flex;align-items:center;justify-content:center;height:100%}
+.physics-gallery .clip-frame video{width:100%;height:100%;object-fit:cover}
+
+/* Match clip heights using their natural proportions. */
+.physics-gallery{grid-template-columns:minmax(0,1fr) minmax(0,1.77778fr)}
+.physics-gallery figure:nth-child(2) .clip-frame{aspect-ratio:16/9}
+.physics-gallery .clip-frame video{object-fit:contain}
+@media(max-width:480px){.physics-gallery{grid-template-columns:minmax(0,1fr)}}

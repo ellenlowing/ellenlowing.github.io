@@ -360,3 +360,54 @@ if ('IntersectionObserver' in window) {
   viewportVideos.forEach(video => { visibleVideos.add(video); updateVideoPlayback(video); });
 }
 document.addEventListener('visibilitychange', () => viewportVideos.forEach(updateVideoPlayback));
+
+// Inspect case-study images without leaving the page.
+(() => {
+  const images = [...document.querySelectorAll('main img')].filter(img => !img.closest('button'));
+  if (!images.length) return;
+  const viewer = document.createElement('dialog');
+  viewer.className = 'image-zoom';
+  viewer.setAttribute('aria-label', 'Enlarged image');
+  viewer.innerHTML = '<button type="button" class="image-zoom-close" aria-label="Close enlarged image"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 5l14 14M5 19L19 5"/></svg></button><img alt=""><p class="image-zoom-caption"></p>';
+  document.body.append(viewer);
+  const largeImage = viewer.querySelector('img');
+  const caption = viewer.querySelector('p');
+  let opener;
+  const close = () => viewer.close();
+  viewer.querySelector('button').addEventListener('click', close);
+  viewer.addEventListener('click', event => {
+    const rect = viewer.getBoundingClientRect();
+    if (event.target === viewer && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) close();
+  });
+  viewer.addEventListener('close', () => {
+    document.body.classList.remove('image-zoom-open');
+    largeImage.removeAttribute('src');
+    opener?.focus({ preventScroll: true });
+  });
+  images.forEach(img => {
+    const link = img.closest('a');
+    // Preserve ordinary navigation links; only direct image links become zoom triggers.
+    if (link && !/\.(?:png|jpe?g|webp|gif|avif)(?:[?#]|$)/i.test(link.getAttribute('href') || '')) return;
+    const trigger = link || img;
+    if (link) link.removeAttribute('target');
+    trigger.classList.add('image-zoom-trigger');
+    trigger.setAttribute('role', 'button');
+    trigger.setAttribute('tabindex', '0');
+    trigger.setAttribute('aria-haspopup', 'dialog');
+    trigger.setAttribute('aria-label', `Enlarge image: ${img.alt || 'project image'}`);
+    const open = event => {
+      event.preventDefault();
+      opener = trigger;
+      largeImage.src = link?.href || img.currentSrc || img.src;
+      largeImage.alt = img.alt;
+      caption.textContent = img.closest('figure')?.querySelector('figcaption')?.textContent || img.alt;
+      caption.hidden = !caption.textContent;
+      document.body.classList.add('image-zoom-open');
+      if (!viewer.open) viewer.showModal();
+    };
+    trigger.addEventListener('click', open);
+    trigger.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') { event.stopPropagation(); open(event); }
+    });
+  });
+})();

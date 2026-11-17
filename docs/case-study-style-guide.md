@@ -104,7 +104,9 @@ Reuse `assets/js/project.js`:
 
 Desktop hover can enable sound; touch screens need an explicit sound button. Keep only one clip audible at a time and fade audio in over about 500ms. Preserve sound intent while a hovered carousel changes clips. Verify real phone playback because desktop emulation cannot establish mobile audio performance.
 
-Use compressed MP4 with fast-start metadata for loops. For external trailers, provide a meaningful iframe title and a direct watch link as a fallback.
+Use compressed MP4 with fast-start metadata for loops. For external trailers, provide a meaningful iframe title. Keep playback embedded; do not add separate “Watch on Vimeo” links.
+
+Images open in the shared in-page zoom viewer, never a new tab. Keep the original full-resolution source for inspection, provide an accessible enlarge label, and support close, backdrop dismissal, Escape, and return focus to the opener. Images already inside an interactive button keep that button’s behavior.
 
 ## Popovers and carousels
 

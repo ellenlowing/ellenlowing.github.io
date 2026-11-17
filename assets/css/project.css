@@ -471,3 +471,14 @@ main,.site-header,.site-footer{max-width:1240px;margin-left:auto;margin-right:au
 
 /* Match gameplay highlight titles across case studies. */
 .boss-mechanic h3{font-size:24px;line-height:1.2}
+
+/* Shared in-page image inspection. */
+.image-zoom-trigger{cursor:zoom-in}
+.image-zoom-trigger:focus-visible{outline:2px solid #d6d0f3;outline-offset:5px}
+body.image-zoom-open{overflow:hidden}
+.image-zoom{position:fixed;inset:0;margin:auto;width:fit-content;max-width:94vw;max-height:94dvh;padding:48px 16px 16px;border:0;background:#080808;color:#fff;overflow:auto}
+.image-zoom::backdrop{background:#000d}
+.image-zoom>img{display:block;width:auto;height:auto;max-width:calc(94vw - 32px);max-height:calc(94dvh - 130px);object-fit:contain;margin:auto}
+.image-zoom-close{position:absolute;right:8px;top:6px;display:grid;place-items:center;width:40px;height:36px;border:0;background:transparent;color:#fff;cursor:pointer}
+.image-zoom-close:focus-visible{outline:2px solid #d6d0f3}
+.image-zoom-caption{max-width:80ch;margin:12px auto 0;font:400 17px/1.45 dosis,sans-serif;color:#bbb}
