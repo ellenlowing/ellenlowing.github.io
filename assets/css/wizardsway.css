@@ -1,0 +1,37 @@
+/* Wizard’s Way uses the shared case-study scale and media behavior. */
+.wizardsway-page .project-intro{padding-bottom:30px}
+.platform-note{font:17px/1.45 dosis,sans-serif;color:#bbb}
+.overview{display:grid;gap:20px;max-width:72ch;margin:8px 0 30px}
+.trailer-frame{position:relative;aspect-ratio:16/9;background:#101010}
+.trailer iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.story-intro,.interaction-story{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:42px;align-items:start}
+.story-intro{margin-bottom:12px}
+.interaction-story{padding-top:20px}
+.wizardsway-page h3{color:#d6d0f3}
+.highlight-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;margin-top:16px}
+.mechanic{display:flex;flex-direction:column;gap:12px}
+.mechanic h3{font-size:24px;line-height:1.2}
+.mechanic>p{font:400 16px/1.65 'DM Sans',sans-serif;color:#ccc;flex:1}
+.mechanic>figure{margin-top:6px}
+.clip-frame{background:#111}
+.clip-frame video,.clip-frame .video-toggle{display:block;width:100%;height:auto}
+.wizardsway-page .video-sound-toggle{display:none}
+.related-media{font:17px/1.45 dosis,sans-serif;color:#d6d0f3}
+@media(max-width:800px){.story-intro,.interaction-story{grid-template-columns:minmax(0,1fr);gap:24px}}
+@media(max-width:640px){.highlight-pair{grid-template-columns:minmax(0,1fr);gap:32px}.mechanic>p{font-size:15px}}
+
+.combat-media{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;align-items:start}
+.combat-media>figure{margin:20px 0 0}
+@media(max-width:640px){.combat-media{grid-template-columns:minmax(0,1fr);gap:16px}}
+
+.overview-layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:48px;align-items:start;margin-top:8px}
+.overview-layout .overview{margin:0;max-width:60ch}
+.overview-layout .overview-trailer{width:100%;max-width:320px;justify-self:end;margin:0}
+.overview-trailer .trailer-frame{aspect-ratio:9/16;background:transparent}
+@media(max-width:640px){.overview-layout{grid-template-columns:minmax(0,1fr);gap:24px}.overview-layout .overview-trailer{justify-self:center;max-width:300px}}
+
+.page-status{margin:12px 0 20px;font:400 17px/1.45 dosis,sans-serif;color:#bbb}
+
+.overview-details{display:grid;gap:28px;min-width:0}
+.wizardsway-page .overview-details .project-role{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;margin:0;padding:0}
+.overview-details .overview{margin:0}
