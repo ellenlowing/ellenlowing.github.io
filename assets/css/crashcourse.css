@@ -106,3 +106,10 @@
 .physics-gallery figure:nth-child(2) .clip-frame{aspect-ratio:16/9}
 .physics-gallery .clip-frame video{object-fit:contain}
 @media(max-width:480px){.physics-gallery{grid-template-columns:minmax(0,1fr)}}
+
+.role-driving-loop{width:100%;max-width:260px;aspect-ratio:16/9;margin-top:18px;background:transparent}
+
+.crashcourse-page .crash-role-layout{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start;gap:48px}
+.crash-role-layout .role-driving-loop{max-width:360px;margin-top:0}
+.role-details{display:grid;gap:26px}
+@media(max-width:640px){.crashcourse-page .crash-role-layout{grid-template-columns:minmax(0,1fr);gap:24px}.crash-role-layout .role-driving-loop{max-width:300px}}
