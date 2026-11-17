@@ -493,3 +493,6 @@ body.image-zoom-open{overflow:hidden}
 .project-title-row .cooler-easter-egg{width:clamp(76px,10vw,124px);top:auto;bottom:0;transform:rotate(-7deg)}
 .project-title-row .cooler-easter-egg:hover,.project-title-row .cooler-easter-egg:focus-visible{transform:translateY(-3px) rotate(0deg)}
 .project-title-row{padding-right:calc(clamp(76px,10vw,124px) + 28px)}
+
+/* Audio controls must not change a popover’s viewport positioning. */
+.reference-preview.has-sound-control{position:fixed}
