@@ -375,10 +375,7 @@ document.addEventListener('visibilitychange', () => viewportVideos.forEach(updat
   let opener;
   const close = () => viewer.close();
   viewer.querySelector('button').addEventListener('click', close);
-  viewer.addEventListener('click', event => {
-    const rect = viewer.getBoundingClientRect();
-    if (event.target === viewer && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) close();
-  });
+  viewer.addEventListener('click', () => { if (viewer.open) close(); });
   viewer.addEventListener('close', () => {
     document.body.classList.remove('image-zoom-open');
     largeImage.removeAttribute('src');

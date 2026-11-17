@@ -56,7 +56,6 @@
 .sketch-comparison figcaption{margin-top:12px}
 .sketch-comparison figure:first-child figcaption{margin-left:5.94%}
 
-.route-testing .video-sound-toggle{display:flex}
 
 /* Keep the process recording secondary to the course plans. */
 .route-testing{width:100%;max-width:760px;justify-self:center}
@@ -113,3 +112,7 @@
 .crash-role-layout .role-driving-loop{max-width:360px;margin-top:0}
 .role-details{display:grid;gap:26px}
 @media(max-width:640px){.crashcourse-page .crash-role-layout{grid-template-columns:minmax(0,1fr);gap:24px}.crash-role-layout .role-driving-loop{max-width:300px}}
+
+/* The Post-it now uses a physically cropped asset. */
+.planning-media>figure:first-child>a{aspect-ratio:auto;overflow:visible}
+.planning-media>figure:first-child>a>img{width:100%;height:auto;clip-path:none;transform:none;object-fit:initial}

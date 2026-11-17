@@ -482,3 +482,5 @@ body.image-zoom-open{overflow:hidden}
 .image-zoom-close{position:absolute;right:8px;top:6px;display:grid;place-items:center;width:40px;height:36px;border:0;background:transparent;color:#fff;cursor:pointer}
 .image-zoom-close:focus-visible{outline:2px solid #d6d0f3}
 .image-zoom-caption{max-width:80ch;margin:12px auto 0;font:400 17px/1.45 dosis,sans-serif;color:#bbb}
+
+.image-zoom,.image-zoom::backdrop,.image-zoom>img,.image-zoom-caption{cursor:zoom-out}
