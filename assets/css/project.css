@@ -484,3 +484,12 @@ body.image-zoom-open{overflow:hidden}
 .image-zoom-caption{max-width:80ch;margin:12px auto 0;font:400 17px/1.45 dosis,sans-serif;color:#bbb}
 
 .image-zoom,.image-zoom::backdrop,.image-zoom>img,.image-zoom-caption{cursor:zoom-out}
+
+/* Keep the title sticker close to one line of display type. */
+.project-title-row .cooler-easter-egg{width:clamp(42px,6.1vw,76px)}
+.project-title-row{padding-right:calc(clamp(42px,6.1vw,76px) + 28px)}
+
+/* Span the eyebrow and title, anchored to the title’s bottom edge. */
+.project-title-row .cooler-easter-egg{width:clamp(76px,10vw,124px);top:auto;bottom:0;transform:rotate(-7deg)}
+.project-title-row .cooler-easter-egg:hover,.project-title-row .cooler-easter-egg:focus-visible{transform:translateY(-3px) rotate(0deg)}
+.project-title-row{padding-right:calc(clamp(76px,10vw,124px) + 28px)}

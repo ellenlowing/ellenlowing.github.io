@@ -116,3 +116,5 @@
 /* The Post-it now uses a physically cropped asset. */
 .planning-media>figure:first-child>a{aspect-ratio:auto;overflow:visible}
 .planning-media>figure:first-child>a>img{width:100%;height:auto;clip-path:none;transform:none;object-fit:initial}
+
+.press-note>a{font-family:"DM Sans",sans-serif}
