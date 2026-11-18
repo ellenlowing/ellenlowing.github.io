@@ -496,3 +496,24 @@ body.image-zoom-open{overflow:hidden}
 
 /* Audio controls must not change a popover’s viewport positioning. */
 .reference-preview.has-sound-control{position:fixed}
+
+.project-borderless{border:0}
+
+/* A quiet route back to the gallery, without framing the documentation. */
+.documentation-header{border-bottom:0;padding:22px 0 12px}
+.documentation-header .wordmark{font-size:26px}
+.documentation-header>a:last-child{font-size:21px}
+@media(max-width:640px){.documentation-header{padding:18px 0 8px}.documentation-header .wordmark{font-size:24px}.documentation-header>a:last-child{font-size:19px}}
+
+.documentation-header .home-icon{display:grid;place-items:center;width:44px;height:44px;line-height:1}
+.home-icon img{display:block;width:32px;height:32px;object-fit:contain;image-rendering:pixelated;filter:invert(1)}
+.documentation-header .home-icon:hover{opacity:.75}
+.documentation-header .home-icon:focus-visible{outline:1px solid #d6d0f3;outline-offset:3px}
+
+.documentation-header .home-icon{display:inline-flex;align-items:center;justify-content:flex-start;gap:9px;width:auto;min-width:44px;text-decoration:none}
+.home-icon img{transform:none}
+.home-icon:hover img,.home-icon:focus-visible img{transform:scaleX(-1)}
+.home-icon-label{font:16px/1.2 'DM Sans',sans-serif;color:#ccc;opacity:0;transition:opacity .15s}
+.home-icon:hover .home-icon-label,.home-icon:focus-visible .home-icon-label{opacity:1}
+@media(hover:none){.home-icon-label{opacity:1}}
+@media(prefers-reduced-motion:reduce){.home-icon-label{transition:none}}
