@@ -517,3 +517,9 @@ body.image-zoom-open{overflow:hidden}
 .home-icon:hover .home-icon-label,.home-icon:focus-visible .home-icon-label{opacity:1}
 @media(hover:none){.home-icon-label{opacity:1}}
 @media(prefers-reduced-motion:reduce){.home-icon-label{transition:none}}
+
+/* Match the character workflow to the other process subsections. */
+.character-development .character-design{gap:12px}
+.character-development .character-design p{font:400 16px/1.65 'DM Sans',sans-serif;color:#ccc}
+.character-development>h3{margin-bottom:20px}
+@media(max-width:640px){.character-development .character-design p{font-size:15px}}
