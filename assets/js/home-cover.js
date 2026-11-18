@@ -1,6 +1,40 @@
 (() => {
   const cover = document.querySelector('.home-cover');
   const container = cover.querySelector('.cube-scene');
+  let scrollFrame;
+  const scrollToWork = () => {
+    cancelAnimationFrame(scrollFrame);
+    const work = document.querySelector('#work-home');
+    const start = window.scrollY;
+    const destination = start + work.getBoundingClientRect().top;
+    const previous = document.documentElement.style.scrollBehavior;
+    document.documentElement.style.scrollBehavior = 'auto';
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      window.scrollTo(0, destination);
+      document.documentElement.style.scrollBehavior = previous;
+      return;
+    }
+    const started = performance.now();
+    const tick = now => {
+      const t = Math.min((now - started) / 1300, 1);
+      const eased = t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      window.scrollTo(0, start + (destination - start) * eased);
+      if (t < 1) scrollFrame = requestAnimationFrame(tick);
+      else {
+        window.scrollTo(0, window.scrollY + work.getBoundingClientRect().top);
+        document.documentElement.style.scrollBehavior = previous;
+      }
+    };
+    scrollFrame = requestAnimationFrame(tick);
+  };
+  cover.addEventListener('click', event => {
+    const link = event.target.closest('a');
+    if (link?.classList.contains('cover-scroll')) {
+      event.preventDefault(); scrollToWork(); return;
+    }
+    if (event.target.closest('a,button,input,textarea,select')) return;
+    scrollToWork();
+  });
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(100, cover.clientWidth / cover.clientHeight, 1, 1000);
   camera.position.set(600, 0, 500);

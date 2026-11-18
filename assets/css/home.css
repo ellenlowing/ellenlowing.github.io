@@ -127,3 +127,7 @@
 .work-image .thumbnail-embed.is-loaded{opacity:1}
 
 .work-contribution{font:400 14px/1.5 "DM Sans",sans-serif;color:#999;margin-top:6px}
+
+.home-cover{cursor:pointer}
+
+#work-home{scroll-margin-top:-30px}
